@@ -1,0 +1,118 @@
+.rlgl-full-container {
+    display: flex;
+    flex-direction: row;
+}
+
+.rlgl-full-container #video {
+    height: 100%;
+    object-fit: fill;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: -1;
+}
+
+.rlgl-full-container .empty-div {
+    width: 55%;
+}
+.red-light-green-light-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.rlgl-full-container .background-image {
+    min-height: 100%;
+    min-width: 1024px;
+    width: 100%;
+    height: auto;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: -2;
+}
+
+.red-light-green-light-container #header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem;
+    border-radius: 1rem;
+    background-color: aliceblue;
+}
+
+.red-light-green-light-container #tutorial {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem;
+    border-radius: 1rem;
+    /* background-color: red; */
+}
+
+input[type="radio"] {
+    margin-left: 10px;
+    margin-right: 2.5px;
+}
+
+.red-light-green-light-container #settings-div {
+    margin-bottom: 10px;
+}
+
+.red-light-green-light-container #pregame-div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.red-light-green-light-container #game-div {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+}
+
+.red-light-green-light-container #question-div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.red-light-green-light-container #postgame-div {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+}
+
+.red-light-green-light-container #question-text {
+    font-weight: bold;
+    color: #de8c93;
+}
+
+.red-light-green-light-container #win-text {
+    display: none;
+    font-weight: bold;
+    color: green;
+}
+
+.red-light-green-light-container #lose-text {
+    display: none;
+    font-weight: bold;
+    color: red;
+}
+
+.red-light-green-light-container #light {
+    background-color: #008450;
+    border-color: black;
+    border-radius: 1rem;
+    color: white;
+    padding: 40px 40px;
+    margin: 2rem;
+}
+
+.red-light-green-light-container .red {
+    fill: red;
+}
+
+.red-light-green-light-container .green {
+    fill: green;
+}
