@@ -45,7 +45,7 @@ function SugarHoneycombsPage() {
 
     function submitAnswer() {
         const answerLanguage = state.answerLanguage;
-        const submission = document.getElementById('answer-input').value;
+        const submission = document.getElementById('answer-input').value.toLowerCase();
         const answers = {'korean': '음식', 'english': 'food'}
 
         if (submission === answers[answerLanguage]) {
