@@ -9,7 +9,8 @@ import StudyOptionsPage from './components/StudyOptionsPage/StudyOptionsPage';
 import TugOfWarPage from './components/TugOfWarPage/TugOfWarPage';
 import UnitsListPage from './components/UnitsListPage/UnitsListPage';
 import FlashcardStudyPage from './components/FlashcardPage/FlashcardStudyPage';
-import { HOME_PATH, ABOUT_PATH, RED_LIGHT_GREEN_LIGHT_PATH, STUDY_OPTIONS_PATH, TUG_OF_WAR_PATH, UNITS_LIST_PATH, FLASHCARD_STUDY_PATH } from './constants';
+import ProgressPage from './components/ProgressPage/Progress'
+import { HOME_PATH, ABOUT_PATH, RED_LIGHT_GREEN_LIGHT_PATH, STUDY_OPTIONS_PATH, TUG_OF_WAR_PATH, UNITS_LIST_PATH, FLASHCARD_STUDY_PATH, PROGRESS_PATH } from './constants';
 import './index.css';
 
 const root = createRoot(document.getElementById('root'));
@@ -24,6 +25,7 @@ root.render(
             <Route path={RED_LIGHT_GREEN_LIGHT_PATH} element={<RedLightGreenLightPage />} />
             <Route path={TUG_OF_WAR_PATH} element={<TugOfWarPage />} />
             <Route path={FLASHCARD_STUDY_PATH} element={<FlashcardStudyPage />} />
+            <Route path={PROGRESS_PATH} element={<ProgressPage/>} />
         </Routes>
     </Router>
 );
