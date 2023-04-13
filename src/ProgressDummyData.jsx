@@ -1,9 +1,9 @@
 const DummyProgress = {
     1: [
         { //correct answers
-            rlgl: 0,
-            tug: 0,
-            sugar: 0
+            rlgl: 4,
+            tug: 6,
+            sugar: 2
         },
         { //total answers
             rlgl: 0,

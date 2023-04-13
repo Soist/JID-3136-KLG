@@ -1,7 +1,12 @@
 import AccordionItem from "./AccordionItem";
 import {getUnit} from "../../unitData";
 import {getProgress} from "../../ProgressDummyData";
+import {BarChart} from "./BarChart";
+import Chart from "chart.js/auto";
+import {CategoryScale} from "chart.js";
 import './Progress.css'
+
+Chart.register(CategoryScale);
 
 function getAccuracy(correct, total) {
     return (total > 0) ? Math.round((correct / total) * 100) : 0
@@ -23,6 +28,42 @@ function getUnitData(unitNum) {
     }
 }
 
+function getChartData() {
+    let rlgl_data = []
+    let tug_data = []
+    let sugar_data = []
+    for (let i = 0; i < 6; i++) {
+        let correct = getProgress(i + 1)[0]
+        rlgl_data.push(correct.rlgl)
+        tug_data.push(correct.tug)
+        sugar_data.push(correct.sugar)
+    }
+    return {
+        labels: ['Unit 1', 'Unit 2', 'Unit 3', 'Unit 4', 'Unit 5', 'Unit 6'],
+        datasets: [
+            {
+                label: 'rlgl_data',
+                data: rlgl_data,
+                color: '#FF0000',
+                stack: 'Game 1'
+            },
+            {
+                label: 'tug_data',
+                data: tug_data,
+                color: '#0000FF',
+                stack: 'Game 2'
+            },
+            {
+                label: 'sugar_data',
+                data: sugar_data,
+                color: '#00FF00',
+                stack: 'Game 3'
+            }
+        ]
+    }
+}
+
+
 function Progress() {
     return(
         <div className='progress-container'>
@@ -36,7 +77,7 @@ function Progress() {
                     <span>Accuracy</span>
                 </div>
                 <div className='chart-progress-section'>
-                    <img src='../../SharedImages/backArrow.png' alt='something'></img>
+                    <BarChart chartData={getChartData()}></BarChart>
                 </div>
             </div>
             <div className='right-progress-section'>

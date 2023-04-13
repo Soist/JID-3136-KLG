@@ -1,5 +1,4 @@
 .progress-container {
-    white-space: pre-wrap;
     white-space: pre-line;
     display: inline;
 }
@@ -17,6 +16,10 @@
 .total-accuracy {
     font-size: 20px;
     border: 2px solid black;
+}
+
+.chart-progress-section {
+    background-color: white;
 }
 
 .right-progress-section {
