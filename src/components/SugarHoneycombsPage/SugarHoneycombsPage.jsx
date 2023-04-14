@@ -5,6 +5,7 @@ import sound from '../../audios/words/3-1 음식.mp3'
 import winImg from './resources/win_honeycombs.png';
 import loseImg from './resources/lose_honeycombs.png';
 import startImg from './resources/honeycombs.png';
+import {getProgress} from "../../ProgressDummyData";
 
 function SugarHoneycombsPage() {
     const location = useLocation();
@@ -47,8 +48,10 @@ function SugarHoneycombsPage() {
         const answerLanguage = state.answerLanguage;
         const submission = document.getElementById('answer-input').value.toLowerCase();
         const answers = {'korean': '음식', 'english': 'food'}
+        getProgress(unit.number)[1].rlgl++
 
         if (submission === answers[answerLanguage]) {
+            getProgress(unit.number)[0].rlgl++
             document.getElementById('answer-input').value = '';
             document.getElementById('game').style.display = 'none';
             document.getElementById('postgame').style.display = 'flex';

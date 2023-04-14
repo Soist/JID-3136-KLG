@@ -10,6 +10,8 @@ import TugOfWarPage from "./components/TugOfWarPage/TugOfWarPage";
 import SugarHoneycombsPage from "./components/SugarHoneycombsPage/SugarHoneycombsPage";
 import UnitsListPage from "./components/UnitsListPage/UnitsListPage";
 import FlashcardStudyPage from "./components/FlashcardPage/FlashcardStudyPage";
+import ProgressPage from './components/ProgressPage/Progress'
+
 import {
   HOME_PATH,
   ABOUT_PATH,
@@ -19,6 +21,7 @@ import {
   SUGAR_HONEYCOMBS,
   UNITS_LIST_PATH,
   FLASHCARD_STUDY_PATH,
+  PROGRESS_PATH
 } from "./constants";
 import "./index.css";
 
@@ -38,6 +41,7 @@ root.render(
       <Route path={TUG_OF_WAR_PATH} element={<TugOfWarPage />} />
       <Route path={SUGAR_HONEYCOMBS} element={<SugarHoneycombsPage />} />
       <Route path={FLASHCARD_STUDY_PATH} element={<FlashcardStudyPage />} />
+      <Route path={PROGRESS_PATH} element={<ProgressPage />} />
     </Routes>
   </Router>
 );
