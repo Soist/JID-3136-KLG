@@ -15,6 +15,7 @@ import { ReactComponent as CircleSvg } from '../../SharedImages/Circle.svg'
 import { ReactComponent as FlagSvg } from '../../SharedImages/Flag.svg'
 import { ReactComponent as SkullSvg } from '../../SharedImages/Skull.svg'
 import './TugOfWarPage.css'
+import {getProgress} from "../../ProgressDummyData";
 
 const BACKGROUND_IMAGES = [Score0, Score1, Score2, Score3, Score4, Score5, Score6, Score7, Score8];
 
@@ -85,8 +86,11 @@ function TugOfWarPage() {
         const answerLanguage = state.answerLanguage;
         const submission = document.getElementById('answer-input').value;
 
+        getProgress(unit.number)[1].tug++
+
         if (submission === questions[currQuestionIndex][answerLanguage]) {
             document.getElementById('answer-input').value = '';
+            getProgress(unit.number)[0].tug++
 
             const newScore = currScore + 1;
             if (newScore === 8) {
