@@ -28,6 +28,28 @@ function getUnitData(unitNum) {
     }
 }
 
+function getTotalCorrectQuestions() {
+    let total = 0
+    for (let i = 0; i < 6; i++) {
+        let progress = getProgress(i + 1)
+        total += progress[0].rlgl + progress[0].tug + progress[0].sugar
+    }
+    return total
+}
+
+function getTotalQuestions() {
+    let total = 0
+    for (let i = 0; i < 6; i++) {
+        let progress = getProgress(i + 1)
+        total += progress[1].rlgl + progress[1].tug + progress[1].sugar
+    }
+    return total
+}
+
+function getTotalAccuracy() {
+    return Math.round(getTotalCorrectQuestions() / getTotalQuestions() * 100)
+}
+
 function getChartData() {
     let rlgl_data = []
     let tug_data = []
@@ -42,19 +64,19 @@ function getChartData() {
         labels: ['Unit 1', 'Unit 2', 'Unit 3', 'Unit 4', 'Unit 5', 'Unit 6'],
         datasets: [
             {
-                label: 'rlgl_data',
+                label: 'Red Light Green Light',
                 data: rlgl_data,
                 color: '#FF0000',
                 stack: 'Game 1'
             },
             {
-                label: 'tug_data',
+                label: 'Tug of War',
                 data: tug_data,
                 color: '#0000FF',
                 stack: 'Game 2'
             },
             {
-                label: 'sugar_data',
+                label: 'Sugar Honeycomb',
                 data: sugar_data,
                 color: '#00FF00',
                 stack: 'Game 3'
@@ -68,14 +90,14 @@ function Progress() {
     return(
         <div className='progress-container'>
             <div className='left-progress-section'>
-                <div className='upper-progress-section'>
-                    <span className='total-answers'>96</span>
-                    <span>Correctly
+                <article className='upper-progress-section'>
+                    <span className='total-answers'> {getTotalQuestions()} </span>
+                    <span className='total-text'>Correctly
                         Answered
                         Questions</span>
-                    <span className='total-accuracy'>13</span>
-                    <span>Accuracy</span>
-                </div>
+                    <span className='total-accuracy'> {getTotalAccuracy()}% </span>
+                    <span className='accuracy-text'>Accuracy</span>
+                </article>
                 <div className='chart-progress-section'>
                     <BarChart chartData={getChartData()}></BarChart>
                 </div>
