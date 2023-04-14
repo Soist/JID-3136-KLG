@@ -1,6 +1,6 @@
 // import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { HOME_PATH, UNITS_LIST_PATH, ABOUT_PATH } from '../../constants';
+import { HOME_PATH, UNITS_LIST_PATH, ABOUT_PATH, PROGRESS_PATH } from '../../constants';
 import KLGLogo from './klglogo.png'
 import './Navbar.css';
 
@@ -27,6 +27,11 @@ function Navbar() {
                     <li className="nav-item">
                         <Link to={ABOUT_PATH} className="nav-links">
                             About
+                        </Link>
+                    </li>
+                    <li className='nav-item'>
+                        <Link to={PROGRESS_PATH} className='nav-links'>
+                            Progress
                         </Link>
                     </li>
                 </ul>

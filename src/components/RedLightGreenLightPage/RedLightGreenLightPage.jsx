@@ -9,6 +9,7 @@ import { ReactComponent as CircleSvg } from '../../SharedImages/Circle.svg'
 import { ReactComponent as SkullSvg } from '../../SharedImages/Skull.svg'
 import './RedLightGreenLightPage.css';
 import { useEffect } from 'react';
+import {getProgress} from "../../ProgressDummyData";
 
 
 function ScoreView() {
@@ -110,12 +111,13 @@ function RedLightGreenLightPage() {
     }, [currQuestionIndex, currCorrectScore, currIncorrectScore, questionResponseTime, questions.length]); // if one of these changes, then the interval will be reset
 
     function submitAnswer() {
-
+        getProgress(unit.number)[1].rlgl++
         const submission = document.getElementById('answer-input').value;
         document.getElementById('answer-input').value = '';
 
         if (submission === questions[currQuestionIndex][answerLanguage]) {
             setCurrCorrectScore(currCorrectScore + 1);
+            getProgress(unit.number)[0].rlgl++
             if (currCorrectScore === 5) {
                 document.getElementById("game-div").style.display = "none";
                 document.getElementById("postgame-div").style.display = "flex";
