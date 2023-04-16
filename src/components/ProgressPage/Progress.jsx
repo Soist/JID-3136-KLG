@@ -47,7 +47,7 @@ function getTotalQuestions() {
 }
 
 function getTotalAccuracy() {
-    return Math.round(getTotalCorrectQuestions() / getTotalQuestions() * 100)
+    return (getTotalQuestions() > 0) ? Math.round(getTotalCorrectQuestions() / getTotalQuestions() * 100) : 0
 }
 
 function getChartData() {
@@ -91,7 +91,7 @@ function Progress() {
         <div className='progress-container'>
             <div className='left-progress-section'>
                 <article className='upper-progress-section'>
-                    <span className='total-answers'> {getTotalQuestions()} </span>
+                    <span className='total-answers'> {getTotalCorrectQuestions()} </span>
                     <span className='total-text'>Correctly
                         Answered
                         Questions</span>
