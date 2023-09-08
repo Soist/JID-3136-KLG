@@ -3,6 +3,20 @@ A react app created to gamify the learning of KOR 1001 at Georgia Tech. The app 
 
 # Release Notes
 
+## Version 0.5.0
+
+### New Features
+* Added simplistic honey comb game that allows for practice with vocabulary.
+* Added rudimentary flashcards to all units that consist of new vocabulary for users to practice
+* Added template for what is soon to be an in-class trivia style game similar to Kahoot where by in which the entire class is engaged through their mobile devices and can answer questions under time limit. They earn points for accuracy and speed in answering.
+### Bug Fixes
+* Buttons now all are routed to the appropriate unit and games.
+
+### Known Issues
+* Users requested a way to submit complaints/bugs/typos they had with the website. There were numerous since the site is currently in the beta testing phase. Thus, this was a big issue that needed to be resolved and would help improve further development.
+* Unit 1 button led to Unit 2. Additionally some of the buttons to choose a game led to the incorrect game (e.g. flashcards led to honeycomb game) or to an "unknown page."
+
+
 ## Version 0.4.0
 
 ### New Features
