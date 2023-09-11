@@ -3,7 +3,7 @@ A react app created to gamify the learning of KOR 1001 at Georgia Tech. The app 
 
 # Release Notes
 
-## Version 0.5.0
+## Version 1.0.0
 
 ### New Features
 * Added simplistic honey comb game that allows for practice with vocabulary.
