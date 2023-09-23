@@ -8,6 +8,7 @@ import RedLightGreenLightPage from "./components/RedLightGreenLightPage/RedLight
 import StudyOptionsPage from "./components/StudyOptionsPage/StudyOptionsPage";
 import VocabOptionsPage from "./components/StudyOptionsPage/VocabOptionsPage";
 import GrammarOptionsPage from "./components/StudyOptionsPage/GrammarOptionsPage";
+import ListenOptionsPage from "./components/StudyOptionsPage/ListenOptionsPage";
 import TugOfWarPage from "./components/TugOfWarPage/TugOfWarPage";
 import SugarHoneycombsPage from "./components/SugarHoneycombsPage/SugarHoneycombsPage";
 import UnitsListPage from "./components/UnitsListPage/UnitsListPage";
@@ -21,6 +22,7 @@ import {
   STUDY_OPTIONS_PATH,
   VOCAB_OPTIONS_PATH,
   GRAMMAR_OPTIONS_PATH,
+  LISTEN_OPTIONS_PATH,
   TUG_OF_WAR_PATH,
   SUGAR_HONEYCOMBS,
   UNITS_LIST_PATH,
@@ -40,6 +42,7 @@ root.render(
       <Route path={STUDY_OPTIONS_PATH} element={<StudyOptionsPage />} />
       <Route path={VOCAB_OPTIONS_PATH} element={<VocabOptionsPage />} />
       <Route path={GRAMMAR_OPTIONS_PATH} element={<GrammarOptionsPage />} />
+      <Route path={LISTEN_OPTIONS_PATH} element={<ListenOptionsPage />} />
       <Route
         path={RED_LIGHT_GREEN_LIGHT_PATH}
         element={<RedLightGreenLightPage />}
