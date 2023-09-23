@@ -6,6 +6,7 @@ import AboutPage from "./components/AboutPage/About";
 import Navbar from "./components/Navbar/Navbar";
 import RedLightGreenLightPage from "./components/RedLightGreenLightPage/RedLightGreenLightPage";
 import StudyOptionsPage from "./components/StudyOptionsPage/StudyOptionsPage";
+import VocabOptionsPage from "./components/StudyOptionsPage/VocabOptionsPage";
 import TugOfWarPage from "./components/TugOfWarPage/TugOfWarPage";
 import SugarHoneycombsPage from "./components/SugarHoneycombsPage/SugarHoneycombsPage";
 import UnitsListPage from "./components/UnitsListPage/UnitsListPage";
@@ -17,6 +18,7 @@ import {
   ABOUT_PATH,
   RED_LIGHT_GREEN_LIGHT_PATH,
   STUDY_OPTIONS_PATH,
+  VOCAB_OPTIONS_PATH,
   TUG_OF_WAR_PATH,
   SUGAR_HONEYCOMBS,
   UNITS_LIST_PATH,
@@ -34,6 +36,7 @@ root.render(
       <Route path={ABOUT_PATH} element={<AboutPage />} />
       <Route path={UNITS_LIST_PATH} element={<UnitsListPage />} />
       <Route path={STUDY_OPTIONS_PATH} element={<StudyOptionsPage />} />
+      <Route path={VOCAB_OPTIONS_PATH} element={<VocabOptionsPage />} />
       <Route
         path={RED_LIGHT_GREEN_LIGHT_PATH}
         element={<RedLightGreenLightPage />}
