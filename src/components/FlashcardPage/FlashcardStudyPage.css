@@ -82,8 +82,8 @@
   }
   
   .add-flashcard-button {
-    position: fixed;
-    top: 33px;
+    position: absolute;
+    top: -80px;
     right: 10px;
     z-index: 999; 
   }
