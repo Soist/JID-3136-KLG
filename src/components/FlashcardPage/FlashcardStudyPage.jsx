@@ -76,24 +76,26 @@ function FlashcardStudyPage() {
           <div className='flashcard-modal'>
             <h2>{selectedFlashcardIndex !== null ? 'Edit' : 'Add'} Flashcard</h2>
             <div className='modal-content'>
-              <label>
-                Korean Text:
-                <input
-                  type='text'
-                  value={koreanText}
-                  onChange={handleKoreanTextChange}
-                  required
-                />
-              </label>
-              <label>
-                Image URL:
-                <input
-                  type='text'
-                  value={imageURL}
-                  onChange={handleImageURLChange}
-                  required
-                />
-              </label>
+              <div className='scroll-container'>
+                <label>
+                  Korean Text:
+                  <input
+                    type='text'
+                    value={koreanText}
+                    onChange={handleKoreanTextChange}
+                    required
+                  />
+                </label>
+                <label>
+                  Image URL:
+                  <input
+                    type='text'
+                    value={imageURL}
+                    onChange={handleImageURLChange}
+                    required
+                  />
+                </label>
+              </div>
               {imageURL && (
                 <div className='image-preview'>
                   <img src={imageURL} alt='Image Preview' />
