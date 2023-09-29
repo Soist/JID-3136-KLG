@@ -47,17 +47,8 @@ function FlashcardStudyPage() {
 
     setIsModalVisible(false);
     setKoreanText('');
-    setSelectedFlashcardIndex(null);
-
-    const newFlashcard = {
-      korean: koreanText,
-      image: imageURL,
-    };
-    
-    setFlashcards([...flashcards, newFlashcard]);
-    setIsModalVisible(false);
-    setKoreanText('');
     setImageURL('');
+    setSelectedFlashcardIndex(null);
   };
 
   const handleCloseModal = () => {
@@ -83,7 +74,7 @@ function FlashcardStudyPage() {
       {isModalVisible && (
         <div className='modal-popup'>
           <div className='flashcard-modal'>
-            <h2>Add/Edit a Flashcard</h2>
+            <h2>{selectedFlashcardIndex !== null ? 'Edit' : 'Add'} Flashcard</h2>
             <div className='modal-content'>
               <label>
                 Korean Text:
@@ -110,46 +101,6 @@ function FlashcardStudyPage() {
               )}
             </div>
             <div className='modal-buttons'>
-  };
-
-  return (
-    <div id="flashcard-container">
-      {flashcards.map((flashcard, index) => (
-        <Flashcard key={index} flashcard={flashcard} />
-      ))}
-      <div className="add-flashcard-button">
-        <button onClick={handleAddFlashcard}>Add Flashcard</button>
-      </div>
-      {isModalVisible && (
-        <div className="modal-popup">
-          <div className="flashcard-modal">
-            <h2>Add a Flashcard</h2>
-            <label>
-              Korean Text:
-              <input
-                type="text"
-                value={koreanText}
-                onChange={handleKoreanTextChange}
-                required
-              />
-            </label>
-            <label>
-              Image URL:
-              <input
-                type="text"
-                value={imageURL}
-                onChange={handleImageURLChange}
-                required
-              />
-            </label>
-              {imageURL && (
-                <div className='image-preview'>
-                  <img src={imageURL} alt='Image Preview' />
-                </div>
-              )}
-            </div>
-
-            <div className="modal-buttons">
               <button onClick={handleSaveFlashcard}>Save</button>
               <button onClick={handleCloseModal}>Cancel</button>
             </div>
