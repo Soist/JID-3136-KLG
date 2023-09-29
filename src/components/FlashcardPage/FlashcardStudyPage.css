@@ -214,6 +214,8 @@
   }
   
   #flashcard-container .card .front .content-container .image-preview {
+    max-height: 70%;
+    overflow:hidden;
     margin-bottom: 10px;
   }
   
