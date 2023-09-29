@@ -28,6 +28,18 @@ function FlashcardStudyPage() {
     setImageURL(e.target.value);
   };
 
+  const handleImageUpload = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = (event) => {
+        setImageURL(event.target.result);
+      };
+      reader.readAsDataURL(file);
+    }
+  };
+
+
   const handleSaveFlashcard = () => {
     if (selectedFlashcardIndex !== null) {
       const updatedFlashcards = [...flashcards];
@@ -85,15 +97,25 @@ function FlashcardStudyPage() {
                   required
                 />
               </label>
-              <label>
-                Image URL:
-                <input
-                  type='text'
-                  value={imageURL}
-                  onChange={handleImageURLChange}
-                  required
-                />
-              </label>
+              <div className="image-input-container">
+                <label>
+                  Image URL:
+                  <input
+                    type='text'
+                    value={imageURL}
+                    onChange={handleImageURLChange}
+                    required
+                  />
+                </label>
+                <label>
+                  or Upload Image:
+                  <input
+                    type='file'
+                    accept='image/*'
+                    onChange={handleImageUpload}
+                  />
+                </label>
+              </div>
               {imageURL && (
                 <div className='image-preview'>
                   <img src={imageURL} alt='Image Preview' />
