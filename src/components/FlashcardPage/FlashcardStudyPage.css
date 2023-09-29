@@ -238,12 +238,6 @@
   scrollbar-color: auto auto;
 }
 
-
-
-/* FlashcardStudyPage.css */
-
-/* ... (your existing CSS) */
-
 #flashcard-container .card .front .content-container {
   display: flex;
   flex-direction: column;
