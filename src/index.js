@@ -14,6 +14,7 @@ import SugarHoneycombsPage from "./components/SugarHoneycombsPage/SugarHoneycomb
 import UnitsListPage from "./components/UnitsListPage/UnitsListPage";
 import FlashcardStudyPage from "./components/FlashcardPage/FlashcardStudyPage";
 import ProgressPage from "./components/ProgressPage/Progress";
+import ChatboxPage from "./components/ChatboxPage/Chatbox";
 
 import {
   HOME_PATH,
@@ -28,6 +29,7 @@ import {
   UNITS_LIST_PATH,
   FLASHCARD_STUDY_PATH,
   PROGRESS_PATH,
+  CHATBOX_PATH,
 } from "./constants";
 import "./index.css";
 
@@ -51,6 +53,7 @@ root.render(
       <Route path={SUGAR_HONEYCOMBS} element={<SugarHoneycombsPage />} />
       <Route path={FLASHCARD_STUDY_PATH} element={<FlashcardStudyPage />} />
       <Route path={PROGRESS_PATH} element={<ProgressPage />} />
+      <Route path={CHATBOX_PATH} element={<ChatboxPage />} />
     </Routes>
   </Router>
 );
