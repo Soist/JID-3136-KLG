@@ -13,7 +13,7 @@ function Chatbox() {
           <p>User: Hello!</p>
         </div>
         <div className="chatbox-message">
-          <p>Bot: Hi there!</p>
+          <p>Helper: Hi there! Ready to Practice!</p>
         </div>
         {/* Add more messages here */}
       </div>
