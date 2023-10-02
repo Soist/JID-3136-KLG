@@ -1,0 +1,100 @@
+.progress-container {
+    white-space: pre-line;
+    display: flex;
+    justify-content: center;
+}
+
+.left-progress-section {
+    width: 50%;
+    align-self:flex-start;
+    background-color: white;
+    border: 1px solid black;
+    margin-right: 2rem;
+}
+
+.total-answers {
+    white-space: pre;
+    vertical-align: 60%;
+    text-align: center;
+    font-size: 40px;
+    border: 2px solid black;
+    background-color: #339900;
+    margin-right: 1rem;
+    margin-left: 5rem;
+}
+
+.total-text {
+    display: inline-block;
+    white-space: pre-line;
+    width: 10rem;
+    font-size: 25px;
+}
+
+.total-accuracy {
+    vertical-align: 60%;
+    text-align: center;
+    font-size: 40px;
+    border: 2px solid black;
+    background-color: #99cc33;
+    margin-right: 1rem;
+}
+
+.accuracy-text {
+    vertical-align: 100%;
+    font-size: 25px;
+}
+
+.chart-progress-section {
+    background-color: white;
+    border-top: 1px solid black;
+}
+
+.right-progress-section {
+    width: 25%;
+    border-radius: 1rem;
+    border: 2px solid black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-right: 2rem;
+    padding-top: 1rem;
+    background-color: white;
+}
+
+.accordion {
+    list-style: none;
+}
+
+.accordion_item {
+    border-top: 1px solid #9f9f9f;
+}
+
+.button {
+    font-size: 16px;
+    background-color: #249f9c;
+    color: #fff;
+    text-align: left;
+    font-weight: 700;
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    padding: 18px 8px;
+    cursor: pointer;
+    border: none;
+}
+
+.accordion_item.active .button {
+    background-color: #037a76;
+}
+
+.answer {
+    background-color: lightpink;
+    padding-left: 1rem;
+}
+
+.answer_wrapper {
+    height: 0;
+    overflow: hidden;
+    transition: height ease 0.2s;
+}

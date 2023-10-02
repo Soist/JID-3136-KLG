@@ -1,0 +1,26 @@
+#study-options-page-container {
+    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem;
+    width: 650px;
+    height: auto;
+    background-color: white;
+    margin: 3rem auto 2rem auto;
+    border: 2px solid black;
+    border-radius: 10px;
+}
+
+
+
+#study-options-page-container button {
+    background-color: #de8c93;
+    border: 1px solid black;
+    border-radius: 1rem;
+    color: white;
+    font-size: larger;
+    margin: 10px;
+    padding: 20px 40px;
+    width: 20rem;
+}

@@ -1,0 +1,24 @@
+#units-container {
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem;
+    width: 650px;
+    height: auto;
+    background-color: white;
+    margin: 3rem auto 2rem auto;
+    border: 2px solid black;
+    border-radius: 10px;
+}
+
+.unit-button {
+    background-color: #de8c93;
+    border: 1px solid black;
+    border-radius: 1rem;
+    color: white;
+    font-size: larger;
+    margin: 15px;
+    padding: 40px 40px;
+    width: 30rem;
+}
