@@ -3,6 +3,21 @@ A react app created to gamify the learning of KOR 1001 at Georgia Tech. The app 
 
 # Release Notes
 
+## Version 1.0.1
+
+### New Features
+* Basic Layout and design of Chatbox has been coded. ChatGPT api to bring functionality will be implemented in later sprints
+* Access path to all mini games has been employed
+* Uploading images to flashcards functionality has been developed. This includes gifs and allows users to use both a url and their own camera roll to choose a photo/gif. Additionally, users' can preview what the flashcard will look like with the chosen image before saving and adding back to the flaschard stack.
+* Option to choose difficulty has been added. This allots a timer that with increasing difficult, reduces the amount of time given to correctly answer the question.
+* The ability to login and register has been added. This employs the Google Firebase which will allow for saving accounts, users' names, achievements and progress in the future.
+### Bug Fixes
+* No bug fixes employed this sprint
+### Known Issues
+* Some mini games had no buttons assiociated with them to allow users to navigate to them on the application and play them.
+* Some of the games had no "quit" or "exit" button to allow users to safely quit the game and get back the unit page or home page.
+
+
 ## Version 1.0.0
 
 ### New Features
