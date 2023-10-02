@@ -13,3 +13,5 @@ export const MARBLES = "/marbles";
 export const FLASHCARD_STUDY_PATH = "/flashcard-study-page";
 export const ABOUT_PATH = "/about";
 export const PROGRESS_PATH = "/progress-page";
+export const CHATBOX_PATH = "/chatbox-page";
+

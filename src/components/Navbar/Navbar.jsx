@@ -1,13 +1,21 @@
 // import React, { useState } from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { HOME_PATH, UNITS_LIST_PATH, ABOUT_PATH, PROGRESS_PATH } from '../../constants';
+import { HOME_PATH, UNITS_LIST_PATH, ABOUT_PATH, PROGRESS_PATH, CHATBOX_PATH } from '../../constants';
 import KLGLogo from './klglogo.png'
+//import Chatbox from '../Chatbox/Chatbox'; 
 import './Navbar.css';
 
 function Navbar() {
     // const click = useState(false);
     // const [click, setClick] = useState(false);
     // const handleClick = () => setClick(!click);
+    //const [isChatboxOpen, setIsChatboxOpen] = useState(false);
+
+  // Toggle chatbox visibility
+    //const toggleChatbox = () => {
+        //setIsChatboxOpen(!isChatboxOpen);
+  //};
     return (
         <nav className="navbar">
 
@@ -27,6 +35,13 @@ function Navbar() {
                     <li className="nav-item">
                         <Link to={ABOUT_PATH} className="nav-links">
                             About
+                         </Link>
+                        
+                    
+                    </li>
+                    <li className="nav-item">
+                        <Link to={CHATBOX_PATH} className="nav-links">
+                            Chat
                         </Link>
                     </li>
                     <li className='nav-item'>
@@ -36,9 +51,11 @@ function Navbar() {
                     </li>
                 </ul>
             </div>
+          
             
         </nav>
     )
 }
 
 export default Navbar
+// /* {isChatboxOpen && <Chatbox />} {/* Render Chatbox if it's open */}
