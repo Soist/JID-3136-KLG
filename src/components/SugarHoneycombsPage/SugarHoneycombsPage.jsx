@@ -61,6 +61,7 @@ function SugarHoneycombsPage() {
             return;
         }
         
+    
         const answerLanguage = languageRadioButton.value;
 
         document.getElementById('pregame').style.display = 'none';

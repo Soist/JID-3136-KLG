@@ -116,6 +116,15 @@ function FlashcardStudyPage() {
                   />
                 </label>
               </div>
+              <label>
+                Image URL:
+                <input
+                  type='text'
+                  value={imageURL}
+                  onChange={handleImageURLChange}
+                  required
+                />
+              </label>
               {imageURL && (
                 <div className='image-preview'>
                   <img src={imageURL} alt='Image Preview' />
