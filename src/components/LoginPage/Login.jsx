@@ -5,6 +5,8 @@ import { Link } from 'react-router-dom';
 import { ABOUT_PATH, REGISTER_PATH } from '../../constants';
 import { FIREBASE_AUTH } from '../../FirebaseConfig';
 import { signInWithEmailAndPassword } from 'firebase/auth';
+import { HOME_PATH } from '../../constants';
+import { BrowserRouter as Router, Route, Routes, useNavigate } from "react-router-dom";
 
 
 const Login = () => {
@@ -12,14 +14,18 @@ const Login = () => {
     const [thePassword, setThePassword] = useState('');
     const [loading, setLoading] = useState(false);
     const auth = FIREBASE_AUTH
+    const navigate = useNavigate()
+    
     const signIn = async () => {
         setLoading(true)
         try {
             const response = await signInWithEmailAndPassword(auth,theEmail,thePassword)
         } catch (error){
             alert("login failed " + error.message)
+            
         }finally{
             setLoading(false)
+            navigate('/')
         }
 
     }

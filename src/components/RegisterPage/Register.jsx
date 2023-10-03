@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import { ABOUT_PATH, REGISTER_PATH } from '../../constants';
 import { FIREBASE_AUTH } from '../../FirebaseConfig';
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from 'firebase/auth';
+import { BrowserRouter as Router, Route, Routes, useNavigate } from "react-router-dom";
 
 
 function Register() {
@@ -12,11 +13,12 @@ function Register() {
     const [thePassword, setThePassword] = useState('');
     const [loading, setLoading] = useState(false);
     const auth = FIREBASE_AUTH
+    const nav = useNavigate()
     const signUp = async () => {
         setLoading(true)
         try {
             const response = await createUserWithEmailAndPassword(auth,theEmail,thePassword)
-            alert("check email for verification!")
+            nav('/')
         } catch (error){
             alert("Registration failed " + error.message)
         }finally{

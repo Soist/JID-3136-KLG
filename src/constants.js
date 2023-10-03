@@ -14,3 +14,4 @@ export const ABOUT_PATH = "/about";
 export const PROGRESS_PATH = "/progress-page";
 export const LOGIN_PATH = "/login-page";
 export const REGISTER_PATH = "/register-page";
+export const LOGOUT_PATH = "/logout-page"
