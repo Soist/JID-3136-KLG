@@ -89,3 +89,26 @@
 #sugar-honeycombs-container #audio-btn {
     background-color: #d8b863;
 }
+
+.timer {
+    margin-top: 10px; 
+}
+
+.timer-box {
+    background-image: url('resources/btn_background.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    border-radius: 4px;
+    padding: 5px 15px;
+    color: white;
+    text-align: center;
+    width: 120px;
+    height: 40px;
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+  
