@@ -3,7 +3,7 @@ A react app created to gamify the learning of KOR 1001 at Georgia Tech. The app 
 
 # Release Notes
 
-## Version 1.0.1
+## Version 1.2.0
 
 ### New Features
 * Basic Layout and design of Chatbox has been coded. ChatGPT api to bring functionality will be implemented in later sprints
