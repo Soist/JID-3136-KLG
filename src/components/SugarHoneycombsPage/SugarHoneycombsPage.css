@@ -3,7 +3,6 @@
     flex-direction: row;
 }
 
-
 #sugar-honeycombs-full-container #background {
     min-height: 100%;
     min-width: 1024px;
@@ -22,6 +21,11 @@
     width: 55%;
 }
 
+
+
+
+
+
 #sugar-honeycombs-container {
     display: flex;
     flex-direction: column;
@@ -36,6 +40,8 @@
     border-radius: 1rem;
     background-color: #ffffe0;
 }
+
+
 
 #sugar-honeycombs-container #pregame {
     display: flex;
@@ -90,25 +96,14 @@
     background-color: #d8b863;
 }
 
-.timer {
-    margin-top: 10px; 
+#sugar-honeycombs-container #tutorial {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem;
+    border-radius: 1rem;
 }
 
-.timer-box {
-    background-image: url('resources/btn_background.png');
-    background-size: cover;
-    background-repeat: no-repeat;
-    border-radius: 4px;
-    padding: 5px 15px;
-    color: white;
-    text-align: center;
-    width: 120px;
-    height: 40px;
-    margin-top: 10px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
 
 
   
