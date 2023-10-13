@@ -2,9 +2,10 @@ import React, { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import './SugarHoneycombsPage.css';
 import sound from '../../audios/words/3-1 음식.mp3'
-import winImg from './resources/win_honeycombs.png';
-import loseImg from './resources/lose_honeycombs.png';
-import startImg from './resources/honeycombs.png';
+import winOverlay from './resources/win_honeycombs.png';
+import loseOverlay from './resources/lose_honeycombs.png';
+import startOverlay from './resources/honeycombs.png';
+import backgroundImg from './resources/test8.png';
 import {getProgress} from "../../ProgressDummyData";
 
 function SugarHoneycombsPage() {
@@ -12,11 +13,14 @@ function SugarHoneycombsPage() {
     const unit = location.state;
     const audio = new Audio(sound);
 
+    // useState() hook from React used to initialize the component's state object, 
+    // here useState is called with an object{} having answerLanguage propery initailized with string 'korean', and etc.
     const [state, setState] = useState({
         answerLanguage: 'korean',
-        currentImg: startImg
+        currentImg: startOverlay
     });
-    
+    // state is a variable that holds the current state. You can access the values in the state by using state.answerLanguage and state.currentImg.
+    // setState is a function that you can call to update the state. When you call setState, you pass in a new object that will update the current state.
 
 
     useEffect(() => {
@@ -42,7 +46,7 @@ function SugarHoneycombsPage() {
         document.getElementById('win-text').style.display = 'none';
         document.getElementById('lose-text').style.display = 'none';
     
-        setState({ ...state, answerLanguage: answerLanguage, currentImg: startImg});
+        setState({ ...state, answerLanguage: answerLanguage, currentImg: startOverlay});
 
         document.getElementById('game').style.display = 'flex';
 
@@ -61,18 +65,19 @@ function SugarHoneycombsPage() {
             document.getElementById('game').style.display = 'none';
             document.getElementById('postgame').style.display = 'flex';
             document.getElementById('win-text').style.display = 'flex';
-            setState({ ...state, currentImg: winImg});
+            setState({ ...state, currentImg: winOverlay});
         } else {
             document.getElementById('answer-input').value = '';
             document.getElementById('game').style.display = 'none';
             document.getElementById('postgame').style.display = 'flex';
             document.getElementById('lose-text').style.display = 'flex';
-            setState({ ...state, currentImg: loseImg});
+            setState({ ...state, currentImg: loseOverlay});
         }
     }
     return (
         <div id='sugar-honeycombs-full-container'>
-            <img id='background' src={state.currentImg} alt='SugarHoneycombs' />
+            <img id='background' src={backgroundImg} alt='SugarHoneycombs' />
+            <img id='overlay-image' src={state.currentImg} alt='Overlay' />
             <div id="empty-div"></div>
             <div id='sugar-honeycombs-container'>
                 <div id='header'>
