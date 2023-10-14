@@ -109,6 +109,17 @@
     color: red;
 }
 
+#sugar-honeycombs-container #error {
+    flex-direction: column;
+    align-items: center;
+}
+
+#sugar-honeycombs-container #error-message {
+    font-weight: bold;
+    color: red;
+}
+
+
 #sugar-honeycombs-container #audio-btn {
     background-color: #d8b863;
 }
