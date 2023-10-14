@@ -64,7 +64,10 @@ const Login = () => {
                 </div>
                 <div className="student-box">
                     <Link to={REGISTER_PATH} className="nav-links">
-                        or Register
+                        Forgot Password?
+                    </Link>
+                    <Link to={REGISTER_PATH} className="nav-links">
+                        Create Account
                     </Link>
                     {/* <TouchableOpacity>
                         <View
