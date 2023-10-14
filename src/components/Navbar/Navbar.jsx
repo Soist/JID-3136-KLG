@@ -31,7 +31,7 @@ function Navbar() {
                     </li>
                     <li className='nav-item'>
                         <Link to={PROGRESS_PATH} className='nav-links'>
-                            Progress
+                            Progress in
                         </Link>
                     </li>
                 </ul>
