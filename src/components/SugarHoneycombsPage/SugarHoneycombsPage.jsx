@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import { useLocation } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import './SugarHoneycombsPage.css';
 import sound from '../../audios/words/3-1 음식.mp3'
 import winImg from './resources/win_honeycombs.png';
 import loseImg from './resources/lose_honeycombs.png';
 import startImg from './resources/honeycombs.png';
 import {getProgress} from "../../ProgressDummyData";
+import {GRAMMAR_OPTIONS_PATH} from '../../constants';
 
 function SugarHoneycombsPage() {
     const location = useLocation();
@@ -158,6 +159,11 @@ function SugarHoneycombsPage() {
                         <button className='btn btn-primary' onClick={startGame}>Play Again</button>
                     </div>
                 </div>
+                <Link to={GRAMMAR_OPTIONS_PATH} state={unit} >
+                    <button className='btn btn-back'>
+                        {'Back'}
+                    </button> 
+                </Link>
             </div>
         </div>
     );
