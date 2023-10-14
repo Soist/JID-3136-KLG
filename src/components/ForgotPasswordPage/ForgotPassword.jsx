@@ -11,7 +11,7 @@ import { BrowserRouter as Router, Route, Routes, useNavigate } from "react-route
 
 const ForgotPassword = () => {
     const [theEmail, setTheEmail]= useState('');
-    const [thePassword, setThePassword] = useState('');
+    // const [thePassword, setThePassword] = useState('');
     const [loading, setLoading] = useState(false);
     const auth = FIREBASE_AUTH
     const navigate = useNavigate()
@@ -19,13 +19,14 @@ const ForgotPassword = () => {
     const signIn = async () => {
         setLoading(true)
         try {
-            const response = await signInWithEmailAndPassword(auth,theEmail,thePassword)
+            alert(theEmail);
+            // const response = await signInWithEmailAndPassword(auth,theEmail,thePassword)
         } catch (error){
             alert("login failed " + error.message)
             
         }finally{
             setLoading(false)
-            navigate('/')
+            // navigate('/')
         }
 
     }
@@ -37,30 +38,23 @@ const ForgotPassword = () => {
             >Forgot Password</h1>
             <div className="student-box-container">
                 <div className="student-box">
-                    {/* <h3>Email</h3>
+                    <p>If you do not have an account, <a href={REGISTER_PATH}>click here</a> to set up a new account. Type the email address associated with your account in the field below to recieve a validation code by email.</p>
+                    <h3>Email Address</h3>
                     <TextInput
                     style = {{borderWidth:2}}
                     value = {theEmail}
                     placeholder='Email'
                     onChangeText={(text) => setTheEmail(text)}
                     />
-                    <h3>Password</h3>
-                    <TextInput
-                    style = {{borderWidth:2}}
-                    value ={thePassword}
-                    placeholder='Password'
-                    onChangeText={(text)=>setThePassword(text)}
-                    secureTextEntry={true}
-                    />
                     <TouchableOpacity
                     onPress={signIn}
                     >
                         <View
-                        style={{borderWidth:2, marginTop:13,width:80, height:30, justifyContent:"center",alignItems:"center"}}
+                        style={{borderWidth:2, marginTop:13,width:150, height:30, justifyContent:"center",alignItems:"center"}}
                         >
-                            <h4>Login</h4>
+                            <h4>Send Email</h4>
                         </View>
-                    </TouchableOpacity> */}
+                    </TouchableOpacity>
                 </div>
                 <div className="student-box">
                     {/* <Link to={REGISTER_PATH} className="nav-links">
