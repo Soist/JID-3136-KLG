@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import './SugarHoneycombsPage.css';
-import sound from '../../audios/words/3-1 음식.mp3'
 import winOverlay from './resources/win_honeycombs.png';
 import loseOverlay from './resources/lose_honeycombs.png';
 import startOverlay from './resources/honeycombs.png';
@@ -17,11 +16,10 @@ import {getProgress} from "../../ProgressDummyData";
 // The intuition is JSX always delegate jobs to methods.
 
 
-
+//features to complete: load different questions set based on locaiton
 function SugarHoneycombsPage() { 
     const location = useLocation();
     const unit = location.state;
-    const audio = new Audio(sound);
 
     // useState() hook from React used to initialize the component's state object, 
     // here useState is called with an object{} having answerLanguage propery initailized with string 'korean', and etc.
@@ -36,15 +34,60 @@ function SugarHoneycombsPage() {
 
     // New state to manage the visibility of the error message
     const [showErrorMessage, setShowErrorMessage] = useState(false);
+    const [showCorrectMessage, setCorrectMessage] = useState(false);
 
 
+
+    const [audios, setAudios] = useState([])
+    const question_answer_id = 0
+
+    const fileParts = ["가다", "거기"]; // Add more parts as needed
+    // The useEffect hook is used in React to perform side effects in function components. 
+    // Side effects could be data-fetching, subscriptions, manual DOM manipulations, and so on.
+    // Here it pre-loads the audio after the inital render to be ready to play as soon as needed
     useEffect(() => {
-        audio.load();
-      }, [])
+        const loadAudio = (part) => {
+            //put audio files in the public folder to access them directly via the path 
+            const src = `/audios/words/3-1 ${part}.mp3`; // Using template literal here, `` instead of ''
+            return new Audio(src);
+        };
+        
+        const loadedAudios = [];
+        for (let part of fileParts) {
+            loadedAudios.push(loadAudio(part));
+        }
+        
+        setAudios(loadedAudios);
+    }, []);
 
-    const playSound = () => {
-        audio.play();
-    }
+    // // The useEffect hook is used in React to perform side effects in function components. 
+    // // Side effects could be data-fetching, subscriptions, manual DOM manipulations, and so on.
+    // // Here it pre-loads the audio after the inital render to be ready to play as soon as needed
+    // const fileParts = ["가다", "거기"];
+    // useEffect(() => {
+    //     const loadAudio = (part) => {
+    //         const src = `/audios/words/3-1 ${part}.mp3`; //put audio files in the public folder to access them directly via the path 
+    //         return new Audio(src);
+    //     };
+        
+    //     const loadedAudios = [];
+    //     for (let part of fileParts) {
+    //         loadedAudios.push(loadAudio(part));
+    //     }
+        
+    //     setAudios(loadedAudios);
+    // }, []);
+
+    const playSound = (number) => {
+        //?. is called the optional chaining operator. This operator allows you to access the properties of objects 
+        // without worry about if the object is null or undefined. 
+        // If audios[number - 1] is null or undefined, the optional chaining operator 
+        // will prevent a runtime error from occurring by not calling the play() method,
+        // and the expression will return undefined instead.
+        audios[number]?.play();
+    };
+
+
 
     function startGame() {
 
@@ -84,48 +127,61 @@ function SugarHoneycombsPage() {
         // Answer Dictionary
         const answers = {'korean': '음식', 'english': 'food'}
 
+
         // This function takes a unitNumber(current location.state) as an argument and 
         // returns the corresponding progress data from the DummyProgress object. 
-        // The DummyProgress object is a dictionary (or in JavaScript terms, an object)
+        // The DummyProgress object is a dictionary (not Primitive Data Types so in JavaScript terms, an object)
         // where each key represents a unit number, 
         // and each value is a list of dictionaries that used track the progress of different mini-games within each unit.
         getProgress(unit.number)[1].sugar++
         // in that list of dictionaries, [1] represent total attempts, [0] represent correct attempts 
         
+        
+        // Instead of a while loop that only proceed when a correct message was detected, in JSX we reshow the UI button
         if (submission === answers[answerLanguage]) {
+            
             getProgress(unit.number)[0].sugar++
+            question_answer_id++
             document.getElementById('answer-input').value = ''; //Clears the answer input field in JSX
-            document.getElementById('game').style.display = 'none'; //Hides all elements/ids in the game container of JSX
-            document.getElementById('postgame').style.display = 'flex'; //Displays elements/ids in postgame section
-            document.getElementById('win-text').style.display = 'flex'; //Displays the id=win-text 
-            setState({ ...state, currentOverlay: winOverlay}); // Updates the state and the displayed image to a winning overlay
-        } else {
-            document.getElementById('answer-input').value = '';
-            document.getElementById('question').style.display = 'none'; // hide the question container in JSX
+            document.getElementById('question').style.display = 'none'; // Hide all elements/ids in the question container in JSX
             document.getElementById('answer-input').style.display = 'none'; 
             document.getElementById('audio-btn').style.display = 'none';
-            document.getElementById('submit-btn').style.display = 'none'; // add an id to the button to make this work!
-
-
-            // document.getElementById('postgame').style.display = 'flex';
-            // document.getElementById('lose-text').style.display = 'flex';
+            document.getElementById('submit-btn').style.display = 'none'; // Add an id to the class button to make this work!
             
-            setShowErrorMessage(true); // Show the error message
-            // Set a timeout to hide the error message after 2 seconds (2000 milliseconds)
 
+            setCorrectMessage(true); // Show the correct message
+            setState({ ...state, currentOverlay: winOverlay}); // Updates the state and the displayed image to a winning overlay
+
+
+            // Set a timeout to hide the error message after 1 seconds (1000 milliseconds)
+            // () => {} arrow function, left put parameters, right put function code
+            setTimeout(() => {
+                setCorrectMessage(false)
+                setState({ ...state, currentOverlay: startOverlay});
+                // loadNextQuestion(); // Load the next question
+            }, 1000);
+        } else {
+            document.getElementById('answer-input').value = '';
+            document.getElementById('question').style.display = 'none'; 
+            document.getElementById('answer-input').style.display = 'none';
+            document.getElementById('audio-btn').style.display = 'none';
+            document.getElementById('submit-btn').style.display = 'none';
+
+            
+            setShowErrorMessage(true); 
+            setState({ ...state, currentOverlay: loseOverlay});
+
+            
             setTimeout(() => {
                 setShowErrorMessage(false);
                 document.getElementById('question').style.display = 'flex';
                 document.getElementById('answer-input').style.display = 'flex';
                 document.getElementById('audio-btn').style.display = 'flex';
                 document.getElementById('submit-btn').style.display = 'flex';
-                // loadNextQuestion(); // Load the next question
-            }, 2000);
-
-
-            // using the spread operator (...) to take all existing state properties and their values 
-            // and spread them into the new state object. it keeps the existing state unchanged
-            setState({ ...state, currentOverlay: loseOverlay});
+                // using the spread operator (...) to take all existing state properties and their values 
+                // and spread them into the new state object. it keeps the existing state unchanged
+                setState({ ...state, currentOverlay: startOverlay});
+            }, 1000);     
         }
     }
     return (
@@ -165,11 +221,20 @@ function SugarHoneycombsPage() {
                                     <h2 id='error-message'>Incorrect answer! Try again!</h2>
                                 </div>
                             }
+                            {showCorrectMessage && 
+                                <div id='correct'>
+                                    <h2 id='correct-message'>Correct answer! Good job!</h2>
+                                </div>
+                            }
                             <input id='answer-input' type='text' autoComplete='off' onKeyDown={(event) => { if (event.key === 'Enter') submitAnswer(); }} />
                             <button id='submit-btn' className='btn btn-primary' onClick={submitAnswer}>Submit</button>
                         </div>
                         <div> 
-                            <button id='audio-btn'className='btn btn-primary' onClick={playSound}>Play audio</button>
+                            {/* Generally, onClick={playSound}: assigns the function to be called when the button is clicked
+                            onClick={playSound()}: call immediately. But in our case, our playSound function have parameter 
+                            so use onClick={() => playSound(1)}
+                            */}
+                            <button id='audio-btn'className='btn btn-primary' onClick={() => playSound(0)}>Play audio</button>
                         </div>
                     </div>
                     <div id='postgame'>
