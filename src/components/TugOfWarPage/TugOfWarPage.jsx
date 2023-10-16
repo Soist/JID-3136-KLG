@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useLocation } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { shuffleArray } from '../../utils';
 import { getVocab } from '../../vocabData';
 import Score0 from './resources/score0.png';
@@ -16,6 +16,7 @@ import { ReactComponent as FlagSvg } from '../../SharedImages/Flag.svg'
 import { ReactComponent as SkullSvg } from '../../SharedImages/Skull.svg'
 import './TugOfWarPage.css'
 import {getProgress} from "../../ProgressDummyData";
+import {VOCAB_OPTIONS_PATH} from '../../constants';
 
 const BACKGROUND_IMAGES = [Score0, Score1, Score2, Score3, Score4, Score5, Score6, Score7, Score8];
 
@@ -159,6 +160,11 @@ function TugOfWarPage() {
                     <button className='btn btn-primary' onClick={startGame}>Play Again</button>
                 </div>
             </div>
+            <Link to={VOCAB_OPTIONS_PATH} state={unit} >
+                    <button className='btn btn-back'>
+                        {'Back'}
+                    </button> 
+            </Link>
         </div>
     );
 }
