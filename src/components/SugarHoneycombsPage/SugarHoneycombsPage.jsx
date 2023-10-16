@@ -24,6 +24,7 @@ function SugarHoneycombsPage() {
     // setState is a function that you can call to update the state. When you call setState, you pass in a new object that will update the current state.
 
 
+
     useEffect(() => {
         audio.load();
       }, [])
@@ -79,6 +80,7 @@ function SugarHoneycombsPage() {
         <div id='sugar-honeycombs-full-container'>
             <img id='background' src={backgroundImg} alt='SugarHoneycombs' />
             <img id='overlay-image' src={state.currentImg} alt='Overlay' />
+            <img id='background' src={state.currentImg} alt='SugarHoneycombs' />
             <div id="empty-div"></div>
             <div id='sugar-honeycombs-container'>
                 <div id='header'>
@@ -119,6 +121,7 @@ function SugarHoneycombsPage() {
                         <button className='btn btn-primary' onClick={startGame}>Play Again</button>
                     </div>
                 </div>
+
                 <div id="tutorial">
                     <p> <b>How to win:</b> listen to the pronunciation of a Korean word and enter <br></br>
                     its translation. You have three lives, each incorrect answer costs one life, <br></br> 
