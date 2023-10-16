@@ -6,6 +6,7 @@ import loseOverlay from './resources/lose_honeycombs.png';
 import startOverlay from './resources/honeycombs.png';
 import backgroundImg from './resources/test8.png';
 import {getProgress} from "../../ProgressDummyData";
+import { getVocab } from '../../vocabData';
 import {GRAMMAR_OPTIONS_PATH} from '../../constants';
 
 // SugarHoneycombsPage function is a React component.
@@ -22,7 +23,7 @@ import {GRAMMAR_OPTIONS_PATH} from '../../constants';
 
 function SugarHoneycombsPage() { 
     const location = useLocation();
-    const unit = location.state;
+    const unit = location.state; //this unit is not a int causing problems when indexing
 
     // useState() hook from React used to initialize the component's state object, 
     // here useState is called with an object{} having answerLanguage propery initailized with string 'korean', and etc.
@@ -38,18 +39,24 @@ function SugarHoneycombsPage() {
     // New state to manage the visibility of the error message
     const [showErrorMessage, setShowErrorMessage] = useState(false);
     const [showCorrectMessage, setCorrectMessage] = useState(false);
-
-    });
-    // state is a variable that holds the current state. You can access the values in the state by using state.answerLanguage and state.currentImg.
-    // setState is a function that you can call to update the state. When you call setState, you pass in a new object that will update the current state.
-
-
-
-
+    
     const [audios, setAudios] = useState([])
-    const question_answer_id = 0
 
-    const fileParts = ["가다", "거기"]; // Add more parts as needed
+
+
+    let koreanParts = []
+    let englishParts = []
+    const vocab_list = getVocab(3) // return a list of dictionaries within that unit, where each dic having english as key and korean as value
+    for (let i = 0; i < vocab_list.length; i++) {
+        koreanParts.push(vocab_list[i]['korean']);  
+        //can use dot operation vocab_list[i].english, but bracket is more powerful as if the property name is not a valid identifier ex: includes spaces
+        englishParts.push(vocab_list[i]['english']);
+    };
+    let total_questions = koreanParts.length
+    let current_question_id = 0
+
+
+    const text = getVocab(3)[current_question_id]
     // The useEffect hook is used in React to perform side effects in function components. 
     // Side effects could be data-fetching, subscriptions, manual DOM manipulations, and so on.
     // Here it pre-loads the audio after the inital render to be ready to play as soon as needed
@@ -57,16 +64,39 @@ function SugarHoneycombsPage() {
         const loadAudio = (part) => {
             //put audio files in the public folder to access them directly via the path 
             const src = `/audios/words/3-1 ${part}.mp3`; // Using template literal here, `` instead of ''
-            return new Audio(src);
+            const audio = new Audio(src);
+            audio.onerror = () => { //fetching error handling
+                console.error(`Audio file not found: ${src}`);
+                return null;
+            };
+            return audio;
         };
         
-        const loadedAudios = [];
-        for (let part of fileParts) {
-            loadedAudios.push(loadAudio(part));
-        }
+        let loadedAudios = [];
+        //// Remove an element from the array will shorten the length of the array, 
+        //// Hence mess up the indexing for the loop
+        // for (let i=0; i<koreanParts.length; i++) {
+        //     const audio = loadAudio(koreanParts[0]);
+        //     if (audio === null) {
+        //         koreanParts.pop(i)
+        //         englishParts.pop(i)
+        //         total_questions--
+        //     }
+        //     loadedAudios.push(audio);
+        // }
+        for (let i = 0; i < koreanParts.length; i++) {
+            const audio = loadAudio(koreanParts[i]);
+            loadedAudios.push(audio);
+        }    
+        //// Now, let's filter out the null/non-existing audios and corresponding koreanParts and englishParts
+        koreanParts = koreanParts.filter((_, index) => loadedAudios[index] !== null);
+        englishParts = englishParts.filter((_, index) => loadedAudios[index] !== null);
+        loadedAudios = loadedAudios.filter(audio => audio !== null);
+        
         
         setAudios(loadedAudios);
     }, []);
+
 
 
     // // The useEffect hook is used in React to perform side effects in function components. 
@@ -86,6 +116,7 @@ function SugarHoneycombsPage() {
         
     //     setAudios(loadedAudios);
     // }, []);
+
 
     const playSound = (number) => {
         //?. is called the optional chaining operator. This operator allows you to access the properties of objects 
@@ -134,8 +165,10 @@ function SugarHoneycombsPage() {
         // Explanation: document refers to the webpage .getElementById('answer-input') fetches the HTML element that has 
         // an id attribute of 'answer-input' and .value retrieves the value/content from the targeted element.
 
+
         // Answer Dictionary
-        const answers = {'korean': '음식', 'english': 'food'}
+        const answers = {'korean': koreanParts, 'english': englishParts}
+
 
 
         // This function takes a unitNumber(current location.state) as an argument and 
@@ -144,7 +177,8 @@ function SugarHoneycombsPage() {
 
         // This function takes a unitNumber(current location.state) as an argument and 
         // returns the corresponding progress data from the DummyProgress object. 
-        // The DummyProgress object is a dictionary (or in JavaScript terms, an object)
+        // The DummyProgress object is a dictionary (not Primitive Data Types so in JavaScript terms, an object)
+
 
         // where each key represents a unit number, 
         // and each value is a list of dictionaries that used track the progress of different mini-games within each unit.
@@ -154,11 +188,9 @@ function SugarHoneycombsPage() {
 
         
         // Instead of a while loop that only proceed when a correct message was detected, in JSX we reshow the UI button
-
-        if (submission === answers[answerLanguage]) {
-            
+        if (submission === answers[answerLanguage][current_question_id]) {
             getProgress(unit.number)[0].sugar++
-            question_answer_id++
+            current_question_id++
             document.getElementById('answer-input').value = ''; //Clears the answer input field in JSX
             document.getElementById('question').style.display = 'none'; // Hide all elements/ids in the question container in JSX
             document.getElementById('answer-input').style.display = 'none'; 
@@ -196,22 +228,13 @@ function SugarHoneycombsPage() {
                 // using the spread operator (...) to take all existing state properties and their values 
                 // and spread them into the new state object. it keeps the existing state unchanged
                 setState({ ...state, currentOverlay: startOverlay});
-            }, 1000);     
-
-
-
-            // using the spread operator (...) to take all existing state properties and their values 
-            // and spread them into the new state object. it keeps the existing state unchanged
-            setState({ ...state, currentOverlay: loseOverlay});
-
+            }, 1000);
         }
     }
     return (
         <div id='sugar-honeycombs-full-container'>
             <img id='background' src={backgroundImg} alt='SugarHoneycombs' />
             <img id='overlay-image' src={state.currentOverlay} alt='Overlay' />
-            <img id='background' src={state.currentImg} alt='SugarHoneycombs' />
-            {/* <img id='background' src={state.currentImg} alt='SugarHoneycombs' /> */}
             <div id="empty-div"></div>
             <div id='sugar-honeycombs-container'>
                 <div id='header'>
@@ -235,6 +258,11 @@ function SugarHoneycombsPage() {
                         <button className='btn btn-primary' onClick={startGame}>Start Game</button>
                     </div>
                     <div id='game'>
+                        <div>
+                            English: {text.english}
+                            <br />
+                            Korean: {text.korean}
+                        </div>
                         <div id='question'>
                             <h2>What does this audio say in {state.answerLanguage.charAt(0).toUpperCase() + state.answerLanguage.slice(1)}?</h2>
                         </div>
@@ -245,13 +273,11 @@ function SugarHoneycombsPage() {
                                     <h2 id='error-message'>Incorrect answer! Try again!</h2>
                                 </div>
                             }
-
                             {showCorrectMessage && 
                                 <div id='correct'>
                                     <h2 id='correct-message'>Correct answer! Good job!</h2>
                                 </div>
                             }
-
                             <input id='answer-input' type='text' autoComplete='off' onKeyDown={(event) => { if (event.key === 'Enter') submitAnswer(); }} />
                             <button id='submit-btn' className='btn btn-primary' onClick={submitAnswer}>Submit</button>
                         </div>

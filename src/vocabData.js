@@ -1100,7 +1100,7 @@ const VOCAB = {
      
     
     export function getVocab(unitNumber) { 
-    
-    return VOCAB[unitNumber]; 
+        console.log("Returning vocab for unit:", unitNumber, VOCAB[unitNumber]);
+        return VOCAB[unitNumber]; 
     
     }; 
