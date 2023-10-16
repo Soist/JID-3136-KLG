@@ -20,6 +20,7 @@ import {GRAMMAR_OPTIONS_PATH} from '../../constants';
 
 
 //features to complete: load different questions set based on locaiton
+
 function SugarHoneycombsPage() { 
     const location = useLocation();
     const unit = location.state; //this unit is not a int causing problems when indexing
@@ -37,6 +38,7 @@ function SugarHoneycombsPage() {
 
     // New state to manage the visibility of the error message
     const [showErrorMessage, setShowErrorMessage] = useState(false);
+    const [showCorrectMessage, setCorrectMessage] = useState(false);
 
     const [showCorrectMessage, setCorrectMessage] = useState(false);
 
@@ -47,7 +49,6 @@ function SugarHoneycombsPage() {
     });
     // state is a variable that holds the current state. You can access the values in the state by using state.answerLanguage and state.currentImg.
     // setState is a function that you can call to update the state. When you call setState, you pass in a new object that will update the current state.
-
 
 
 
@@ -64,8 +65,6 @@ function SugarHoneycombsPage() {
 
 
     const text = getVocab(3)[current_question_id]
-
-
     // The useEffect hook is used in React to perform side effects in function components. 
     // Side effects could be data-fetching, subscriptions, manual DOM manipulations, and so on.
     // Here it pre-loads the audio after the inital render to be ready to play as soon as needed
@@ -78,12 +77,10 @@ function SugarHoneycombsPage() {
                 console.error(`Audio file not found: ${src}`);
                 return null;
             };
-
             return audio;
         };
         
         let loadedAudios = [];
-        
         //// Remove an element from the array will shorten the length of the array, 
         //// Hence mess up the indexing for the loop
         // for (let i=0; i<koreanParts.length; i++) {
@@ -107,6 +104,26 @@ function SugarHoneycombsPage() {
         
         setAudios(loadedAudios);
     }, []);
+
+
+
+    // // The useEffect hook is used in React to perform side effects in function components. 
+    // // Side effects could be data-fetching, subscriptions, manual DOM manipulations, and so on.
+    // // Here it pre-loads the audio after the inital render to be ready to play as soon as needed
+    // const fileParts = ["가다", "거기"];
+    // useEffect(() => {
+    //     const loadAudio = (part) => {
+    //         const src = `/audios/words/3-1 ${part}.mp3`; //put audio files in the public folder to access them directly via the path 
+    //         return new Audio(src);
+    //     };
+        
+    //     const loadedAudios = [];
+    //     for (let part of fileParts) {
+    //         loadedAudios.push(loadAudio(part));
+    //     }
+        
+    //     setAudios(loadedAudios);
+    // }, []);
 
 
     const playSound = (number) => {
@@ -161,14 +178,22 @@ function SugarHoneycombsPage() {
         const answers = {'korean': koreanParts, 'english': englishParts}
 
 
+
         // This function takes a unitNumber(current location.state) as an argument and 
         // returns the corresponding progress data from the DummyProgress object. 
         // The DummyProgress object is a dictionary (not Primitive Data Types so in JavaScript terms, an object)
+
+        // This function takes a unitNumber(current location.state) as an argument and 
+        // returns the corresponding progress data from the DummyProgress object. 
+        // The DummyProgress object is a dictionary (not Primitive Data Types so in JavaScript terms, an object)
+
+
         // where each key represents a unit number, 
         // and each value is a list of dictionaries that used track the progress of different mini-games within each unit.
         getProgress(unit.number)[1].sugar++
         // in that list of dictionaries, [1] represent total attempts, [0] represent correct attempts 
         
+
         
         // Instead of a while loop that only proceed when a correct message was detected, in JSX we reshow the UI button
         if (submission === answers[answerLanguage][current_question_id]) {
@@ -211,7 +236,7 @@ function SugarHoneycombsPage() {
                 // using the spread operator (...) to take all existing state properties and their values 
                 // and spread them into the new state object. it keeps the existing state unchanged
                 setState({ ...state, currentOverlay: startOverlay});
-            }, 1000);     
+            }, 1000);
         }
     }
     return (

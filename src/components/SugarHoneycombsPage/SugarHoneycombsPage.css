@@ -22,6 +22,7 @@
 }
 
 
+
 @keyframes shake {
     0% { transform: translateX(0); }
     25% { transform: translateX(-50px); }
@@ -39,6 +40,7 @@
     height: 800px; /* set the exact height */
     animation: shake 3.5s ease-in-out infinite; /* apply the shake animation */
 }
+
 
 
 #sugar-honeycombs-container {
@@ -117,6 +119,7 @@
     font-weight: bold;
     color: red;
 }
+
 
 
 #sugar-honeycombs-container #correct {
