@@ -6,6 +6,7 @@ import loseOverlay from './resources/lose_honeycombs.png';
 import startOverlay from './resources/honeycombs.png';
 import backgroundImg from './resources/test8.png';
 import {getProgress} from "../../ProgressDummyData";
+import { getVocab } from '../../vocabData';
 
 // SugarHoneycombsPage function is a React component.
 // JSX Rendering & Event handling: returned JSX defines the structure and appearance of the UI and event handlers such as 
@@ -19,7 +20,7 @@ import {getProgress} from "../../ProgressDummyData";
 //features to complete: load different questions set based on locaiton
 function SugarHoneycombsPage() { 
     const location = useLocation();
-    const unit = location.state;
+    const unit = location.state; //this unit is not a int causing problems when indexing
 
     // useState() hook from React used to initialize the component's state object, 
     // here useState is called with an object{} having answerLanguage propery initailized with string 'korean', and etc.
@@ -37,11 +38,23 @@ function SugarHoneycombsPage() {
     const [showCorrectMessage, setCorrectMessage] = useState(false);
 
 
-
     const [audios, setAudios] = useState([])
-    const question_answer_id = 0
 
-    const fileParts = ["가다", "거기"]; // Add more parts as needed
+
+    let koreanParts = []
+    let englishParts = []
+    const vocab_list = getVocab(3) // return a list of dictionaries within that unit, where each dic having english as key and korean as value
+    for (let i = 0; i < vocab_list.length; i++) {
+        koreanParts.push(vocab_list[i]['korean']);  
+        //can use dot operation vocab_list[i].english, but bracket is more powerful as if the property name is not a valid identifier ex: includes spaces
+        englishParts.push(vocab_list[i]['english']);
+    };
+    let total_questions = koreanParts.length
+    let current_question_id = 0
+
+    const text = getVocab(3)[current_question_id]
+
+
     // The useEffect hook is used in React to perform side effects in function components. 
     // Side effects could be data-fetching, subscriptions, manual DOM manipulations, and so on.
     // Here it pre-loads the audio after the inital render to be ready to play as soon as needed
@@ -49,34 +62,41 @@ function SugarHoneycombsPage() {
         const loadAudio = (part) => {
             //put audio files in the public folder to access them directly via the path 
             const src = `/audios/words/3-1 ${part}.mp3`; // Using template literal here, `` instead of ''
-            return new Audio(src);
+            const audio = new Audio(src);
+            audio.onerror = () => { //fetching error handling
+                console.error(`Audio file not found: ${src}`);
+                return null;
+            };
+
+            return audio;
         };
         
-        const loadedAudios = [];
-        for (let part of fileParts) {
-            loadedAudios.push(loadAudio(part));
-        }
+        let loadedAudios = [];
+        
+        //// Remove an element from the array will shorten the length of the array, 
+        //// Hence mess up the indexing for the loop
+        // for (let i=0; i<koreanParts.length; i++) {
+        //     const audio = loadAudio(koreanParts[0]);
+        //     if (audio === null) {
+        //         koreanParts.pop(i)
+        //         englishParts.pop(i)
+        //         total_questions--
+        //     }
+        //     loadedAudios.push(audio);
+        // }
+        for (let i = 0; i < koreanParts.length; i++) {
+            const audio = loadAudio(koreanParts[i]);
+            loadedAudios.push(audio);
+        }    
+        //// Now, let's filter out the null/non-existing audios and corresponding koreanParts and englishParts
+        koreanParts = koreanParts.filter((_, index) => loadedAudios[index] !== null);
+        englishParts = englishParts.filter((_, index) => loadedAudios[index] !== null);
+        loadedAudios = loadedAudios.filter(audio => audio !== null);
+        
         
         setAudios(loadedAudios);
     }, []);
 
-    // // The useEffect hook is used in React to perform side effects in function components. 
-    // // Side effects could be data-fetching, subscriptions, manual DOM manipulations, and so on.
-    // // Here it pre-loads the audio after the inital render to be ready to play as soon as needed
-    // const fileParts = ["가다", "거기"];
-    // useEffect(() => {
-    //     const loadAudio = (part) => {
-    //         const src = `/audios/words/3-1 ${part}.mp3`; //put audio files in the public folder to access them directly via the path 
-    //         return new Audio(src);
-    //     };
-        
-    //     const loadedAudios = [];
-    //     for (let part of fileParts) {
-    //         loadedAudios.push(loadAudio(part));
-    //     }
-        
-    //     setAudios(loadedAudios);
-    // }, []);
 
     const playSound = (number) => {
         //?. is called the optional chaining operator. This operator allows you to access the properties of objects 
@@ -125,7 +145,7 @@ function SugarHoneycombsPage() {
         // an id attribute of 'answer-input' and .value retrieves the value/content from the targeted element.
 
         // Answer Dictionary
-        const answers = {'korean': '음식', 'english': 'food'}
+        const answers = {'korean': koreanParts, 'english': englishParts}
 
 
         // This function takes a unitNumber(current location.state) as an argument and 
@@ -138,10 +158,9 @@ function SugarHoneycombsPage() {
         
         
         // Instead of a while loop that only proceed when a correct message was detected, in JSX we reshow the UI button
-        if (submission === answers[answerLanguage]) {
-            
+        if (submission === answers[answerLanguage][current_question_id]) {
             getProgress(unit.number)[0].sugar++
-            question_answer_id++
+            current_question_id++
             document.getElementById('answer-input').value = ''; //Clears the answer input field in JSX
             document.getElementById('question').style.display = 'none'; // Hide all elements/ids in the question container in JSX
             document.getElementById('answer-input').style.display = 'none'; 
@@ -211,6 +230,11 @@ function SugarHoneycombsPage() {
                         <button className='btn btn-primary' onClick={startGame}>Start Game</button>
                     </div>
                     <div id='game'>
+                        <div>
+                            English: {text.english}
+                            <br />
+                            Korean: {text.korean}
+                        </div>
                         <div id='question'>
                             <h2>What does this audio say in {state.answerLanguage.charAt(0).toUpperCase() + state.answerLanguage.slice(1)}?</h2>
                         </div>
