@@ -17,7 +17,9 @@ import {GRAMMAR_OPTIONS_PATH} from '../../constants';
 // The intuition is JSX always delegate jobs to methods.
 
 
+
 //features to complete: load different questions set based on locaiton
+
 function SugarHoneycombsPage() { 
     const location = useLocation();
     const unit = location.state;
@@ -36,6 +38,11 @@ function SugarHoneycombsPage() {
     // New state to manage the visibility of the error message
     const [showErrorMessage, setShowErrorMessage] = useState(false);
     const [showCorrectMessage, setCorrectMessage] = useState(false);
+
+    });
+    // state is a variable that holds the current state. You can access the values in the state by using state.answerLanguage and state.currentImg.
+    // setState is a function that you can call to update the state. When you call setState, you pass in a new object that will update the current state.
+
 
 
 
@@ -112,6 +119,7 @@ function SugarHoneycombsPage() {
         
         document.getElementById('tutorial').style.display = 'none';
 
+
     }
 
     function submitAnswer() {
@@ -133,13 +141,20 @@ function SugarHoneycombsPage() {
         // This function takes a unitNumber(current location.state) as an argument and 
         // returns the corresponding progress data from the DummyProgress object. 
         // The DummyProgress object is a dictionary (not Primitive Data Types so in JavaScript terms, an object)
+
+        // This function takes a unitNumber(current location.state) as an argument and 
+        // returns the corresponding progress data from the DummyProgress object. 
+        // The DummyProgress object is a dictionary (or in JavaScript terms, an object)
+
         // where each key represents a unit number, 
         // and each value is a list of dictionaries that used track the progress of different mini-games within each unit.
         getProgress(unit.number)[1].sugar++
         // in that list of dictionaries, [1] represent total attempts, [0] represent correct attempts 
         
+
         
         // Instead of a while loop that only proceed when a correct message was detected, in JSX we reshow the UI button
+
         if (submission === answers[answerLanguage]) {
             
             getProgress(unit.number)[0].sugar++
@@ -172,8 +187,6 @@ function SugarHoneycombsPage() {
             
             setShowErrorMessage(true); 
             setState({ ...state, currentOverlay: loseOverlay});
-
-            
             setTimeout(() => {
                 setShowErrorMessage(false);
                 document.getElementById('question').style.display = 'flex';
@@ -184,6 +197,13 @@ function SugarHoneycombsPage() {
                 // and spread them into the new state object. it keeps the existing state unchanged
                 setState({ ...state, currentOverlay: startOverlay});
             }, 1000);     
+
+
+
+            // using the spread operator (...) to take all existing state properties and their values 
+            // and spread them into the new state object. it keeps the existing state unchanged
+            setState({ ...state, currentOverlay: loseOverlay});
+
         }
     }
     return (
@@ -191,6 +211,7 @@ function SugarHoneycombsPage() {
             <img id='background' src={backgroundImg} alt='SugarHoneycombs' />
             <img id='overlay-image' src={state.currentOverlay} alt='Overlay' />
             <img id='background' src={state.currentImg} alt='SugarHoneycombs' />
+            {/* <img id='background' src={state.currentImg} alt='SugarHoneycombs' /> */}
             <div id="empty-div"></div>
             <div id='sugar-honeycombs-container'>
                 <div id='header'>
@@ -224,11 +245,13 @@ function SugarHoneycombsPage() {
                                     <h2 id='error-message'>Incorrect answer! Try again!</h2>
                                 </div>
                             }
+
                             {showCorrectMessage && 
                                 <div id='correct'>
                                     <h2 id='correct-message'>Correct answer! Good job!</h2>
                                 </div>
                             }
+
                             <input id='answer-input' type='text' autoComplete='off' onKeyDown={(event) => { if (event.key === 'Enter') submitAnswer(); }} />
                             <button id='submit-btn' className='btn btn-primary' onClick={submitAnswer}>Submit</button>
                         </div>
