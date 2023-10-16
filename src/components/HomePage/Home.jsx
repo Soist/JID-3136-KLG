@@ -3,8 +3,19 @@ import { Link } from 'react-router-dom';
 import { UNITS_LIST_PATH } from '../../constants';
 import { Button } from './Button';
 import './Home.css';
+import { FIREBASE_AUTH } from '../../FirebaseConfig';
+import { useEffect, useState } from 'react';
+import { onAuthStateChanged } from 'firebase/auth';
 
 function Home() {
+    //const [user, setUser] = useState(null);
+    // useEffect(() => {
+    //     onAuthStateChanged(FIREBASE_AUTH, (user) =>{
+    //         console.log("dopple")
+    //         console.log("user ",user.uid)
+    //         setUser(user)
+    //     });
+    // })
     return (
         <div className='home-container'>
             <div className='left-home-section'>

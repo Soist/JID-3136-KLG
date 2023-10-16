@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import { useLocation } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import './SugarHoneycombsPage.css';
 import sound from '../../audios/words/3-1 음식.mp3'
 import winImg from './resources/win_honeycombs.png';
 import loseImg from './resources/lose_honeycombs.png';
 import startImg from './resources/honeycombs.png';
 import {getProgress} from "../../ProgressDummyData";
+import {GRAMMAR_OPTIONS_PATH} from '../../constants';
 
 function SugarHoneycombsPage() {
     const location = useLocation();
@@ -112,11 +113,6 @@ function SugarHoneycombsPage() {
                         <h2 id='lose-text'>You lose!</h2>
                         <button className='btn btn-primary' onClick={startGame}>Play Again</button>
                     </div>
-                </div>
-                <div id="tutorial">
-                    <p> <b>How to win:</b> listen to the pronunciation of a Korean word and enter <br></br>
-                    its translation. You have three lives, each incorrect answer costs one life, <br></br> 
-                    and losing all lives ends the game. <b>Good Luck!</b> </p>
                 </div>
 
             </div>
