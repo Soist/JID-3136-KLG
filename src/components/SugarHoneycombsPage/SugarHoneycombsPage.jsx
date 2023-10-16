@@ -18,6 +18,7 @@ import {GRAMMAR_OPTIONS_PATH} from '../../constants';
 // The intuition is JSX always delegate jobs to methods.
 
 
+
 //features to complete: load different questions set based on locaiton
 function SugarHoneycombsPage() { 
     const location = useLocation();
@@ -36,10 +37,18 @@ function SugarHoneycombsPage() {
 
     // New state to manage the visibility of the error message
     const [showErrorMessage, setShowErrorMessage] = useState(false);
+
     const [showCorrectMessage, setCorrectMessage] = useState(false);
 
 
     const [audios, setAudios] = useState([])
+
+
+    });
+    // state is a variable that holds the current state. You can access the values in the state by using state.answerLanguage and state.currentImg.
+    // setState is a function that you can call to update the state. When you call setState, you pass in a new object that will update the current state.
+
+
 
 
     let koreanParts = []
@@ -132,6 +141,7 @@ function SugarHoneycombsPage() {
         
         document.getElementById('tutorial').style.display = 'none';
 
+
     }
 
     function submitAnswer() {
@@ -145,6 +155,7 @@ function SugarHoneycombsPage() {
         // document.getElementById('answer-input') This part targets and accesses an HTML element on the webpage.
         // Explanation: document refers to the webpage .getElementById('answer-input') fetches the HTML element that has 
         // an id attribute of 'answer-input' and .value retrieves the value/content from the targeted element.
+
 
         // Answer Dictionary
         const answers = {'korean': koreanParts, 'english': englishParts}
@@ -191,8 +202,6 @@ function SugarHoneycombsPage() {
             
             setShowErrorMessage(true); 
             setState({ ...state, currentOverlay: loseOverlay});
-
-            
             setTimeout(() => {
                 setShowErrorMessage(false);
                 document.getElementById('question').style.display = 'flex';
