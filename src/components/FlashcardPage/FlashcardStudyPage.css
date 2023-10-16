@@ -253,3 +253,16 @@
     scrollbar-color: auto auto;
   }
   
+  #flashcard-container .card .delete-icon {
+    position: absolute;
+    top: -5px;
+    left: 5px;
+    padding: 0.3rem;
+    cursor: pointer;
+    background-color: transparent;
+  }
+  
+  #flashcard-container .card .delete-icon:hover svg path {
+    fill: rgba(255, 0, 0, 1);
+  }
+  
