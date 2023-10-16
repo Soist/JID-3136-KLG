@@ -133,6 +133,7 @@ function SugarHoneycombsPage() {
         <div id='sugar-honeycombs-full-container'>
             <img id='background' src={backgroundImg} alt='SugarHoneycombs' />
             <img id='overlay-image' src={state.currentOverlay} alt='Overlay' />
+            <img id='background' src={state.currentImg} alt='SugarHoneycombs' />
             <div id="empty-div"></div>
             <div id='sugar-honeycombs-container'>
                 <div id='header'>

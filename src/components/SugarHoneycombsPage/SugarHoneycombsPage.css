@@ -114,6 +114,7 @@
     align-items: center;
 }
 
+
 #sugar-honeycombs-container #error-message {
     font-weight: bold;
     color: red;
@@ -124,11 +125,14 @@
     background-color: #d8b863;
 }
 
+
 #sugar-honeycombs-container #tutorial {
     display: flex;
     flex-direction: column;
     align-items: center;
+
     padding: 1rem;
     border-radius: 1rem;
 }
+
 
