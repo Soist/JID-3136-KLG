@@ -42,7 +42,6 @@
 
 
 
-
 #sugar-honeycombs-container {
     display: flex;
     flex-direction: column;
@@ -130,7 +129,6 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-
     padding: 1rem;
     border-radius: 1rem;
 }
