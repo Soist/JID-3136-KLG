@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import './Login.css';
 import {SafeAreaView, StyleSheet, TextInput, TouchableOpacity,View} from 'react-native';
 import { Link } from 'react-router-dom';
-import { ABOUT_PATH, REGISTER_PATH } from '../../constants';
+import { ABOUT_PATH, REGISTER_PATH, FORGOT_PASSWORD_PATH } from '../../constants';
 import { FIREBASE_AUTH } from '../../FirebaseConfig';
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import { HOME_PATH } from '../../constants';
@@ -63,8 +63,11 @@ const Login = () => {
                     </TouchableOpacity>
                 </div>
                 <div className="student-box">
+                    <Link to={FORGOT_PASSWORD_PATH} className="nav-links">
+                        Forgot Password?
+                    </Link>
                     <Link to={REGISTER_PATH} className="nav-links">
-                        or Register
+                        Create Account
                     </Link>
                     {/* <TouchableOpacity>
                         <View
