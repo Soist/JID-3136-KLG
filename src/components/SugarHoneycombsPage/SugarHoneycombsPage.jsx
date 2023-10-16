@@ -39,16 +39,8 @@ function SugarHoneycombsPage() {
     // New state to manage the visibility of the error message
     const [showErrorMessage, setShowErrorMessage] = useState(false);
     const [showCorrectMessage, setCorrectMessage] = useState(false);
-
-    const [showCorrectMessage, setCorrectMessage] = useState(false);
-
-
+    
     const [audios, setAudios] = useState([])
-
-
-    });
-    // state is a variable that holds the current state. You can access the values in the state by using state.answerLanguage and state.currentImg.
-    // setState is a function that you can call to update the state. When you call setState, you pass in a new object that will update the current state.
 
 
 
