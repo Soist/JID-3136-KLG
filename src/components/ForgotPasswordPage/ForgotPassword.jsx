@@ -1,34 +1,23 @@
 import React, { useState } from 'react';
 import './ForgotPassword.css';
-import {SafeAreaView, StyleSheet, TextInput, TouchableOpacity,View} from 'react-native';
-import { Link } from 'react-router-dom';
-import { ABOUT_PATH, REGISTER_PATH } from '../../constants';
+import { TextInput, TouchableOpacity, View} from 'react-native';
+import { REGISTER_PATH } from '../../constants';
 import { FIREBASE_AUTH } from '../../FirebaseConfig';
-import { signInWithEmailAndPassword } from 'firebase/auth';
-import { HOME_PATH } from '../../constants';
-import { BrowserRouter as Router, Route, Routes, useNavigate } from "react-router-dom";
-
+import { sendPasswordResetEmail } from 'firebase/auth';
 
 const ForgotPassword = () => {
     const [theEmail, setTheEmail]= useState('');
     // const [thePassword, setThePassword] = useState('');
-    const [loading, setLoading] = useState(false);
-    const auth = FIREBASE_AUTH
-    const navigate = useNavigate()
+    const [sent, setSent] = useState(false);
+    const auth = FIREBASE_AUTH;
     
-    const signIn = async () => {
-        setLoading(true)
+    const sendEmail = async () => {
         try {
-            alert(theEmail);
-            // const response = await signInWithEmailAndPassword(auth,theEmail,thePassword)
-        } catch (error){
-            alert("login failed " + error.message)
-            
-        }finally{
-            setLoading(false)
-            // navigate('/')
+            await sendPasswordResetEmail(auth, theEmail);
+            setSent(true);
+        } catch (error) {
+            alert("Firebase failure: " + error.message)
         }
-
     }
 
     return (
@@ -37,7 +26,7 @@ const ForgotPassword = () => {
             style={{paddingBottom:40}}
             >Forgot Password</h1>
             <div className="student-box-container">
-                <div className="student-box">
+                {!sent? <div className="student-box">
                     <p>If you do not have an account, <a href={REGISTER_PATH}>click here</a> to set up a new account. Type the email address associated with your account in the field below to recieve a validation code by email.</p>
                     <h3>Email Address</h3>
                     <TextInput
@@ -47,7 +36,7 @@ const ForgotPassword = () => {
                     onChangeText={(text) => setTheEmail(text)}
                     />
                     <TouchableOpacity
-                    onPress={signIn}
+                    onPress={sendEmail}
                     >
                         <View
                         style={{borderWidth:2, marginTop:13,width:150, height:30, justifyContent:"center",alignItems:"center"}}
@@ -55,23 +44,10 @@ const ForgotPassword = () => {
                             <h4>Send Email</h4>
                         </View>
                     </TouchableOpacity>
-                </div>
+                </div> :
                 <div className="student-box">
-                    {/* <Link to={REGISTER_PATH} className="nav-links">
-                        Forgot Password?
-                    </Link>
-                    <Link to={REGISTER_PATH} className="nav-links">
-                        Create Account
-                    </Link>
-                    {/* <TouchableOpacity>
-                        <View
-                        style={{borderWidth:2, marginTop:13,width:"auto", height:30, justifyContent:"center",alignItems:"center"}}
-                        >
-                            <h4
-                            >or Go to Register</h4>
-                        </View>
-                    </TouchableOpacity> */}
-                </div>
+                    <p>Please check your {theEmail} inbox for a link to reset your password.</p>
+                </div>}
             </div>
         </div>
     )
