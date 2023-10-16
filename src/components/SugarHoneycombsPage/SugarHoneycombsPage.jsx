@@ -53,6 +53,7 @@ function SugarHoneycombsPage() {
     let total_questions = koreanParts.length
     let current_question_id = 0
 
+
     const text = getVocab(3)[current_question_id]
 
 
