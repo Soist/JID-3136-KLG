@@ -18,32 +18,6 @@ function SugarHoneycombsPage() {
         currentImg: startImg
     });
     
-    const [gameStarted, setGameStarted] = useState(false);
-    const [timerDuration, setTimerDuration] = useState(null);
-    const [timeLeft, setTimeLeft] = useState(null);
-
-    useEffect(() => {
-        if (timerDuration === null) return;
-
-        setTimeLeft(timerDuration); // Initialize time left when difficulty is chosen
-
-        const timerId = setInterval(() => {
-        setTimeLeft((prevTime) => {
-            if (prevTime === 1) {
-            clearInterval(timerId);
-            return 0;
-            }
-            return prevTime - 1;
-        });
-        }, 1000);
-
-        return () => clearInterval(timerId);  // Cleanup interval on component unmount
-    }, [timerDuration]);
-
-    const handleDifficultySelection = (duration) => {
-        setTimerDuration(duration);
-    };
-    
 
 
     useEffect(() => {
@@ -55,7 +29,6 @@ function SugarHoneycombsPage() {
     }
 
     function startGame() {
-        setGameStarted(true);
 
         const languageRadioButton = document.querySelector('input[name="answer-language"]:checked');
         if (languageRadioButton === null) {
@@ -77,7 +50,6 @@ function SugarHoneycombsPage() {
     }
 
     function submitAnswer() {
-        setGameStarted(false);
         
         const answerLanguage = state.answerLanguage;
         const submission = document.getElementById('answer-input').value.toLowerCase();
@@ -101,38 +73,21 @@ function SugarHoneycombsPage() {
     }
     return (
         <div id='sugar-honeycombs-full-container'>
-            <img id='background' src={state.currentImg} alt='Tug of War' />
+            <img id='background' src={state.currentImg} alt='SugarHoneycombs' />
             <div id="empty-div"></div>
             <div id='sugar-honeycombs-container'>
                 <div id='header'>
                     <h1>{unit.name}</h1>
-                    
-                    <div className="difficulty-menu">
-                        <button 
-                        disabled={timeLeft !== null && timeLeft > 0} 
-                        onClick={() => handleDifficultySelection(60)}>
-                        Easy
-                        </button>
-                        <button 
-                        disabled={timeLeft !== null && timeLeft > 0} 
-                        onClick={() => handleDifficultySelection(30)}>
-                        Medium
-                        </button>
-                        <button 
-                        disabled={timeLeft !== null && timeLeft > 0} 
-                        onClick={() => handleDifficultySelection(15)}>
-                        Hard
-                        </button>
-                    </div>
-                    {gameStarted && timeLeft !== null && (
-                        <div className="timer timer-box">
-                        {timeLeft > 0 ? `${timeLeft} seconds` : 'Time is up!'}
-                        </div>
-                    )}
-                    
-
                     <div id='pregame'>
                         <div id='settings'>
+                        <b>Difficulty Level:</b>
+                            <input type="radio" id="easy" name="difficulty" value="easy"></input>
+                            <label for="easy">Easy</label>
+                            <input type="radio" id="medium" name="difficulty" value="medium"></input>
+                            <label for="medium">Medium</label>
+                            <input type="radio" id="hard" name="difficulty" value="hard"></input>
+                            <label for="hard">Hard</label>
+                            <br></br>
                             <b>Answer Language:</b>
                             <input type="radio" id="korean" name="answer-language" value="korean"></input>
                             <label for="korean">Korean</label>
@@ -159,11 +114,7 @@ function SugarHoneycombsPage() {
                         <button className='btn btn-primary' onClick={startGame}>Play Again</button>
                     </div>
                 </div>
-                <Link to={GRAMMAR_OPTIONS_PATH} state={unit} >
-                    <button className='btn btn-back'>
-                        {'Back'}
-                    </button> 
-                </Link>
+
             </div>
         </div>
     );
