@@ -61,6 +61,7 @@ function SugarHoneycombsPage() {
         setAudios(loadedAudios);
     }, []);
 
+
     // // The useEffect hook is used in React to perform side effects in function components. 
     // // Side effects could be data-fetching, subscriptions, manual DOM manipulations, and so on.
     // // Here it pre-loads the audio after the inital render to be ready to play as soon as needed
@@ -189,6 +190,7 @@ function SugarHoneycombsPage() {
         <div id='sugar-honeycombs-full-container'>
             <img id='background' src={backgroundImg} alt='SugarHoneycombs' />
             <img id='overlay-image' src={state.currentOverlay} alt='Overlay' />
+            <img id='background' src={state.currentImg} alt='SugarHoneycombs' />
             <div id="empty-div"></div>
             <div id='sugar-honeycombs-container'>
                 <div id='header'>
