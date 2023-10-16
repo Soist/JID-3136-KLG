@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useRef } from "react";
-import { useLocation } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { shuffleArray } from '../../utils';
 import RedLightGreenLightImage from './game1jd/jd1bg.png';
 import video from './game1jd/game1vid.mp4';
@@ -10,7 +10,7 @@ import { ReactComponent as SkullSvg } from '../../SharedImages/Skull.svg'
 import './RedLightGreenLightPage.css';
 import { useEffect } from 'react';
 import {getProgress} from "../../ProgressDummyData";
-
+import {VOCAB_OPTIONS_PATH} from '../../constants';
 
 function ScoreView() {
     return (
@@ -210,11 +210,16 @@ function RedLightGreenLightPage() {
                         <button className='btn btn-primary' onClick={playAgain}>Play Again</button>
                     </div>
                 </div>
-                <div id="tutorial">
+                <div id="tutorial" >
                     <p> <b>How to win:</b> answer 5 questions correctly before running out of lives.<br></br>
                         Lives are lost when the light turns red, which occurs if you answer incorrectly<br></br>
                         or take too long to answer. <b>Good Luck!</b> </p>
                 </div>
+                <Link to={VOCAB_OPTIONS_PATH} state={unit} >
+                    <button className='btn btn-back'>
+                        {'Back'}
+                    </button> 
+                </Link>
             </div>
         </div>
     );

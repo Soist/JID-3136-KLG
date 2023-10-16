@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useLocation } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import './SugarHoneycombsPage.css';
 import sound from '../../audios/words/3-1 음식.mp3'
 import winOverlay from './resources/win_honeycombs.png';
@@ -7,6 +7,7 @@ import loseOverlay from './resources/lose_honeycombs.png';
 import startOverlay from './resources/honeycombs.png';
 import backgroundImg from './resources/test8.png';
 import {getProgress} from "../../ProgressDummyData";
+import {GRAMMAR_OPTIONS_PATH} from '../../constants';
 
 // SugarHoneycombsPage function is a React component.
 // JSX Rendering & Event handling: returned JSX defines the structure and appearance of the UI and event handlers such as 
@@ -183,7 +184,11 @@ function SugarHoneycombsPage() {
                     its translation. You have three lives, each incorrect answer costs one life, <br></br> 
                     and losing all lives ends the game. <b>Good Luck!</b> </p>
                 </div>
-
+                <Link to={GRAMMAR_OPTIONS_PATH} state={unit} >
+                    <button className='btn btn-back'>
+                        {'Back'}
+                    </button> 
+                </Link>
             </div>
         </div>
     );
