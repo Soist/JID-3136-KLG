@@ -22,6 +22,7 @@
 }
 
 
+
 @keyframes shake {
     0% { transform: translateX(0); }
     25% { transform: translateX(-50px); }
@@ -39,6 +40,7 @@
     height: 800px; /* set the exact height */
     animation: shake 3.5s ease-in-out infinite; /* apply the shake animation */
 }
+
 
 
 #sugar-honeycombs-container {
@@ -112,10 +114,13 @@
     align-items: center;
 }
 
+
 #sugar-honeycombs-container #error-message {
     font-weight: bold;
     color: red;
 }
+
+
 
 #sugar-honeycombs-container #correct {
     flex-direction: column;
@@ -128,9 +133,11 @@
 }
 
 
+
 #sugar-honeycombs-container #audio-btn {
     background-color: #d8b863;
 }
+
 
 #sugar-honeycombs-container #tutorial {
     display: flex;
@@ -139,3 +146,5 @@
     padding: 1rem;
     border-radius: 1rem;
 }
+
+
