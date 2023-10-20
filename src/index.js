@@ -11,6 +11,7 @@ import GrammarOptionsPage from "./components/StudyOptionsPage/GrammarOptionsPage
 import ListenOptionsPage from "./components/StudyOptionsPage/ListenOptionsPage";
 import TugOfWarPage from "./components/TugOfWarPage/TugOfWarPage";
 import SugarHoneycombsPage from "./components/SugarHoneycombsPage/SugarHoneycombsPage";
+import MarblesPage from "./components/MarblesPage/MarblesPage";
 import UnitsListPage from "./components/UnitsListPage/UnitsListPage";
 import FlashcardStudyPage from "./components/FlashcardPage/FlashcardStudyPage";
 import ProgressPage from "./components/ProgressPage/Progress";
@@ -19,8 +20,11 @@ import LoginPage from "./components/LoginPage/Login";
 import RegisterPage from "./components/RegisterPage/Register";
 import LogoutPage from "./components/LogoutPage/Logout";
 import ForgotPasswordPage from "./components/ForgotPasswordPage/ForgotPassword";
-import { NavigationContainer, createNavigationContainerRef } from '@react-navigation/native';
-import {createNativeStackNavigator} from '@react-navigation/native-stack';
+import {
+  NavigationContainer,
+  createNavigationContainerRef,
+} from "@react-navigation/native";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
 import {
   HOME_PATH,
@@ -39,7 +43,8 @@ import {
   LOGIN_PATH,
   LOGOUT_PATH,
   REGISTER_PATH,
-  FORGOT_PASSWORD_PATH
+  FORGOT_PASSWORD_PATH,
+  MARBLES,
 } from "./constants";
 import "./index.css";
 
@@ -62,6 +67,7 @@ root.render(
       />
       <Route path={TUG_OF_WAR_PATH} element={<TugOfWarPage />} />
       <Route path={SUGAR_HONEYCOMBS} element={<SugarHoneycombsPage />} />
+      <Route path={MARBLES} element={<MarblesPage />} />
       <Route path={FLASHCARD_STUDY_PATH} element={<FlashcardStudyPage />} />
       <Route path={PROGRESS_PATH} element={<ProgressPage />} />
       <Route path={CHATBOX_PATH} element={<ChatboxPage />} />
@@ -72,4 +78,3 @@ root.render(
     </Routes>
   </Router>
 );
- 
