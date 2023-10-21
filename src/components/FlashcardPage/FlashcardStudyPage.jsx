@@ -39,6 +39,12 @@ function FlashcardStudyPage() {
     }
   };
 
+  const handleDelete = (index) => {
+    const updatedFlashcards = [...flashcards];
+    updatedFlashcards.splice(index, 1);
+    setFlashcards(updatedFlashcards);
+  };
+
 
   const handleSaveFlashcard = () => {
     if (selectedFlashcardIndex !== null) {
@@ -77,7 +83,7 @@ function FlashcardStudyPage() {
           key={index}
           flashcard={flashcard}
           imageURL={flashcard.image}
-          onAddFlashcard={() => handleAddFlashcard(index)}
+          onDeleteFlashcard={() => handleDelete(index)}
         />
       ))}
       <div className='add-flashcard-button'>
