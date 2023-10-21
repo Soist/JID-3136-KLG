@@ -4,7 +4,7 @@ import { ReactComponent as SoundSvg } from './sound.svg';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrashAlt } from '@fortawesome/free-solid-svg-icons';
 
-const Flashcard = ({ flashcard, imageURL }) => {
+const Flashcard = ({ flashcard, imageURL, onDeleteFlashcard}) => {
   const [flip, setFlip] = useState(false);
   const sound =
     getAudio(flashcard.korean) === null
@@ -17,7 +17,7 @@ const Flashcard = ({ flashcard, imageURL }) => {
   };
   const handleDelete = () => {
     if (window.confirm("Are you sure you want to delete this flashcard?")) {
-      // ill put deleting logic here
+      onDeleteFlashcard();
       console.log("Deleting Flashcard", flashcard);
     }
   };
@@ -40,7 +40,10 @@ const Flashcard = ({ flashcard, imageURL }) => {
               </div>
             )}
             <div className='delete-icon' onClick={handleDelete}>
-              <FontAwesomeIcon icon={faTrashAlt} style={{ fontSize: '1.2rem', cursor: 'pointer' }} />
+            <FontAwesomeIcon
+                icon={faTrashAlt}
+                style={{ fontSize: '1.2rem', cursor: 'pointer' }}
+              />
             </div>
           </div>
         </div>
@@ -54,7 +57,10 @@ const Flashcard = ({ flashcard, imageURL }) => {
             </div>
           )}
             <div className='delete-icon' onClick={handleDelete}>
-              <FontAwesomeIcon icon={faTrashAlt} style={{ fontSize: '1.2rem', cursor: 'pointer' }} />
+            <FontAwesomeIcon
+                icon={faTrashAlt}
+                style={{ fontSize: '1.2rem', cursor: 'pointer' }}
+              />
             </div>
         </div>
       </div>
