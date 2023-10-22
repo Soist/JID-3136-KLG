@@ -1,3 +1,4 @@
+//Chatbox.jsx
 import React, { useState } from 'react';
 import './Chatbox.css';
 import KoreanKeyboard from './KoreanKeyboard'; 
@@ -64,4 +65,5 @@ function Chatbox() {
 }
 
 export default Chatbox;
+
 
