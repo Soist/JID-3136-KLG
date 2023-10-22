@@ -100,9 +100,31 @@
 }
 
 input[type='radio'] {
-    height: 35px;
-    width: 35px;
+    height: 25px;
+    width: 25px;
     vertical-align: middle;
 }
 
-label { font-size: 25px } 
+label { font-size: 22px } 
+
+@keyframes slidein {
+    from {
+        transform: translateX(0%);
+        transform: translateY(0%);
+    }
+    
+    to {
+        transform: translateX(100%);
+        transform: translateY(100%);
+    }
+}
+#sugar-honeycombs-full-container #overlay-image {
+    position: absolute;
+    bottom: 0; /* place it at the bottom of the container */
+    left: 300; /* place it at the left of the container */
+    z-index: 1; /* ensure it's above the background image */
+    opacity: 0.9; /* adjust transparency as needed */
+    width: 35px; /* set the exact width */
+    height: 35px; /* set the exact height */
+    animation: slidein 3.5s ease-in-out ; /* apply the shake animation */
+}
