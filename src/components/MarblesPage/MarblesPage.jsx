@@ -1,12 +1,23 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { shuffleArray } from '../../utils';
-import backgroundImg from './resouces/marbles_bg1.png';
+import Score0 from './resources/Score0.png';
+import Score1 from './resources/Score1.png';
+import Score2 from './resources/Score2.png';
+import Score3 from './resources/Score3.png';
+import Score4 from './resources/Score4.png';
+import Score5 from './resources/Score5.png';
+import Score6 from './resources/Score6.png';
+import Score7 from './resources/Score7.png';
+import Score8 from './resources/Score8.png';
 import './MarblesPage.css';
 import { ReactComponent as CircleSvg } from '../../SharedImages/Circle.svg'
 import { ReactComponent as FlagSvg } from '../../SharedImages/Flag.svg'
 import { ReactComponent as SkullSvg } from '../../SharedImages/Skull.svg'
 import { getGrammar } from '../../grammarData';
+import { GRAMMAR_OPTIONS_PATH } from '../../constants';
+
+const BACKGROUND_IMAGES = [Score0, Score1, Score2, Score3, Score4, Score5, Score6, Score7, Score8];
 
 function ScoreView() {
     return (
@@ -80,12 +91,14 @@ function MarblesPage() {
                 document.getElementById('game').style.display = 'none';
                 document.getElementById('postgame').style.display = 'flex';
                 document.getElementById('win-text').style.display = 'flex';
-            } else if (newScore <= 3) {
-                document.getElementById('score').childNodes[newScore - 1].classList.remove('red');
-            } else if (newScore > 3) {
-                document.getElementById('score').childNodes[newScore].classList.add('green');
+            } else {
+                if (newScore <= 3) {
+                    document.getElementById('score').childNodes[newScore - 1].classList.remove('red');
+                } else if (newScore > 3) {
+                    document.getElementById('score').childNodes[newScore].classList.add('green');
+                }
+                
             }
-
             setState({ ...state, radioButton: '', score: newScore,
             currQuestionIndex: (state.currQuestionIndex + 1) % state.questions.length});
         } else {
@@ -95,20 +108,22 @@ function MarblesPage() {
                 document.getElementById('game').style.display = 'none';
                 document.getElementById('postgame').style.display = 'flex';
                 document.getElementById('lose-text').style.display = 'flex';
-            } else if (newScore < 3) {
-                document.getElementById('score').childNodes[newScore].classList.add('red');
-            } else if (newScore >= 3) {
-                document.getElementById('score').childNodes[newScore + 1].classList.remove('green');
+            } else {
+                if (newScore < 3) {
+                    document.getElementById('score').childNodes[newScore].classList.add('red');
+                } else if (newScore >= 3) {
+                    document.getElementById('score').childNodes[newScore + 1].classList.remove('green');
+                }
             }
-
             setState({ ...state, radioButton: '', score: newScore,
             currQuestionIndex: (state.currQuestionIndex + 1) % state.questions.length});
         }
+        
     }
 
     return (
         <div id="marbles-full-container">
-            <img id="background" src={backgroundImg} alt="Marbles" />
+            <img id="background" src={BACKGROUND_IMAGES[state.score]} alt="Marbles" />
             <div id="empty-div"></div>
             <div id='marbles-container' style={{paddingTop: '5em'}}>
                 <div id='header'>
@@ -139,7 +154,7 @@ function MarblesPage() {
                                 : <h2>Choose an option to make it grammatically true</h2>
                             }
                             <h2><span id="question-text">{state.questions[state.currQuestionIndex].question}</span></h2>
-                            <p style={{ color: 'gray' }}>answer for demo purpose:{state.questions[state.currQuestionIndex].answer}</p>
+                            <p style={{ color: 'gray' }}>answer for demo purpose: {state.questions[state.currQuestionIndex].answer}</p>
                         </div>
                         <div>
                         {
@@ -173,6 +188,11 @@ function MarblesPage() {
                         <button className='btn btn-primary' onClick={startGame}>Play Again</button>
                     </div>
                 </div>
+                <Link to={GRAMMAR_OPTIONS_PATH} state={unit} >
+                    <button className='btn btn-back'>
+                        {'Back'}
+                    </button> 
+                </Link>
             </div>
         </div>
     );

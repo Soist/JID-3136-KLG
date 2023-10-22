@@ -193,22 +193,22 @@ const GRAMMAR = {
       choices: [],
     },
     {
-      question: "Choose the correct marker. \n 학교 식당 ____ 좋아요?",
+      question: "학교 식당 ____ 좋아요?",
       answer: "이",
       choices: ["를", "이", "가", "을"],
     },
     {
-      question: "Choose the correct marker. \n 맛 ____ 없어요.",
+      question: "맛 ____ 없어요.",
       answer: "이",
       choices: ["를", "이", "가", "을"],
     },
     {
-      question: "Choose the correct marker. \n 김치 ____ 싫어요?",
+      question: "김치 ____ 싫어요?",
       answer: "가",
       choices: ["를", "이", "가", "을"],
     },
     {
-      question: "Choose the correct marker. \n 피자 ____ 먹어요.",
+      question: "피자 ____ 먹어요.",
       answer: "을",
       choices: ["를", "이", "가", "을"],
     },
@@ -229,20 +229,17 @@ const GRAMMAR = {
       choices: [],
     },
     {
-      question:
-        "Choose either 아 or 야 when calling someone’s name. \n 한성 ____.",
+      question: "한성 ____.",
       answer: "아",
       choices: ["아", "야"],
     },
     {
-      question:
-        "Choose either 아 or 야 when calling someone’s name. \n 미나 ____.",
+      question: "미나 ____.",
       answer: "야",
       choices: ["아", "야"],
     },
     {
-      question:
-        "Choose either 아 or 야 when calling someone’s name. \n 민수 ____.",
+      question: "민수 ____.",
       answer: "야",
       choices: ["아", "야"],
     },
@@ -457,32 +454,32 @@ const GRAMMAR = {
       choices: [],
     },
     {
-      question: "Choose the correct marker \n 피자 _____ 책상 위",
+      question: "_____ 책상 위",
       answer: "가",
       choices: ["이", "가", "을", "를", "에", "에서"],
     },
     {
-      question: "Choose the correct marker \n ____ 있어요.",
+      question: "____ 있어요.",
       answer: "에",
       choices: ["이", "가", "을", "를", "에", "에서"],
     },
     {
-      question: "Choose the correct marker \n 친구 ____ 도서관 앞",
+      question: "친구 ____ 도서관 앞",
       answer: "를",
       choices: ["이", "가", "을", "를", "에", "에서"],
     },
     {
-      question: "Choose the correct marker \n ____ 만났어요.",
+      question: "____ 만났어요.",
       answer: "에서",
       choices: ["이", "가", "을", "를", "에", "에서"],
     },
     {
-      question: "Choose the correct marker \n 마트 오른쪽 _____ 한국 식당",
+      question: "마트 오른쪽 _____ 한국 식당",
       answer: "에",
       choices: ["이", "가", "을", "를", "에", "에서"],
     },
     {
-      question: "Choose the correct marker \n ____ 있어요.",
+      question: " ____ 있어요.",
       answer: "이",
       choices: ["이", "가", "을", "를", "에", "에서"],
     },
