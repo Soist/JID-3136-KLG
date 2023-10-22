@@ -21,7 +21,6 @@
     width: 50%;
 }
 
-
 #marbles-container {
     display: flex;
     flex-direction: column;
@@ -37,6 +36,10 @@
     background-color: #ffffe0;
 }
 
+#marbles-container #score {
+    display: none;
+}
+
 #marbles-container #pregame {
     display: flex;
     flex-direction: column;
@@ -46,3 +49,60 @@
 #marbles-container #pregame #settings {
     margin-bottom: 10px;
 }
+
+#marbles-container #game {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+}
+
+#marbles-container #game #answer {
+    display: flex;
+}
+
+#marbles-container #game #answer {
+    margin-top: 1em;
+}
+
+#marbles-container #postgame {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+}
+
+#marbles-container #question-text {
+    font-weight: bold;
+    color: #de8c93;
+}
+
+#marbles-container .gray {
+    fill: gray;
+}
+
+#marbles-container .red {
+    fill: red;
+}
+
+#marbles-container .green {
+    fill: green;
+}
+
+#marbles-container #win-text {
+    display: none;
+    font-weight: bold;
+    color: green;
+}
+
+#marbles-container #lose-text {
+    display: none;
+    font-weight: bold;
+    color: red;
+}
+
+input[type='radio'] {
+    height: 35px;
+    width: 35px;
+    vertical-align: middle;
+}
+
+label { font-size: 25px } 
