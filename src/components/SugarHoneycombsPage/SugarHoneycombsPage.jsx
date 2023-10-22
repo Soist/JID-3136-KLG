@@ -42,6 +42,9 @@ function SugarHoneycombsPage() {
     
     const [audios, setAudios] = useState([])
 
+    const [currentBackground, setCurrentBackground] = useState(backgroundImg);
+    const [currentQuestionId, setCurrentQuestionId] = useState(0);
+
 
 
     let koreanParts = []
@@ -53,10 +56,10 @@ function SugarHoneycombsPage() {
         englishParts.push(vocab_list[i]['english']);
     };
     let total_questions = koreanParts.length
-    let current_question_id = 0
 
 
-    const text = getVocab(3)[current_question_id]
+    const text = getVocab(3)[currentQuestionId]
+    const show = currentQuestionId
     // The useEffect hook is used in React to perform side effects in function components. 
     // Side effects could be data-fetching, subscriptions, manual DOM manipulations, and so on.
     // Here it pre-loads the audio after the inital render to be ready to play as soon as needed
@@ -99,34 +102,14 @@ function SugarHoneycombsPage() {
 
 
 
-    // // The useEffect hook is used in React to perform side effects in function components. 
-    // // Side effects could be data-fetching, subscriptions, manual DOM manipulations, and so on.
-    // // Here it pre-loads the audio after the inital render to be ready to play as soon as needed
-    // const fileParts = ["가다", "거기"];
-    // useEffect(() => {
-    //     const loadAudio = (part) => {
-    //         const src = `/audios/words/3-1 ${part}.mp3`; //put audio files in the public folder to access them directly via the path 
-    //         return new Audio(src);
-    //     };
-        
-    //     const loadedAudios = [];
-    //     for (let part of fileParts) {
-    //         loadedAudios.push(loadAudio(part));
-    //     }
-        
-    //     setAudios(loadedAudios);
-    // }, []);
-
-
     const playSound = (number) => {
-        //?. is called the optional chaining operator. This operator allows you to access the properties of objects 
+        // ?. is called the optional chaining operator. This operator allows you to access the properties of objects 
         // without worry about if the object is null or undefined. 
         // If audios[number - 1] is null or undefined, the optional chaining operator 
         // will prevent a runtime error from occurring by not calling the play() method,
         // and the expression will return undefined instead.
         audios[number]?.play();
     };
-
 
 
     function startGame() {
@@ -143,14 +126,18 @@ function SugarHoneycombsPage() {
 
         document.getElementById('pregame').style.display = 'none';
         document.getElementById('postgame').style.display = 'none';
-        document.getElementById('win-text').style.display = 'none';
-        document.getElementById('lose-text').style.display = 'none';
-    
-        setState({ ...state, answerLanguage: answerLanguage, currentOverlay: startOverlay});
-        
         document.getElementById('tutorial').style.display = 'none';
+        setState({ ...state, answerLanguage: answerLanguage, currentOverlay: startOverlay});
 
+    }
 
+    function endGame() {
+        document.getElementById('postgame').style.display = 'flex';
+
+        document.getElementById('pregame').style.display = 'none';
+        document.getElementById('game').style.display = 'none';
+        document.getElementById('tutorial').style.display = 'none';
+        setCurrentBackground()
     }
 
     function submitAnswer() {
@@ -188,9 +175,9 @@ function SugarHoneycombsPage() {
 
         
         // Instead of a while loop that only proceed when a correct message was detected, in JSX we reshow the UI button
-        if (submission === answers[answerLanguage][current_question_id]) {
+        if (submission === answers[answerLanguage][currentQuestionId]) {
             getProgress(unit.number)[0].sugar++
-            current_question_id++
+            setCurrentQuestionId(prevId => prevId + 1)
             document.getElementById('answer-input').value = ''; //Clears the answer input field in JSX
             document.getElementById('question').style.display = 'none'; // Hide all elements/ids in the question container in JSX
             document.getElementById('answer-input').style.display = 'none'; 
@@ -200,16 +187,24 @@ function SugarHoneycombsPage() {
 
             setCorrectMessage(true); // Show the correct message
             setState({ ...state, currentOverlay: winOverlay}); // Updates the state and the displayed image to a winning overlay
-
-
             // Set a timeout to hide the error message after 1 seconds (1000 milliseconds)
             // () => {} arrow function, left put parameters, right put function code
             setTimeout(() => {
                 setCorrectMessage(false)
+                document.getElementById('question').style.display = 'flex';
+                document.getElementById('answer-input').style.display = 'flex';
+                document.getElementById('audio-btn').style.display = 'flex';
+                document.getElementById('submit-btn').style.display = 'flex';
                 setState({ ...state, currentOverlay: startOverlay});
+                if (currentQuestionId + 1 === total_questions) {endGame()}
+                //1. if correct next question, if wrong show right answer and next question
+                //2. timeout bar
+                //3. show 3 lives 
                 // loadNextQuestion(); // Load the next question
+                // new background to the state add,new background UI
             }, 1000);
         } else {
+            setCurrentQuestionId(prevId => prevId + 1)
             document.getElementById('answer-input').value = '';
             document.getElementById('question').style.display = 'none'; 
             document.getElementById('answer-input').style.display = 'none';
@@ -228,12 +223,13 @@ function SugarHoneycombsPage() {
                 // using the spread operator (...) to take all existing state properties and their values 
                 // and spread them into the new state object. it keeps the existing state unchanged
                 setState({ ...state, currentOverlay: startOverlay});
+                if (currentQuestionId + 1 === total_questions) {endGame()}
             }, 1000);
         }
     }
     return (
         <div id='sugar-honeycombs-full-container'>
-            <img id='background' src={backgroundImg} alt='SugarHoneycombs' />
+            <img id='background' src={currentBackground} alt='SugarHoneycombs' />
             <img id='overlay-image' src={state.currentOverlay} alt='Overlay' />
             <div id="empty-div"></div>
             <div id='sugar-honeycombs-container'>
@@ -262,6 +258,10 @@ function SugarHoneycombsPage() {
                             English: {text.english}
                             <br />
                             Korean: {text.korean}
+                            <br />
+                            ID: {show}
+                            <br />
+                            Total Questions: {total_questions}
                         </div>
                         <div id='question'>
                             <h2>What does this audio say in {state.answerLanguage.charAt(0).toUpperCase() + state.answerLanguage.slice(1)}?</h2>
@@ -286,7 +286,7 @@ function SugarHoneycombsPage() {
                             onClick={playSound()}: call immediately. But in our case, our playSound function have parameter 
                             so use onClick={() => playSound(1)}
                             */}
-                            <button id='audio-btn'className='btn btn-primary' onClick={() => playSound(0)}>Play audio</button>
+                            <button id='audio-btn'className='btn btn-primary' onClick={() => playSound(currentQuestionId)}>Play audio</button>
                         </div>
                     </div>
                     <div id='postgame'>
