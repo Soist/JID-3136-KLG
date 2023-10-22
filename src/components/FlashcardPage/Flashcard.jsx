@@ -16,7 +16,7 @@ const Flashcard = ({ flashcard, imageURL, onDeleteFlashcard}) => {
     sound.play();
   };
   const handleDelete = () => {
-    if (window.confirm("Are you sure you want to delete this flashcard?")) {
+    if (flashcard.isUserAdded && window.confirm("Are you sure you want to delete this flashcard?")) {
       onDeleteFlashcard();
       console.log("Deleting Flashcard", flashcard);
     }
@@ -39,12 +39,14 @@ const Flashcard = ({ flashcard, imageURL, onDeleteFlashcard}) => {
                 <SoundSvg />
               </div>
             )}
-            <div className='delete-icon' onClick={handleDelete}>
-            <FontAwesomeIcon
-                icon={faTrashAlt}
-                style={{ fontSize: '1.2rem', cursor: 'pointer' }}
-              />
-            </div>
+            {flashcard.isUserAdded && (
+              <div className='delete-icon' onClick={handleDelete}>
+                <FontAwesomeIcon
+                  icon={faTrashAlt}
+                  style={{ fontSize: '1.2rem', cursor: 'pointer' }}
+                />
+              </div>
+            )}
           </div>
         </div>
       </div>
@@ -56,12 +58,14 @@ const Flashcard = ({ flashcard, imageURL, onDeleteFlashcard}) => {
               <SoundSvg />
             </div>
           )}
-            <div className='delete-icon' onClick={handleDelete}>
-            <FontAwesomeIcon
-                icon={faTrashAlt}
-                style={{ fontSize: '1.2rem', cursor: 'pointer' }}
-              />
-            </div>
+            {flashcard.isUserAdded && (
+              <div className='delete-icon' onClick={handleDelete}>
+                <FontAwesomeIcon
+                  icon={faTrashAlt}
+                  style={{ fontSize: '1.2rem', cursor: 'pointer' }}
+                />
+              </div>
+            )}
         </div>
       </div>
     </div>

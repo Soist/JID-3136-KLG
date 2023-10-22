@@ -40,6 +40,12 @@ function FlashcardStudyPage() {
   };
 
   const handleDelete = (index) => {
+    const selectedFlashcard = flashcards[index];
+
+    if (!selectedFlashcard.isUserAdded) {
+      return;
+    }
+
     const updatedFlashcards = [...flashcards];
     updatedFlashcards.splice(index, 1);
     setFlashcards(updatedFlashcards);
@@ -59,6 +65,7 @@ function FlashcardStudyPage() {
       const newFlashcard = {
         korean: koreanText,
         image: imageURL,
+        isUserAdded: true, 
       };
       setFlashcards([...flashcards, newFlashcard]);
     }
