@@ -109,13 +109,11 @@
 }
 
 #sugar-honeycombs-container #win-text {
-    display: flex;
     font-weight: bold;
     color: green;
 }
 
 #sugar-honeycombs-container #lose-text {
-    display: flex;
     font-weight: bold;
     color: red;
 }
@@ -160,4 +158,16 @@
 
 #sugar-honeycombs-container .red {
     fill: red;
+}
+
+#sugar-honeycombs-container #timeout-container {
+    width: 100%;
+    height: 30px;
+    background-color: #ddd; /* background of the container */
+}
+
+#sugar-honeycombs-container #timeout-bar { /* Important: #sugar-honeycombs-container is required if you put timeout-bar within the container */
+    width: 100%; /* initial full width */
+    height: 100%;
+    background-color: #4CAF50; /* color of the timeout bar */
 }
