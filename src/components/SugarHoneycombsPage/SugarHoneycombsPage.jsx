@@ -4,7 +4,10 @@ import './SugarHoneycombsPage.css';
 import winOverlay from './resources/win_honeycombs.png';
 import loseOverlay from './resources/lose_honeycombs.png';
 import startOverlay from './resources/honeycombs.png';
+import gameoverWinOverlay from './resources/win.png'
+import gameoverLoseOverlay from './resources/lose.png'
 import backgroundImg from './resources/test8.png';
+import gameoverImg from './resources/win_background.png'
 import {getProgress} from "../../ProgressDummyData";
 import { getVocab } from '../../vocabData';
 import {LISTEN_OPTIONS_PATH} from '../../constants';
@@ -29,7 +32,8 @@ function SugarHoneycombsPage() {
     // here useState is called with an object{} having answerLanguage propery initailized with string 'korean', and etc.
     const [state, setState] = useState({
         answerLanguage: 'korean',
-        currentOverlay: startOverlay
+        currentOverlay: startOverlay,
+        gameoverOverlay: gameoverWinOverlay
     });
     // state is a variable that holds the current state. You can access the values in the state by using 
     // state.answerLanguage and state.currentOverlay.
@@ -119,25 +123,25 @@ function SugarHoneycombsPage() {
             return;
         }
         
-    
         const answerLanguage = languageRadioButton.value;
-
+        setState({ ...state, answerLanguage: answerLanguage, currentOverlay: startOverlay, gameoverOverlay: gameoverWinOverlay});
+        setCurrentBackground(backgroundImg)
         document.getElementById('game').style.display = 'flex';
-
+        document.getElementById('overlay-image').style.display = 'flex';
         document.getElementById('pregame').style.display = 'none';
         document.getElementById('postgame').style.display = 'none';
         document.getElementById('tutorial').style.display = 'none';
-        setState({ ...state, answerLanguage: answerLanguage, currentOverlay: startOverlay});
-
+        
+        setCurrentQuestionId(0)
     }
 
     function endGame() {
         document.getElementById('postgame').style.display = 'flex';
-
+        document.getElementById('overlay-image').style.display = 'none';
         document.getElementById('pregame').style.display = 'none';
         document.getElementById('game').style.display = 'none';
         document.getElementById('tutorial').style.display = 'none';
-        setCurrentBackground()
+        setCurrentBackground(gameoverImg)
     }
 
     function submitAnswer() {
@@ -196,12 +200,13 @@ function SugarHoneycombsPage() {
                 document.getElementById('audio-btn').style.display = 'flex';
                 document.getElementById('submit-btn').style.display = 'flex';
                 setState({ ...state, currentOverlay: startOverlay});
-                if (currentQuestionId + 1 === total_questions) {endGame()}
+                if (currentQuestionId + 1 === 15) {endGame()}
                 //1. if correct next question, if wrong show right answer and next question
                 //2. timeout bar
                 //3. show 3 lives 
                 // loadNextQuestion(); // Load the next question
                 // new background to the state add,new background UI
+                // demo next sprint: timeout bar, different questions set based on units, three lives, hints 
             }, 1000);
         } else {
             setCurrentQuestionId(prevId => prevId + 1)
@@ -223,7 +228,7 @@ function SugarHoneycombsPage() {
                 // using the spread operator (...) to take all existing state properties and their values 
                 // and spread them into the new state object. it keeps the existing state unchanged
                 setState({ ...state, currentOverlay: startOverlay});
-                if (currentQuestionId + 1 === total_questions) {endGame()}
+                if (currentQuestionId + 1 === 15) {endGame()}
             }, 1000);
         }
     }
@@ -290,8 +295,9 @@ function SugarHoneycombsPage() {
                         </div>
                     </div>
                     <div id='postgame'>
-                        <h2 id='win-text'>You win!</h2>
-                        <h2 id='lose-text'>You lose!</h2>
+                        {/* <h2 id='win-text'>You win!</h2>
+                        <h2 id='lose-text'>You lose!</h2> */}
+                        <img id='gameover-overlay' src={state.gameoverOverlay} alt='Gameover'/>
                         <button className='btn btn-primary' onClick={startGame}>Play Again</button>
                     </div>
                 </div>
