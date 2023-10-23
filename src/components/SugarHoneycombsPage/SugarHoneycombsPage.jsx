@@ -229,7 +229,7 @@ function SugarHoneycombsPage() {
                 // and spread them into the new state object. it keeps the existing state unchanged
                 setState({ ...state, currentOverlay: startOverlay});
                 if (currentQuestionId + 1 === 15) {endGame()}
-            }, 1000);
+            }, 2500);
         }
     }
     return (
@@ -275,7 +275,12 @@ function SugarHoneycombsPage() {
                             {/* Conditional Rendering within JSX: display error message if showErrorMessage is true */}
                             {showErrorMessage && 
                                 <div id='error'>
-                                    <h2 id='error-message'>Incorrect answer! Try again!</h2>
+                                    <h2 id='error-message'>Incorrect answer! The right answer is </h2>
+                                    <h3 id='error-message'>
+                                        English: {text.english}
+                                        <br />
+                                        Korean: {text.korean}
+                                    </h3>
                                 </div>
                             }
                             {showCorrectMessage && 
