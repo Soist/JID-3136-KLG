@@ -11,6 +11,8 @@ import gameoverImg from './resources/win_background.png'
 import {getProgress} from "../../ProgressDummyData";
 import { getVocab } from '../../vocabData';
 import {LISTEN_OPTIONS_PATH} from '../../constants';
+import { ReactComponent as CircleSvg } from '../../SharedImages/Circle.svg'
+import { ReactComponent as SkullSvg } from '../../SharedImages/Skull.svg'
 
 // SugarHoneycombsPage function is a React component.
 // JSX Rendering & Event handling: returned JSX defines the structure and appearance of the UI and event handlers such as 
@@ -21,6 +23,16 @@ import {LISTEN_OPTIONS_PATH} from '../../constants';
 // The intuition is JSX always delegate jobs to methods.
 
 
+
+function ScoreView() {
+    return (
+        <>
+            <CircleSvg />
+            <CircleSvg />
+            <SkullSvg />
+        </>
+    );
+}
 
 //features to complete: load different questions set based on locaiton
 
@@ -49,7 +61,8 @@ function SugarHoneycombsPage() {
     const [currentBackground, setCurrentBackground] = useState(backgroundImg);
     const [currentQuestionId, setCurrentQuestionId] = useState(0);
 
-
+    const [isWinner, setIsWinner] = useState(true);
+    const [currIncorrectScore, setCurrIncorrectScore] = useState(0);
 
     let koreanParts = []
     let englishParts = []
@@ -104,8 +117,6 @@ function SugarHoneycombsPage() {
         setAudios(loadedAudios);
     }, []);
 
-
-
     const playSound = (number) => {
         // ?. is called the optional chaining operator. This operator allows you to access the properties of objects 
         // without worry about if the object is null or undefined. 
@@ -116,8 +127,9 @@ function SugarHoneycombsPage() {
     };
 
 
+    
     function startGame() {
-
+        
         const languageRadioButton = document.querySelector('input[name="answer-language"]:checked');
         if (languageRadioButton === null) {
             return;
@@ -133,6 +145,12 @@ function SugarHoneycombsPage() {
         document.getElementById('tutorial').style.display = 'none';
         
         setCurrentQuestionId(0)
+        setCurrIncorrectScore(0);
+
+
+        for (let i = 0; i < 3; i++) {
+            document.getElementById("score-view").childNodes[i].classList.remove("red");
+        }
     }
 
     function endGame() {
@@ -141,6 +159,7 @@ function SugarHoneycombsPage() {
         document.getElementById('pregame').style.display = 'none';
         document.getElementById('game').style.display = 'none';
         document.getElementById('tutorial').style.display = 'none';
+        document.getElementById('lose-text').style.display = 'none';
         setCurrentBackground(gameoverImg)
     }
 
@@ -181,7 +200,7 @@ function SugarHoneycombsPage() {
         // Instead of a while loop that only proceed when a correct message was detected, in JSX we reshow the UI button
         if (submission === answers[answerLanguage][currentQuestionId]) {
             getProgress(unit.number)[0].sugar++
-            setCurrentQuestionId(prevId => prevId + 1)
+            setCurrentQuestionId(currentQuestionId + 1)
             document.getElementById('answer-input').value = ''; //Clears the answer input field in JSX
             document.getElementById('question').style.display = 'none'; // Hide all elements/ids in the question container in JSX
             document.getElementById('answer-input').style.display = 'none'; 
@@ -200,22 +219,22 @@ function SugarHoneycombsPage() {
                 document.getElementById('audio-btn').style.display = 'flex';
                 document.getElementById('submit-btn').style.display = 'flex';
                 setState({ ...state, currentOverlay: startOverlay});
-                if (currentQuestionId + 1 === 15) {endGame()}
-                //1. if correct next question, if wrong show right answer and next question
+                if (currentQuestionId + 1 === 5) {endGame()}
+                
                 //2. timeout bar
                 //3. show 3 lives 
-                // loadNextQuestion(); // Load the next question
-                // new background to the state add,new background UI
                 // demo next sprint: timeout bar, different questions set based on units, three lives, hints 
             }, 1000);
         } else {
-            setCurrentQuestionId(prevId => prevId + 1)
+            setCurrentQuestionId(currentQuestionId + 1)
+            document.getElementById('score-view').childNodes[currIncorrectScore].classList.add('red');
+            setCurrIncorrectScore(currIncorrectScore + 1);
             document.getElementById('answer-input').value = '';
             document.getElementById('question').style.display = 'none'; 
             document.getElementById('answer-input').style.display = 'none';
             document.getElementById('audio-btn').style.display = 'none';
             document.getElementById('submit-btn').style.display = 'none';
-
+            
             
             setShowErrorMessage(true); 
             setState({ ...state, currentOverlay: loseOverlay});
@@ -228,10 +247,13 @@ function SugarHoneycombsPage() {
                 // using the spread operator (...) to take all existing state properties and their values 
                 // and spread them into the new state object. it keeps the existing state unchanged
                 setState({ ...state, currentOverlay: startOverlay});
-                if (currentQuestionId + 1 === 15) {endGame()}
+                if (currIncorrectScore + 1 === 3 || currentQuestionId + 1 === 5) {
+                    endGame();
+                }
             }, 2500);
         }
     }
+    
     return (
         <div id='sugar-honeycombs-full-container'>
             <img id='background' src={currentBackground} alt='SugarHoneycombs' />
@@ -259,6 +281,9 @@ function SugarHoneycombsPage() {
                         <button className='btn btn-primary' onClick={startGame}>Start Game</button>
                     </div>
                     <div id='game'>
+                        <div id="score-view">
+                            <ScoreView />
+                        </div>
                         <div>
                             English: {text.english}
                             <br />
@@ -300,8 +325,8 @@ function SugarHoneycombsPage() {
                         </div>
                     </div>
                     <div id='postgame'>
-                        {/* <h2 id='win-text'>You win!</h2>
-                        <h2 id='lose-text'>You lose!</h2> */}
+                        <h2 id='win-text'>"Congratulations, you win"</h2>
+                        <h2 id='lose-text'>"Sorry, you lose. Better luck next time!"</h2>
                         <img id='gameover-overlay' src={state.gameoverOverlay} alt='Gameover'/>
                         <button className='btn btn-primary' onClick={startGame}>Play Again</button>
                     </div>
