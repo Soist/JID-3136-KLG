@@ -41,6 +41,17 @@
     animation: shake 3.5s ease-in-out infinite; /* apply the shake animation */
 }
 
+#sugar-honeycombs-full-container #gameover-overlay {
+    position: absolute;
+    z-index: 1;
+    display: flexs; /* Initially hidden, will be displayed with JavaScript */
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    top: 25vh; /* Center it vertically */
+    left: 35%; /* Center it horizontally */
+}
+
 
 
 #sugar-honeycombs-container {
