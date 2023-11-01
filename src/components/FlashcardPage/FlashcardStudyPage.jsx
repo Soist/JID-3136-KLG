@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import { getVocab } from '../../vocabData';
 import Flashcard from './Flashcard';
@@ -9,11 +9,22 @@ function FlashcardStudyPage() {
   const unit = location.state;
   const initialCards = getVocab(unit.number);
 
+  const [preExistingFlashcards, setPreExistingFlashcards] = useState(initialCards);
+  const [userAddedFlashcards, setUserAddedFlashcards] = useState(() => {
+    const localData = localStorage.getItem('userAddedFlashcards');
+    return localData ? JSON.parse(localData) : [];
+  });
+
   const [flashcards, setFlashcards] = useState(initialCards);
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [koreanText, setKoreanText] = useState('');
   const [imageURL, setImageURL] = useState('');
   const [selectedFlashcardIndex, setSelectedFlashcardIndex] = useState(null);
+
+  useEffect(() => {
+    localStorage.setItem('userAddedFlashcards', JSON.stringify(userAddedFlashcards));
+  }, [userAddedFlashcards]);
+
 
   const handleAddFlashcard = (index) => {
     setSelectedFlashcardIndex(index);
@@ -40,36 +51,35 @@ function FlashcardStudyPage() {
   };
 
   const handleDelete = (index) => {
-    const selectedFlashcard = flashcards[index];
-
-    if (!selectedFlashcard.isUserAdded) {
+    if (index < preExistingFlashcards.length) {
       return;
     }
-
-    const updatedFlashcards = [...flashcards];
-    updatedFlashcards.splice(index, 1);
-    setFlashcards(updatedFlashcards);
+  
+    const userAddedIndex = index - preExistingFlashcards.length;
+    const updatedUserAddedFlashcards = [...userAddedFlashcards];
+    updatedUserAddedFlashcards.splice(userAddedIndex, 1);
+    setUserAddedFlashcards(updatedUserAddedFlashcards);
   };
-
+  
+  
 
   const handleSaveFlashcard = () => {
     if (selectedFlashcardIndex !== null) {
-      const updatedFlashcards = [...flashcards];
-      updatedFlashcards[selectedFlashcardIndex] = {
-        ...updatedFlashcards[selectedFlashcardIndex],
+      const updatedUserAddedFlashcards = [...userAddedFlashcards];
+      updatedUserAddedFlashcards[selectedFlashcardIndex] = {
+        ...updatedUserAddedFlashcards[selectedFlashcardIndex],
         korean: koreanText,
         image: imageURL,
       };
-      setFlashcards(updatedFlashcards);
+      setUserAddedFlashcards(updatedUserAddedFlashcards);
     } else {
       const newFlashcard = {
         korean: koreanText,
         image: imageURL,
-        isUserAdded: true, 
+        isUserAdded: true,
       };
-      setFlashcards([...flashcards, newFlashcard]);
+      setUserAddedFlashcards([...userAddedFlashcards, newFlashcard]);
     }
-
     setIsModalVisible(false);
     setKoreanText('');
     setImageURL('');
@@ -85,7 +95,7 @@ function FlashcardStudyPage() {
 
   return (
     <div id='flashcard-container'>
-      {flashcards.map((flashcard, index) => (
+      {[...preExistingFlashcards, ...userAddedFlashcards].map((flashcard, index) => (
         <Flashcard
           key={index}
           flashcard={flashcard}
