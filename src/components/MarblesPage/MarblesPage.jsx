@@ -35,7 +35,11 @@ function ScoreView() {
     );
 }
 
+
 function MarblesPage() { 
+    const EASY_QUESTION_RESPONSE_TIME = 20000;
+    const MEDIUM_QUESTION_RESPONSE_TIME = 10000;
+    const HARD_QUESTION_RESPONSE_TIME = 5000;
     const location = useLocation();
     const unit = location.state;
 
@@ -50,6 +54,7 @@ function MarblesPage() {
     };
 
     function startGame() {
+        const difficulty = document.querySelector('input[name="difficulty"]:checked').value;
         document.getElementById('pregame').style.display = 'none';
         document.getElementById('postgame').style.display = 'none';
         document.getElementById('win-text').style.display = 'none';
@@ -57,12 +62,15 @@ function MarblesPage() {
 
         const questions = state.questions;
         shuffleArray(questions);
+        setState({ ...state, questions: questions,});
 
-        setState({
-            questions: questions,
-            currQuestionIndex: 0,
-            score: 3,
-        });
+        if (difficulty === "easy") {
+            setState({ ...state, questionResponseTime: EASY_QUESTION_RESPONSE_TIME,});
+        } else if (difficulty === "medium") {
+            setState({ ...state, questionResponseTime: MEDIUM_QUESTION_RESPONSE_TIME,});
+        } else {
+            setState({ ...state, questionResponseTime: HARD_QUESTION_RESPONSE_TIME,});
+        }
 
         const scoreChildren = document.getElementById('score').childNodes;
         for (let i = 0; i < scoreChildren.length; i++) {
@@ -72,6 +80,30 @@ function MarblesPage() {
         document.getElementById('score').style.display = 'flex';
         document.getElementById('game').style.display = 'flex';
     }
+
+    useEffect(() => {
+        const interval = setInterval(() => {
+            const currScore = state.score;
+            if (document.getElementById("game").style.display === "flex") { // only execute when game is active
+                const newScore = currScore - 1;
+                if (newScore === 0) {
+                    document.getElementById('score').childNodes[newScore].classList.add('red');
+                    document.getElementById('game').style.display = 'none';
+                    document.getElementById('postgame').style.display = 'flex';
+                    document.getElementById('lose-text').style.display = 'flex';
+                } else {
+                    if (newScore < 3) {
+                        document.getElementById('score').childNodes[newScore].classList.add('red');
+                    } else if (newScore >= 3) {
+                        document.getElementById('score').childNodes[newScore + 1].classList.remove('green');
+                    }
+                }
+                setState({ ...state, radioButton: '', score: newScore,
+                currQuestionIndex: (state.currQuestionIndex + 1) % state.questions.length});
+                }
+        }, state.questionResponseTime);
+        return () => clearInterval(interval);
+    }, [state.score, state.questionResponseTime]);
 
     function submitAnswer() {
         const questions = state.questions;
@@ -134,11 +166,11 @@ function MarblesPage() {
                     <div id='pregame'>
                         <div id='settings'>
                             <b>Difficulty Level:</b>
-                            <input type="radio" id="easy" name="difficulty" value="easy"></input>
+                            <input type="radio" id="easy" value="easy" name="difficulty"></input>
                             <label for="easy">Easy</label>
-                            <input type="radio" id="medium" name="difficulty" value="medium"></input>
+                            <input type="radio" id="medium" value="medium" name="difficulty"></input>
                             <label for="medium">Medium</label>
-                            <input type="radio" id="hard" name="difficulty" value="hard"></input>
+                            <input type="radio" id="hard" value="hard" name="difficulty"></input>
                             <label for="hard">Hard</label>
                             <br></br>
                         </div>
