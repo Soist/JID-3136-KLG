@@ -58,9 +58,6 @@
 
 #marbles-container #game #answer {
     display: flex;
-}
-
-#marbles-container #game #answer {
     margin-top: 1em;
 }
 
