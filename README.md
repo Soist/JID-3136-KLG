@@ -3,7 +3,6 @@ A react app created to gamify the learning of KOR 1001 at Georgia Tech. The app 
 
 # Release Notes
 
-<<<<<<< HEAD
 ## Version 1.2.0
 
 ### New Features
@@ -18,9 +17,6 @@ A react app created to gamify the learning of KOR 1001 at Georgia Tech. The app 
 * Some mini games had no buttons assiociated with them to allow users to navigate to them on the application and play them.
 * Some of the games had no "quit" or "exit" button to allow users to safely quit the game and get back the unit page or home page.
 
-
-=======
->>>>>>> 6ec9ec583a21dc4df277f6ae1795eae136d50a3a
 ## Version 1.0.0
 
 ### New Features
