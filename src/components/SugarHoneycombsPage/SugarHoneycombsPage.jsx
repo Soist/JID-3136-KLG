@@ -61,7 +61,6 @@ function SugarHoneycombsPage() {
     const [currentBackground, setCurrentBackground] = useState(backgroundImg);
     const [currentQuestionId, setCurrentQuestionId] = useState(0);
 
-    const [isWinner, setIsWinner] = useState(true);
     const [currIncorrectScore, setCurrIncorrectScore] = useState(0);
 
     let koreanParts = []
@@ -136,8 +135,8 @@ function SugarHoneycombsPage() {
         }
         
         const answerLanguage = languageRadioButton.value;
-        setState({ ...state, answerLanguage: answerLanguage, currentOverlay: startOverlay, gameoverOverlay: gameoverWinOverlay});
-        setCurrentBackground(backgroundImg)
+        
+        
         document.getElementById('game').style.display = 'flex';
         document.getElementById('overlay-image').style.display = 'flex';
         document.getElementById('pregame').style.display = 'none';
@@ -145,22 +144,36 @@ function SugarHoneycombsPage() {
         document.getElementById('tutorial').style.display = 'none';
         
         setCurrentQuestionId(0)
-        setCurrIncorrectScore(0);
+        setCurrIncorrectScore(0)
+        setCurrentBackground(backgroundImg)
+        setState({ ...state, answerLanguage: answerLanguage, currentOverlay: startOverlay, gameoverOverlay: gameoverWinOverlay});
 
 
         for (let i = 0; i < 3; i++) {
             document.getElementById("score-view").childNodes[i].classList.remove("red");
         }
+
+        startTimeout(5000);
     }
 
     function endGame() {
-        document.getElementById('postgame').style.display = 'flex';
         document.getElementById('overlay-image').style.display = 'none';
         document.getElementById('pregame').style.display = 'none';
         document.getElementById('game').style.display = 'none';
         document.getElementById('tutorial').style.display = 'none';
-        document.getElementById('lose-text').style.display = 'none';
         setCurrentBackground(gameoverImg)
+        if (currIncorrectScore + 1 === 3) {
+            setState({...state, gameoverOverlay: gameoverLoseOverlay})
+            document.getElementById('postgame').style.display = 'flex';
+            document.getElementById('lose-text').style.display = 'flex';
+            document.getElementById('win-text').style.display = 'none';
+        } else {
+            setState({...state, gameoverOverlay: gameoverWinOverlay})
+            document.getElementById('postgame').style.display = 'flex';
+            document.getElementById('win-text').style.display = 'flex';
+            document.getElementById('lose-text').style.display = 'none';
+        }
+
     }
 
     function submitAnswer() {
@@ -219,11 +232,11 @@ function SugarHoneycombsPage() {
                 document.getElementById('audio-btn').style.display = 'flex';
                 document.getElementById('submit-btn').style.display = 'flex';
                 setState({ ...state, currentOverlay: startOverlay});
-                if (currentQuestionId + 1 === 5) {endGame()}
-                
-                //2. timeout bar
-                //3. show 3 lives 
-                // demo next sprint: timeout bar, different questions set based on units, three lives, hints 
+                if (currentQuestionId + 1 === 10) {endGame()}
+                // demo next sprint: three lives, timeout bar
+                // @separation of function
+                // different questions set based on units
+                startTimeout(5000);
             }, 1000);
         } else {
             setCurrentQuestionId(currentQuestionId + 1)
@@ -247,12 +260,34 @@ function SugarHoneycombsPage() {
                 // using the spread operator (...) to take all existing state properties and their values 
                 // and spread them into the new state object. it keeps the existing state unchanged
                 setState({ ...state, currentOverlay: startOverlay});
-                if (currIncorrectScore + 1 === 3 || currentQuestionId + 1 === 5) {
+                if (currIncorrectScore + 1 === 3 || currentQuestionId + 1 === 10) {
                     endGame();
                 }
+                startTimeout(5000);
             }, 2500);
         }
     }
+
+    function startTimeout(duration) {
+        const timeoutBar = document.getElementById('timeout-bar');
+    
+        let startTime = Date.now();
+    
+        const updateBar = () => {
+            const elapsed = Date.now() - startTime;
+            const remaining = Math.max(0, duration - elapsed);
+            const percentage = (remaining / duration) * 100;
+    
+            timeoutBar.style.width = `${percentage}%`;
+    
+            if (remaining > 0) {
+                requestAnimationFrame(updateBar);
+            }
+        };
+    
+        updateBar();
+    }
+    
     
     return (
         <div id='sugar-honeycombs-full-container'>
@@ -284,6 +319,10 @@ function SugarHoneycombsPage() {
                         <div id="score-view">
                             <ScoreView />
                         </div>
+                        <br />
+                        <div id="timeout-container">
+                            <div id="timeout-bar"></div>
+                        </div>
                         <div>
                             English: {text.english}
                             <br />
@@ -292,6 +331,8 @@ function SugarHoneycombsPage() {
                             ID: {show}
                             <br />
                             Total Questions: {total_questions}
+                            <br />
+                            Current Incorrect Score: {currIncorrectScore}
                         </div>
                         <div id='question'>
                             <h2>What does this audio say in {state.answerLanguage.charAt(0).toUpperCase() + state.answerLanguage.slice(1)}?</h2>
