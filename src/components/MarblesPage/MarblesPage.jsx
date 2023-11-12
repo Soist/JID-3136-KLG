@@ -11,6 +11,7 @@ import Score6 from './resources/Score6.png';
 import Score7 from './resources/Score7.png';
 import Score8 from './resources/Score8.png';
 import './MarblesPage.css';
+import {getProgress} from "../../ProgressDummyData";
 import { ReactComponent as CircleSvg } from '../../SharedImages/Circle.svg'
 import { ReactComponent as FlagSvg } from '../../SharedImages/Flag.svg'
 import { ReactComponent as SkullSvg } from '../../SharedImages/Skull.svg'
@@ -135,6 +136,8 @@ function MarblesPage() {
     }, [state.currQuestionIndex, state.score, state.questionResponseTime]);
 
     function submitAnswer() {
+        getProgress(unit.number)[1].marble++
+
         const questions = state.questions;
         const currQuestionIndex = state.currQuestionIndex;
         const isTrueFalse = questions[currQuestionIndex].choices.length > 0 ? false: true;
@@ -145,7 +148,7 @@ function MarblesPage() {
         const submission = submissionRadioButton.value;
 
         if (submission === questions[currQuestionIndex].answer) {
-
+            getProgress(unit.number)[0].marble++
             const newScore = currScore + 1;
             if (newScore === 8) {
                 document.getElementById('score').childNodes[newScore].classList.add('green');
