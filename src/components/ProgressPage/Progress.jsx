@@ -18,13 +18,14 @@ function getUnitData(unitNum) {
     let correct = progress[0]
     let total = progress[1]
 
-    let rlgl = 'Red Light Green Light: \n' + correct.rlgl + ' Correct; ' + getAccuracy(correct.rlgl, total.rlgl) + '% Accuracy'
-    let tug = '\n Tug of War Correct: \n' + correct.tug + ' Correct; ' + getAccuracy(correct.tug, total.tug) + '% Accuracy'
-    let sugar = '\n Sugar Honeycombs: \n' + correct.sugar + ' Correct; ' + getAccuracy(correct.sugar, total.sugar) + '% Accuracy'
+    let rlgl = 'Red Light Green Light: \n' + correct.rlgl + ' Correct; ' + getAccuracy(correct.rlgl, total.rlgl) + '% Accuracy\n'
+    let tug = '\n Tug of War Correct: \n' + correct.tug + ' Correct; ' + getAccuracy(correct.tug, total.tug) + '% Accuracy\n'
+    let sugar = '\n Sugar Honeycombs: \n' + correct.sugar + ' Correct; ' + getAccuracy(correct.sugar, total.sugar) + '% Accuracy\n'
+    let marble = '\n Marble Game: \n' + correct.marble + ' Correct; ' + getAccuracy(correct.marble, total.marble) + '% Accuracy'
 
     return {
         unit: unitName,
-        progress: rlgl + tug + sugar
+        progress: rlgl + tug + sugar + marble
     }
 }
 
@@ -32,7 +33,7 @@ function getTotalCorrectQuestions() {
     let total = 0
     for (let i = 0; i < 6; i++) {
         let progress = getProgress(i + 1)
-        total += progress[0].rlgl + progress[0].tug + progress[0].sugar
+        total += progress[0].rlgl + progress[0].tug + progress[0].sugar + progress[0].marble
     }
     return total
 }
@@ -41,7 +42,7 @@ function getTotalQuestions() {
     let total = 0
     for (let i = 0; i < 6; i++) {
         let progress = getProgress(i + 1)
-        total += progress[1].rlgl + progress[1].tug + progress[1].sugar
+        total += progress[1].rlgl + progress[1].tug + progress[1].sugar + progress[1].marble
     }
     return total
 }
@@ -54,11 +55,13 @@ function getChartData() {
     let rlgl_data = []
     let tug_data = []
     let sugar_data = []
+    let marble_data = []
     for (let i = 0; i < 6; i++) {
         let correct = getProgress(i + 1)[0]
         rlgl_data.push(correct.rlgl)
         tug_data.push(correct.tug)
         sugar_data.push(correct.sugar)
+        marble_data.push(correct.marble)
     }
     return {
         labels: ['Unit 1', 'Unit 2', 'Unit 3', 'Unit 4', 'Unit 5', 'Unit 6'],
@@ -80,6 +83,12 @@ function getChartData() {
                 data: sugar_data,
                 color: '#00FF00',
                 stack: 'Game 3'
+            },
+            {
+                label: 'Marble Game',
+                data: marble_data,
+                color: '#0F00F0',
+                stack: 'Game 4'
             }
         ]
     }
