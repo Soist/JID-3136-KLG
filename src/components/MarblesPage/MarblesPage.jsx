@@ -58,6 +58,7 @@ function MarblesPage() {
     function startGame() {
         const difficulty = document.querySelector('input[name="difficulty"]:checked').value;
         document.getElementById('pregame').style.display = 'none';
+        document.getElementById('tutorial').style.display = 'none';
         document.getElementById('postgame').style.display = 'none';
         document.getElementById('win-text').style.display = 'none';
         document.getElementById('lose-text').style.display = 'none';
@@ -190,6 +191,7 @@ function MarblesPage() {
             radioButton: '',
           });
         document.getElementById("pregame").style.display = "flex";
+        document.getElementById('tutorial').style.display = 'flex';
         document.getElementById("game").style.display = "none";
         document.getElementById("postgame").style.display = "none";
         document.getElementById('win-text').style.display = 'none';
@@ -265,6 +267,13 @@ function MarblesPage() {
                         <h2 id='lose-text'>You lose!</h2>
                         <button className='btn btn-primary' onClick={playAgain}>Play Again</button>
                     </div>
+                </div>
+                <div id="tutorial">
+                    <p> <b>How to win:</b> Read a grammar question and determine which choice to select. <br></br>
+                    You win when the score board has 5 green dots and lose when it has 3 red dots. <br></br> 
+                    The more difficult the level you select, the shorter time limit you have for each<br></br>
+                    question. The time limit will be shown in the progress bar at the bottom. <br></br> 
+                    <b>Good Luck!</b> </p>
                 </div>
                 <Link to={GRAMMAR_OPTIONS_PATH} state={unit} >
                     <button className='btn btn-back'>
