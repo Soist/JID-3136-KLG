@@ -3,8 +3,8 @@ const VOCAB = {
     1: [ 
     
     { 
-        english: <iframe src="https://gtvault-my.sharepoint.com/personal/ykim791_gatech_edu/_layouts/15/embed.aspx?UniqueId=cd4567d7-d127-4602-ba05-adb3eb721f55" width="200" height="200" frameborder="0" scrolling="no" allowfullscreen title="name.jpg"></iframe>
-    ,korean: '이름', 
+        english: <img src = "vocab_imgs/name.jpg" width = "180" height = "200"/>
+        ,korean: '이름', 
     
      
      
@@ -18,7 +18,7 @@ const VOCAB = {
     
     { 
     
-    english: <iframe src="https://gtvault-my.sharepoint.com/personal/ykim791_gatech_edu/_layouts/15/embed.aspx?UniqueId=457e20af-c17f-4fe5-8df0-c9032b95dc02" width="200" height="200" frameborder="0" scrolling="no" allowfullscreen title="참.jpg"></iframe>
+    english:  <img src = "vocab_imgs/참.jpg" width = "180" height = "200"/>
     ,
     korean: '참', 
     
@@ -41,8 +41,7 @@ const VOCAB = {
     
     { 
     
-    english:<iframe src="https://gtvault-my.sharepoint.com/personal/ykim791_gatech_edu/_layouts/15/embed.aspx?UniqueId=e7c44551-4157-438a-9dc3-813aadf379e1" width="160" height="200" frameborder="0" scrolling="no" allowfullscreen title="science.png"></iframe>
-   ,
+    english:<img src = "vocab_imgs/science.png" width = "180" height = "180"/>,
     korean: '사이언스', 
     
     // Science 
@@ -51,7 +50,7 @@ const VOCAB = {
     
     { 
     
-    english: <iframe src="https://gtvault-my.sharepoint.com/personal/ykim791_gatech_edu/_layouts/15/embed.aspx?UniqueId=cf9d7232-1ce2-4cf6-95a7-4a5e3368e252" width="200" height="200" frameborder="0" scrolling="no" allowfullscreen title="here.jpg"></iframe>
+    english: <img src = "vocab_imgs/here.jpg" width = "180" height = "180"/>
     ,
     korean: '여기', 
     
@@ -68,7 +67,7 @@ const VOCAB = {
     
     { 
     
-    english:<iframe src="https://gtvault-my.sharepoint.com/personal/ykim791_gatech_edu/_layouts/15/embed.aspx?UniqueId=ecec5843-dd75-4d1a-9453-4ab0bd35d88d" width="200" height="200" frameborder="0" scrolling="no" allowfullscreen title="building.bmp"></iframe>
+    english:<img src = "vocab_imgs/building.bmp" width = "180" height = "200"/>
     ,
     korean: '빌딩', 
     
@@ -84,7 +83,7 @@ const VOCAB = {
     
     { 
     
-    english:<iframe src="https://gtvault-my.sharepoint.com/personal/ykim791_gatech_edu/_layouts/15/embed.aspx?UniqueId=aa61465f-1e2d-40fd-9fbf-b58ac1287a5d" width="200" height="200" frameborder="0" scrolling="no" allowfullscreen title="yes.bmp"></iframe>,
+    english:<img src = "vocab_imgs/yes.bmp" width = "180" height = "200"/>,
     
     korean: '네', 
     
@@ -100,7 +99,7 @@ const VOCAB = {
     
     { 
     
-    english:<iframe src="https://gtvault-my.sharepoint.com/personal/ykim791_gatech_edu/_layouts/15/embed.aspx?UniqueId=09c5514f-2ba8-4859-bd2c-766270326a43" width="200" height="200" frameborder="0" scrolling="no" allowfullscreen title="what.jpg"></iframe>,
+    english:<img src = "vocab_imgs/what.jpg" width = "180" height = "200"/>,
     
     korean: '뭐', 
     
@@ -116,7 +115,7 @@ const VOCAB = {
     
     { 
     
-    english:<iframe src="https://gtvault-my.sharepoint.com/personal/ykim791_gatech_edu/_layouts/15/embed.aspx?UniqueId=1aa6712e-ac1c-4301-861d-a9477f77b654" width="200" height="200" frameborder="0" scrolling="no" allowfullscreen title="major.jpg"></iframe>,
+    english:<img src = "vocab_imgs/major.jpg" width = "180" height = "200"/>,
     
     korean: '전공', 
     
@@ -129,7 +128,7 @@ const VOCAB = {
     
     { 
     
-    english: <iframe src="https://gtvault-my.sharepoint.com/personal/ykim791_gatech_edu/_layouts/15/embed.aspx?UniqueId=0ae57035-436b-4284-a3c9-4de20b0fa2ed" width="200" height="200" frameborder="0" scrolling="no" allowfullscreen title="1.bmp"></iframe>,
+    english:<img src = "vocab_imgs/1.bmp" width = "180" height = "200"/>,
     
     korean: '일', 
     
@@ -168,7 +167,7 @@ const VOCAB = {
     
     { 
     
-    english:<iframe src="https://gtvault-my.sharepoint.com/personal/ykim791_gatech_edu/_layouts/15/embed.aspx?UniqueId=492eb346-7752-401c-adef-cd06a0771774" width="200" height="200" frameborder="0" scrolling="no" allowfullscreen title="computer.jpg"></iframe>,
+    english:<img src = "vocab_imgs/computer.jpg" width = "180" height = "200"/>,
     korean: '컴퓨터', 
     
      
@@ -235,7 +234,7 @@ const VOCAB = {
     
     { 
     
-    english: <iframe src="https://gtvault-my.sharepoint.com/personal/ykim791_gatech_edu/_layouts/15/embed.aspx?UniqueId=2dcd791a-1d99-45be-9e03-6c347e535736" width="200" height="200" frameborder="0" scrolling="no" allowfullscreen title="friend.jpg"></iframe>,
+    english: <img src = "vocab_imgs/friend.jpg" width = "180" height = "200"/>,
     
     korean: '친구', 
     
@@ -243,7 +242,7 @@ const VOCAB = {
     
     { 
     
-    english: <iframe src="https://gtvault-my.sharepoint.com/personal/ykim791_gatech_edu/_layouts/15/embed.aspx?UniqueId=dd051daa-bd06-4ca6-ab47-96a57fb5272d" width="200" height="200" frameborder="0" scrolling="no" allowfullscreen title="today.png"></iframe>,
+    english: <img src = "vocab_imgs/today.png" width = "180" height = "200"/>,
     // today
     korean: '오늘', 
     
@@ -258,7 +257,7 @@ const VOCAB = {
     
     { 
     
-    english: <iframe src="https://gtvault-my.sharepoint.com/personal/ykim791_gatech_edu/_layouts/15/embed.aspx?UniqueId=86cbf424-e860-4d8e-b5a0-4de0572a8c4f" width="200" height="200" frameborder="0" scrolling="no" allowfullscreen title="time.jpg"></iframe>,
+    english: <img src = "vocab_imgs/time.jpg" width = "180" height = "200"/>,
     
     korean: '시간', 
     
@@ -266,15 +265,15 @@ const VOCAB = {
     
     { 
     // where
-    english: <iframe src="https://gtvault-my.sharepoint.com/personal/ykim791_gatech_edu/_layouts/15/embed.aspx?UniqueId=7884497d-13a8-4d45-834a-dee743e85de8" width="200" height="200" frameborder="0" scrolling="no" allowfullscreen title="where.jpg"></iframe>,
+    english:<img src = "vocab_imgs/where.jpg" width = "180" height = "200"/>,
     
     korean: '어디', 
     
     }, 
     
     { 
-    
-    english:<iframe src="https://gtvault-my.sharepoint.com/personal/ykim791_gatech_edu/_layouts/15/embed.aspx?UniqueId=90e9225c-1302-4954-891a-bbb323cf2fd1" width="200" height="200" frameborder="0" scrolling="no" allowfullscreen title="dormitory(기숙사).bmp"></iframe>,
+        
+    english:<img src = "vocab_imgs/dormitory(기숙사).bmp" width = "180" height = "200"/>,
     
     korean: '기숙사', 
     
@@ -323,7 +322,7 @@ const VOCAB = {
     
     { 
     
-    english: <iframe src="https://gtvault-my.sharepoint.com/personal/ykim791_gatech_edu/_layouts/15/embed.aspx?UniqueId=b41bf855-390b-43da-8a3d-70f0f5fb44f4" width="200" height="200" frameborder="0" scrolling="no" allowfullscreen title="tennis.jpg"></iframe>, 
+    english:<img src = "vocab_imgs/tennis.jpg" width = "180" height = "200"/>,
     
     korean: '테니스', 
     
@@ -340,7 +339,7 @@ const VOCAB = {
     
     { 
     
-    english: <iframe src="https://gtvault-my.sharepoint.com/personal/ykim791_gatech_edu/_layouts/15/embed.aspx?UniqueId=6f96db7a-e330-442c-a72d-d2e6567f105d" width="200" height="200" frameborder="0" scrolling="no" allowfullscreen title="to play.bmp"></iframe>,
+    english:<img src = "vocab_imgs/to play.bmp" width = "180" height = "200"/>,
     
     korean: '치다', 
     
@@ -357,7 +356,7 @@ const VOCAB = {
     
     { 
     
-    english: <iframe src="https://gtvault-my.sharepoint.com/personal/ykim791_gatech_edu/_layouts/15/embed.aspx?UniqueId=292af559-68d5-4846-a986-a0554ac7ea3f" width="200" height="200" frameborder="0" scrolling="no" allowfullscreen title="book.jpg"></iframe>, 
+    english: <img src = "vocab_imgs/book.jpg" width = "180" height = "200"/>,
     
     korean: '책', 
     
@@ -365,7 +364,7 @@ const VOCAB = {
     
     { 
     
-    english: <iframe src="https://gtvault-my.sharepoint.com/personal/ykim791_gatech_edu/_layouts/15/embed.aspx?UniqueId=29ff76a6-c5bd-402f-a431-ea3e06e46aa8" width="200" height="200" frameborder="0" scrolling="no" allowfullscreen title="read.jpg"></iframe>,
+    english: <img src = "vocab_imgs/read.jpg" width = "180" height = "200"/>,
     
     korean: '읽다', 
     
@@ -373,7 +372,7 @@ const VOCAB = {
     
     { 
     
-    english: <iframe src="https://gtvault-my.sharepoint.com/personal/ykim791_gatech_edu/_layouts/15/embed.aspx?UniqueId=7e3859f1-e54e-4e85-a950-3d3a3ddfcfc9" width="200" height="200" frameborder="0" scrolling="no" allowfullscreen title="a little.bmp"></iframe>,
+    english:<img src = "vocab_imgs/a little.bmp" width = "180" height = "200"/>,
     
     korean: '조금', 
     
@@ -381,7 +380,7 @@ const VOCAB = {
     
     { 
     
-    english:<iframe src="https://gtvault-my.sharepoint.com/personal/ykim791_gatech_edu/_layouts/15/embed.aspx?UniqueId=1c6c8035-77b8-4fbc-ab7c-dcdaab2c3575" width="200" height="200" frameborder="0" scrolling="no" allowfullscreen title="together.bmp"></iframe>,
+    english:<img src = "vocab_imgs/together.bmp" width = "180" height = "200"/>,
     // together
     korean: '같이', 
     
@@ -409,7 +408,7 @@ const VOCAB = {
     
     { 
     
-    english: <iframe src="https://gtvault-my.sharepoint.com/personal/ykim791_gatech_edu/_layouts/15/embed.aspx?UniqueId=9f958be5-c8a0-4c89-9627-87adbc304c51" width="200" height="200" frameborder="0" scrolling="no" allowfullscreen title="to eat.jpg"></iframe>,
+    english:<img src = "vocab_imgs/to eat.jpg" width = "180" height = "200"/>,
     
     korean: '먹다', 
     
@@ -417,7 +416,7 @@ const VOCAB = {
     
     { 
     
-    english: <iframe src="https://gtvault-my.sharepoint.com/personal/ykim791_gatech_edu/_layouts/15/embed.aspx?UniqueId=8969392a-7c54-4a92-8420-f80ca3cfa7de" width="200" height="200" frameborder="0" scrolling="no" allowfullscreen title="school.jpg"></iframe>,
+    english: <img src = "vocab_imgs/school.jpg" width = "180" height = "200"/>,
     
     korean: '학교', 
     
@@ -425,7 +424,7 @@ const VOCAB = {
     
     { 
     
-    english: <iframe src="https://gtvault-my.sharepoint.com/personal/ykim791_gatech_edu/_layouts/15/embed.aspx?UniqueId=c7a0faf0-edb4-4458-bdaa-189ac0f83d1b" width="200" height="200" frameborder="0" scrolling="no" allowfullscreen title="restaurant.jpg"></iframe>,
+    english: <img src = "vocab_imgs/restaurant.jpg" width = "180" height = "200"/>,
     
     korean: '식당', 
     
@@ -441,7 +440,7 @@ const VOCAB = {
     
     { 
     
-    english: <iframe src="https://gtvault-my.sharepoint.com/personal/ykim791_gatech_edu/_layouts/15/embed.aspx?UniqueId=7c01eed7-8e1e-4193-a06e-f88376db0fc2" width="200" height="200" frameborder="0" scrolling="no" allowfullscreen title="to go.jpg"></iframe>,
+    english: <img src = "vocab_imgs/to go.jpg" width = "180" height = "200"/>,
     
     korean: '가다', 
     
@@ -464,7 +463,7 @@ const VOCAB = {
     
     { 
     
-    english: <iframe src="https://gtvault-my.sharepoint.com/personal/ykim791_gatech_edu/_layouts/15/embed.aspx?UniqueId=7dd8dee6-f5a0-4b22-900a-86fb002222d0" width="200" height="200" frameborder="0" scrolling="no" allowfullscreen title="why.jpg"></iframe>,
+    english:<img src = "vocab_imgs/why.jpg" width = "180" height = "200"/>,
     
     korean: '왜', 
     
@@ -472,8 +471,8 @@ const VOCAB = {
     
     { 
     
-    english: <iframe src="https://gtvault-my.sharepoint.com/personal/ykim791_gatech_edu/_layouts/15/embed.aspx?UniqueId=a0bdb055-5bc4-4294-9777-ec25918ec75b" width="200" height="200" frameborder="0" scrolling="no" allowfullscreen title="to dislike - undesireable.bmp"></iframe>
-    ,
+    english: <img src = "vocab_imgs/to dislike - undesireable.bmp" width = "180" height = "200"/>,
+    
     korean: '싫다', 
     
     }, 
@@ -489,7 +488,7 @@ const VOCAB = {
     
     { 
     
-    english: <iframe src="https://gtvault-my.sharepoint.com/personal/ykim791_gatech_edu/_layouts/15/embed.aspx?UniqueId=76daaa58-0210-4c7d-9da5-f33129c92f00" width="200" height="200" frameborder="0" scrolling="no" allowfullscreen title="kimchi.jpg"></iframe>,
+    english: <img src = "vocab_imgs/kimchi.jpg" width = "180" height = "200"/>,
     
     korean: '김치', 
     
@@ -497,7 +496,7 @@ const VOCAB = {
     
     { 
     
-    english: <iframe src="https://gtvault-my.sharepoint.com/personal/ykim791_gatech_edu/_layouts/15/embed.aspx?UniqueId=24bcbd7d-a776-48f4-b75e-5f4faa6d0c4e" width="200" height="200" frameborder="0" scrolling="no" allowfullscreen title="korea.jpg"></iframe>, 
+    english: <img src = "vocab_imgs/korea.jpg" width = "180" height = "200"/>,
     
     korean: '한국', 
     
@@ -505,7 +504,7 @@ const VOCAB = {
     
     { 
     
-    english: <iframe src="https://gtvault-my.sharepoint.com/personal/ykim791_gatech_edu/_layouts/15/embed.aspx?UniqueId=d81d2717-5e6c-46d1-a2d9-fb56bf4dc94a" width="200" height="200" frameborder="0" scrolling="no" allowfullscreen title="there.jpg"></iframe>,
+    english: <img src = "vocab_imgs/there.jpg" width = "180" height = "200"/>,
     
     korean: '거기', 
     
@@ -513,7 +512,7 @@ const VOCAB = {
     
     { 
     // here
-    english: <iframe src="https://gtvault-my.sharepoint.com/personal/ykim791_gatech_edu/_layouts/15/embed.aspx?UniqueId=cf9d7232-1ce2-4cf6-95a7-4a5e3368e252" width="200" height="200" frameborder="0" scrolling="no" allowfullscreen title="here.jpg"></iframe>,
+    english: <img src = "vocab_imgs/here.jpg" width = "180" height = "200"/>,
     
     korean: '여기', 
     
@@ -529,15 +528,14 @@ const VOCAB = {
     
     { 
     
-    english: <iframe src="https://gtvault-my.sharepoint.com/personal/ykim791_gatech_edu/_layouts/15/embed.aspx?UniqueId=d2d607cd-7a91-40dd-bd58-3dd3bf2d2b5d" width="200" height="200" frameborder="0" scrolling="no" allowfullscreen title="food.bmp"></iframe>,
-    
+    english: <img src = "vocab_imgs/food.bmp" width = "180" height = "200"/>,
     korean: '음식', 
     
     }, 
     
     { 
     
-    english: <iframe src="https://gtvault-my.sharepoint.com/personal/ykim791_gatech_edu/_layouts/15/embed.aspx?UniqueId=9b591430-2b54-41b9-a823-32db1b9e886c" width="200" height="200" frameborder="0" scrolling="no" allowfullscreen title="date.jpg"></iframe>,
+    english: <img src = "vocab_imgs/date.jpg" width = "180" height = "200"/>,
     
     korean: '데이트', 
     
@@ -545,7 +543,7 @@ const VOCAB = {
     
     { 
     
-    english: <iframe src="https://gtvault-my.sharepoint.com/personal/ykim791_gatech_edu/_layouts/15/embed.aspx?UniqueId=c2c468d0-97b9-4f91-8291-50a0abb1f7fc" width="200" height="200" frameborder="0" scrolling="no" allowfullscreen title="no.bmp"></iframe>,
+    english: <img src = "vocab_imgs/no.bmp" width = "180" height = "200"/>,
     
     korean: '아니다', 
     
@@ -553,7 +551,7 @@ const VOCAB = {
     
     { 
     
-    english: <iframe src="https://gtvault-my.sharepoint.com/personal/ykim791_gatech_edu/_layouts/15/embed.aspx?UniqueId=aa2177d9-efd4-4cf6-8258-99551dd5511f" width="200" height="200" frameborder="0" scrolling="no" allowfullscreen title="greeting.bmp"></iframe>,
+    english:<img src = "vocab_imgs/greeting.bmp" width = "180" height = "200"/>,
     
     korean: '인사', 
     
@@ -569,8 +567,8 @@ const VOCAB = {
     
     { 
     // my polite
-    english: <iframe src="https://gtvault-my.sharepoint.com/personal/ykim791_gatech_edu/_layouts/15/embed.aspx?UniqueId=6b8f6922-f121-408a-aaef-358c85dab2d2" width="200" height="200" frameborder="0" scrolling="no" allowfullscreen title="I.jpg"></iframe>
-    ,
+    english: <img src = "vocab_imgs/I.jpg" width = "180" height = "200"/>,
+    
     korean: '제', 
     
     }, 
@@ -601,8 +599,7 @@ const VOCAB = {
     
     { 
     
-    english: <iframe src="https://gtvault-my.sharepoint.com/personal/ykim791_gatech_edu/_layouts/15/embed.aspx?UniqueId=e2a691d5-bfad-4cb2-8637-d747f3de6a99" width="200" height="" frameborder="0" scrolling="no" allowfullscreen title="supermarket.jpg"></iframe>,
-    
+    english: <img src = "vocab_imgs/supermarket.jpg" width = "180" height = "200"/>,
     korean: '마트', 
     
     }, 
@@ -617,23 +614,23 @@ const VOCAB = {
     
     { // spicy rice cake
     
-    english: <iframe src="https://gtvault-my.sharepoint.com/personal/ykim791_gatech_edu/_layouts/15/embed.aspx?UniqueId=2bdab1f3-bfdf-4724-875b-3752dbb8b2e3" width="200" height="200" frameborder="0" scrolling="no" allowfullscreen title="떡볶이.jpg"></iframe>,
+    english: <img src = "vocab_imgs/떡볶이.jpg" width = "180" height = "200"/>,
     
     korean: '떡볶이', 
     
     }, 
     
     { 
-    // all
-    english: <iframe src="https://gtvault-my.sharepoint.com/personal/ykim791_gatech_edu/_layouts/15/embed.aspx?UniqueId=f2d24f59-4106-415d-b3cd-fe6d40aa7d4b" width="200" height="200" frameborder="0" scrolling="no" allowfullscreen title="all(모두).bmp"></iframe>
-    ,
+    // all(모두)
+    english: <img src = "vocab_imgs/all(모두).bmp" width = "180" height = "200"/>,
+    
     korean: '다', 
     
     }, 
     
     { 
     
-    english: <iframe src="https://gtvault-my.sharepoint.com/personal/ykim791_gatech_edu/_layouts/15/embed.aspx?UniqueId=3f7886f6-b115-4008-a419-0b2a7f19290a" width="200" height="200" frameborder="0" scrolling="no" allowfullscreen title="only....bmp"></iframe>,
+    english: <img src = "vocab_imgs/only....bmp" width = "180" height = "200"/>,
     
     korean: 'N만', 
     
@@ -653,17 +650,9 @@ const VOCAB = {
     
     { 
     
-    english: <iframe src="https://gtvault-my.sharepoint.com/personal/ykim791_gatech_edu/_layouts/15/embed.aspx?UniqueId=e2a691d5-bfad-4cb2-8637-d747f3de6a99" width="200" height="200" frameborder="0" scrolling="no" allowfullscreen title="supermarket.jpg"></iframe>,
-    
-    korean: '마트', 
-    
-    }, 
-    
-    { 
-
     
     
-    english: <iframe src="https://gtvault-my.sharepoint.com/personal/ykim791_gatech_edu/_layouts/15/embed.aspx?UniqueId=838761c8-3f24-45bd-89e2-b7310d4d271c" width="200" height="200" frameborder="0" scrolling="no" allowfullscreen title="coffee.jpg"></iframe>,
+    english: <img src = "vocab_imgs/coffee.jpg" width = "180" height = "200"/>,
     
     korean: '커피', 
     
@@ -671,7 +660,7 @@ const VOCAB = {
     
     { 
     
-    english: <iframe src="https://gtvault-my.sharepoint.com/personal/ykim791_gatech_edu/_layouts/15/embed.aspx?UniqueId=cd6a104c-3f29-4048-a8e9-6631ad014bf6" width="200" height="200" frameborder="0" scrolling="no" allowfullscreen title="to drink.jpg"></iframe>,
+    english:  <img src = "vocab_imgs/to drink.jpg" width = "180" height = "200"/>,
     
     korean: '마시다', 
     
@@ -679,7 +668,7 @@ const VOCAB = {
     
     { 
     
-    english: <iframe src="https://gtvault-my.sharepoint.com/personal/ykim791_gatech_edu/_layouts/15/embed.aspx?UniqueId=0a6470b6-cad8-4fb0-8b1e-7b0fbcaeacb0" width="200" height="200" frameborder="0" scrolling="no" allowfullscreen title="girls band.jpg"></iframe>,
+    english:  <img src = "vocab_imgs/girls band.jpg" width = "180" height = "200"/>,
     
     korean: '걸스밴드', 
     
@@ -687,7 +676,7 @@ const VOCAB = {
     
     { 
     
-    english: <iframe src="https://gtvault-my.sharepoint.com/personal/ykim791_gatech_edu/_layouts/15/embed.aspx?UniqueId=d7798d8b-27cc-40cd-9163-fc7a1391b579" width="200" height="200" frameborder="0" scrolling="no" allowfullscreen title="vocal band.jpg"></iframe>,
+    english: <img src = "vocab_imgs/vocal band.jpg" width = "180" height = "200"/>,
     
     korean: '보컬', 
     
@@ -703,7 +692,7 @@ const VOCAB = {
     
     { 
     
-    english: <iframe src="https://gtvault-my.sharepoint.com/personal/ykim791_gatech_edu/_layouts/15/embed.aspx?UniqueId=70222880-a7ea-4c16-ba3e-dede90400b7a" width="200" height="200" frameborder="0" scrolling="no" allowfullscreen title="how.bmp"></iframe>,
+    english:  <img src = "vocab_imgs/how.bmp" width = "180" height = "200"/>,
     
     korean: '어떻게', 
     
@@ -744,7 +733,7 @@ const VOCAB = {
     
     { 
     
-    english:<iframe src="https://gtvault-my.sharepoint.com/personal/ykim791_gatech_edu/_layouts/15/embed.aspx?UniqueId=2349ec03-7ebc-4dbe-b23d-5f18a190cc52" width="200" height="200" frameborder="0" scrolling="no" allowfullscreen title="near,nearby.jpg"></iframe>,
+    english: <img src = "vocab_imgs/near,nearby.jpg" width = "180" height = "200"/>,
     
     korean: '근처', 
     
@@ -752,7 +741,7 @@ const VOCAB = {
     
     { 
     
-    english: <iframe src="https://gtvault-my.sharepoint.com/personal/ykim791_gatech_edu/_layouts/15/embed.aspx?UniqueId=e806de05-85b9-4fcd-af63-2a142818befc" width="200" height="200" frameborder="0" scrolling="no" allowfullscreen title="cafe.jpg"></iframe>,
+    english:  <img src = "vocab_imgs/cafe.jpg" width = "180" height = "200"/>,
     
     korean: '카페', 
     
@@ -764,7 +753,7 @@ const VOCAB = {
     
     { 
     
-    english: <iframe src="https://gtvault-my.sharepoint.com/personal/ykim791_gatech_edu/_layouts/15/embed.aspx?UniqueId=aba0a2f9-b71a-423a-8661-3571a3776ec0" width="200" height="200" frameborder="0" scrolling="no" allowfullscreen title="to make friends.bmp"></iframe>,
+    english:  <img src = "vocab_imgs/to make friends.bmp" width = "180" height = "200"/>,
     
     korean: '사귀다', 
     
@@ -772,7 +761,7 @@ const VOCAB = {
     
     { 
     
-    english: <iframe src="https://gtvault-my.sharepoint.com/personal/ykim791_gatech_edu/_layouts/15/embed.aspx?UniqueId=5e1858e2-f1ab-4a0e-b4ae-a1f7c279b320" width="200" height="200" frameborder="0" scrolling="no" allowfullscreen title="mango.jpg"></iframe>,
+    english: <img src = "vocab_imgs/mango.jpg" width = "180" height = "200"/>,
     
     korean: '망고', 
     
@@ -780,7 +769,7 @@ const VOCAB = {
     
     { 
     
-    english: <iframe src="https://gtvault-my.sharepoint.com/personal/ykim791_gatech_edu/_layouts/15/embed.aspx?UniqueId=57e0eb44-ace0-4079-8ab2-6c4088a18bf1" width="200" height="200" frameborder="0" scrolling="no" allowfullscreen title="주스.jpg"></iframe>,
+    english:  <img src = "vocab_imgs/주스.jpg" width = "180" height = "200"/>,
     
     korean: '주스', 
     
@@ -804,7 +793,7 @@ const VOCAB = {
     
     { 
     
-    english: <iframe src="https://gtvault-my.sharepoint.com/personal/ykim791_gatech_edu/_layouts/15/embed.aspx?UniqueId=d9ceb4f2-b7a9-4205-8f97-73d1d3a74589" width="200" height="200" frameborder="0" scrolling="no" allowfullscreen title="shaved ice.jpg"></iframe>,
+    english:  <img src = "vocab_imgs/shaved ice.jpg" width = "180" height = "200"/>,
     
     korean: '쉐이브 아이스', 
     
@@ -812,7 +801,7 @@ const VOCAB = {
     
     { 
     
-    english: <iframe src="https://gtvault-my.sharepoint.com/personal/ykim791_gatech_edu/_layouts/15/embed.aspx?UniqueId=285c3d47-fe61-4bda-93ec-5cbe99893cf1" width="200" height="200" frameborder="0" scrolling="no" allowfullscreen title="similar.jpg"></iframe>,
+    english:  <img src = "vocab_imgs/similar.jpg" width = "180" height = "200"/>,
     
     korean: '비슷하다', 
     
@@ -836,7 +825,7 @@ const VOCAB = {
     
     { 
     
-    english: <iframe src="https://gtvault-my.sharepoint.com/personal/ykim791_gatech_edu/_layouts/15/embed.aspx?UniqueId=c2b60d27-914d-4874-bac5-a5729576c58c" width="200" height="200" frameborder="0" scrolling="no" allowfullscreen title="couple.jpg"></iframe>,
+    english: <img src = "vocab_imgs/couple.jpg" width = "180" height = "200"/>,
     
     korean: '커플', 
     
@@ -852,7 +841,7 @@ const VOCAB = {
     
     { 
     
-    english: <iframe src="https://gtvault-my.sharepoint.com/personal/ykim791_gatech_edu/_layouts/15/embed.aspx?UniqueId=e58b9a22-1796-41c3-8b78-8d78063eca6a" width="200" height="200" frameborder="0" scrolling="no" allowfullscreen title="2.bmp"></iframe>,
+    english:  <img src = "vocab_imgs/2.bmp" width = "180" height = "200"/>,
     
     korean: '두', 
     
@@ -860,7 +849,7 @@ const VOCAB = {
     
     { 
     
-    english: <iframe src="https://gtvault-my.sharepoint.com/personal/ykim791_gatech_edu/_layouts/15/embed.aspx?UniqueId=10703da1-adb7-4dbb-a144-c1547f0ed8f2" width="200" height="200" frameborder="0" scrolling="no" allowfullscreen title="glass.bmp"></iframe>,
+    english: <img src = "vocab_imgs/glass.bmp" width = "180" height = "200"/>,
     
     korean: '잔', 
     
@@ -868,7 +857,7 @@ const VOCAB = {
     
     { 
     
-    english: <iframe src="https://gtvault-my.sharepoint.com/personal/ykim791_gatech_edu/_layouts/15/embed.aspx?UniqueId=99ece3bf-bb0f-4821-aeed-a38b6b91a3e0" width="200" height="200" frameborder="0" scrolling="no" allowfullscreen title="money.bmp"></iframe>,
+    english: <img src = "vocab_imgs/money.bmp" width = "180" height = "200"/>,
     
     korean: '돈', 
     
@@ -876,7 +865,7 @@ const VOCAB = {
     
     { 
     
-    english: <iframe src="https://gtvault-my.sharepoint.com/personal/ykim791_gatech_edu/_layouts/15/embed.aspx?UniqueId=36751712-20c7-41c0-903e-30d56c49fcb9" width="200" height="200" frameborder="0" scrolling="no" allowfullscreen title="to buy.jpg"></iframe>,
+    english:  <img src = "vocab_imgs/to buy.jpg" width = "180" height = "200"/>,
     
     korean: '사다', 
     
@@ -892,7 +881,7 @@ const VOCAB = {
     
     { 
     
-    english: <iframe src="https://gtvault-my.sharepoint.com/personal/ykim791_gatech_edu/_layouts/15/embed.aspx?UniqueId=d05bf641-7e7c-42bd-8256-2f0691db4dcd" width="200" height="200" frameborder="0" scrolling="no" allowfullscreen title="to order food.bmp"></iframe>,
+    english:  <img src = "vocab_imgs/to order food.bmp" width = "180" height = "200"/>,
     
     korean: '주문하다', 
     
@@ -900,7 +889,7 @@ const VOCAB = {
     
     { 
     
-    english: <iframe src="https://gtvault-my.sharepoint.com/personal/ykim791_gatech_edu/_layouts/15/embed.aspx?UniqueId=ed8b7af2-ebe7-447e-8dd7-dfdd6a158f5a" width="200" height="200" frameborder="0" scrolling="no" allowfullscreen title="to become hungry.bmp"></iframe>,
+    english:  <img src = "vocab_imgs/to become hungry.bmp" width = "180" height = "200"/>,
     
     korean: '배 고프다', 
     
@@ -912,7 +901,7 @@ const VOCAB = {
     
     { 
     
-    english: <iframe src="https://gtvault-my.sharepoint.com/personal/ykim791_gatech_edu/_layouts/15/embed.aspx?UniqueId=e42e0b4b-88ad-4e65-afd3-61c37dfeed7a" width="200" height="200" frameborder="0" scrolling="no" allowfullscreen title="weekend.jpg"></iframe>,
+    english:  <img src = "vocab_imgs/weekend.jpg" width = "180" height = "200"/>,
     
     korean: '주말', 
     
@@ -928,7 +917,7 @@ const VOCAB = {
     
     { 
     
-    english: <iframe src="https://gtvault-my.sharepoint.com/personal/ykim791_gatech_edu/_layouts/15/embed.aspx?UniqueId=0abac25e-17d5-47c4-ad45-4d526de3f70a" width="200" height="200" frameborder="0" scrolling="no" allowfullscreen title="Seoul_Land.jpg"></iframe>,
+    english:  <img src = "vocab_imgs/Seoul_land.jpg" width = "180" height = "200"/>,
     
     korean: '서울랜드', 
     
@@ -969,7 +958,7 @@ const VOCAB = {
     
     { 
     
-    english:<iframe src="https://gtvault-my.sharepoint.com/personal/ykim791_gatech_edu/_layouts/15/embed.aspx?UniqueId=61bc9acd-b4eb-40a1-b2a3-f292d192aebe" width="200" height="200" frameborder="0" scrolling="no" allowfullscreen title="롤러코스터.jpg"></iframe>,
+    english: <img src = "vocab_imgs/롤러코스터.jpg" width = "180" height = "200"/>,
     
     korean: '롤러코스터', 
     
@@ -1009,7 +998,7 @@ const VOCAB = {
     
     { 
     
-    english: <iframe src="https://gtvault-my.sharepoint.com/personal/ykim791_gatech_edu/_layouts/15/embed.aspx?UniqueId=d34f8660-0244-4b84-aef7-67e0a27133a3" width="200" height="200" frameborder="0" scrolling="no" allowfullscreen title="saturday.jpg"></iframe>,
+    english:  <img src = "vocab_imgs/saturday.jpg" width = "180" height = "200"/>,
     
     korean: '토요일', 
     
@@ -1025,7 +1014,7 @@ const VOCAB = {
     
     { 
     
-    english: <iframe src="https://gtvault-my.sharepoint.com/personal/ykim791_gatech_edu/_layouts/15/embed.aspx?UniqueId=c8dd904a-c1c8-4bcc-b462-926d91a26956" width="200" height="200" frameborder="0" scrolling="no" allowfullscreen title="partner.jpg"></iframe>,
+    english: <img src = "vocab_imgs/partner.jpg" width = "180" height = "200"/>,
     
     korean: '파트너', 
     
@@ -1041,7 +1030,7 @@ const VOCAB = {
     
     { 
     
-    english: <iframe src="https://gtvault-my.sharepoint.com/personal/ykim791_gatech_edu/_layouts/15/embed.aspx?UniqueId=2a79db75-74ed-465d-b0bf-248435eac12b" width="200" height="200" frameborder="0" scrolling="no" allowfullscreen title="who.png"></iframe>,
+    english: <img src = "vocab_imgs/who.png" width = "180" height = "200"/>,
     
     korean: '누구', 
     
@@ -1049,7 +1038,7 @@ const VOCAB = {
     
     { 
     
-    english: <iframe src="https://gtvault-my.sharepoint.com/personal/ykim791_gatech_edu/_layouts/15/embed.aspx?UniqueId=0dd0b4d4-1027-42de-9488-0aa077904d88" width="200" height="200" frameborder="0" scrolling="no" allowfullscreen title="love.jpg"></iframe>,
+    english: <img src = "vocab_imgs/love.jpg" width = "180" height = "200"/>,
     
     korean: '사랑', 
     
@@ -1057,7 +1046,7 @@ const VOCAB = {
     
     { 
     
-    english:<iframe src="https://gtvault-my.sharepoint.com/personal/ykim791_gatech_edu/_layouts/15/embed.aspx?UniqueId=e30a4447-36fc-49a3-906d-c4f7f046d4ef" width="200" height="200" frameborder="0" scrolling="no" allowfullscreen title="관람차.jpg"></iframe>,
+    english: <img src = "vocab_imgs/관람차.jpg" width = "180" height = "200"/>,
     
     korean: '관람차', 
     
@@ -1065,7 +1054,7 @@ const VOCAB = {
     
     { 
     
-    english: <iframe src="https://gtvault-my.sharepoint.com/personal/ykim791_gatech_edu/_layouts/15/embed.aspx?UniqueId=39673bd7-3283-4745-9185-b34cf1b07b77" width="200" height="200" frameborder="0" scrolling="no" allowfullscreen title="inside.jpg"></iframe>,
+    english:<img src = "vocab_imgs/inside.jpg" width = "180" height = "200"/>,
     
     korean: '안', 
     
@@ -1073,7 +1062,7 @@ const VOCAB = {
     
     { 
     
-    english:<iframe src="https://gtvault-my.sharepoint.com/personal/ykim791_gatech_edu/_layouts/15/embed.aspx?UniqueId=ec5d23af-cf49-4cbd-b605-d0282dba977d" width="200" height="200" frameborder="0" scrolling="no" allowfullscreen title="솜사탕.jpg"></iframe>,
+    english:<img src = "vocab_imgs/솜사탕.jpg" width = "180" height = "200"/>,
     
     korean: '솜사탕', 
     
