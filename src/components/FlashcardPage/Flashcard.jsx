@@ -6,6 +6,8 @@ import { faTrashAlt } from '@fortawesome/free-solid-svg-icons';
 
 const Flashcard = ({ flashcard, imageURL, onDeleteFlashcard}) => {
   const [flip, setFlip] = useState(false);
+  const [isFavorited, setIsFavorited] = useState(false);
+  const [isStarred, setIsStarred] = useState(false);
   const sound =
     getAudio(flashcard.korean) === null
       ? null
@@ -15,13 +17,23 @@ const Flashcard = ({ flashcard, imageURL, onDeleteFlashcard}) => {
     event.stopPropagation();
     sound.play();
   };
+
+  const toggleFavorite = (event) => {
+    event.stopPropagation();
+    setIsFavorited(!isFavorited);
+  };
+
+  const toggleStar = (event) => {
+    event.stopPropagation();
+    setIsStarred(!isStarred);
+  };
+
   const handleDelete = () => {
     if (flashcard.isUserAdded && window.confirm("Are you sure you want to delete this flashcard?")) {
       onDeleteFlashcard();
       console.log("Deleting Flashcard", flashcard);
     }
   };
-
 
   return (
     <div className={`card${flip ? ' flip' : ''}`} onClick={() => setFlip(!flip)}>
@@ -39,6 +51,9 @@ const Flashcard = ({ flashcard, imageURL, onDeleteFlashcard}) => {
                 <SoundSvg />
               </div>
             )}
+            <div className='star-icon' onClick={toggleStar}>
+              {isStarred ? '⭐️' : '☆'}
+            </div>
             {flashcard.isUserAdded && (
               <div className='delete-icon' onClick={handleDelete}>
                 <FontAwesomeIcon
