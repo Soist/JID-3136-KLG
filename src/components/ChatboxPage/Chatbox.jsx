@@ -55,11 +55,9 @@ function Chatbox() {
         <button className="send-button" onClick={handleSendMessage}>
           Send
         </button>
-        <button className="korean-keyboard-button" onClick={() => setShowKoreanKeyboard(!showKoreanKeyboard)}>
-          Korean Keyboard
-        </button>
+        
       </div>
-      {showKoreanKeyboard && <KoreanKeyboard onCharacterClick={handleCharacterClick} />}
+      
     </div>
   );
 }
