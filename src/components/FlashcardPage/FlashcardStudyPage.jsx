@@ -117,23 +117,35 @@ function FlashcardStudyPage() {
     setSelectedFlashcardIndex(null);
   };
 
-  return (
-    <div id='flashcard-container'>
-      <div className='filter-buttons'>
-        <button onClick={handleToggleFavoritesFilter}>
-          {showFavoritesOnly ? 'Show All' : 'Show Favorites Only'}
-        </button>
-      </div>
-      {filteredFlashcards.map((flashcard, index) => (
-        <Flashcard
-          key={index}
-          flashcard={flashcard}
-          imageURL={flashcard.image}
-          onDeleteFlashcard={() => handleDelete(index)}
-          onToggleFavorite={() => handleToggleFavorite(index)}
-          isStarred={flashcard.isStarred}
-        />
-      ))}
+  
+    return (
+      <div id='flashcard-container'>
+        <div className='filter-buttons'>
+          <button onClick={handleToggleFavoritesFilter}>
+            {showFavoritesOnly ? 'Show All' : 'Show Favorites Only'}
+          </button>
+        </div>
+        {showFavoritesOnly
+          ? [...favoriteFlashcards, ...userAddedFlashcards].map((flashcard, index) => (
+              <Flashcard
+                key={index}
+                flashcard={flashcard}
+                imageURL={flashcard.image}
+                onDeleteFlashcard={() => handleDelete(index)}
+                onToggleFavorite={() => handleToggleFavorite(index)}
+                isStarred={flashcard.isStarred}
+              />
+            ))
+          : [...preExistingFlashcards, ...userAddedFlashcards].map((flashcard, index) => (
+              <Flashcard
+                key={index}
+                flashcard={flashcard}
+                imageURL={flashcard.image}
+                onDeleteFlashcard={() => handleDelete(index)}
+                onToggleFavorite={() => handleToggleFavorite(index)}
+                isStarred={flashcard.isStarred}
+              />
+            ))}
       <div className='add-flashcard-button'>
         <button onClick={() => handleAddFlashcard(null)}>Add Flashcard</button>
       </div>
@@ -185,6 +197,7 @@ function FlashcardStudyPage() {
       )}
     </div>
   );
+  
 }
 
 export default FlashcardStudyPage;
