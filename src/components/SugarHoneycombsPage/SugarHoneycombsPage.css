@@ -3,7 +3,6 @@
     flex-direction: row;
 }
 
-
 #sugar-honeycombs-full-container #background {
     min-height: 100%;
     min-width: 1024px;
@@ -22,6 +21,39 @@
     width: 55%;
 }
 
+
+
+@keyframes shake {
+    0% { transform: translateX(0); }
+    25% { transform: translateX(-50px); }
+    50% { transform: translateX(50px); }
+    75% { transform: translateX(-50px); }
+    100% { transform: translateX(50px); }
+}
+#sugar-honeycombs-full-container #overlay-image {
+    position: absolute;
+    bottom: 0; /* place it at the bottom of the container */
+    left: 300; /* place it at the left of the container */
+    z-index: 1; /* ensure it's above the background image */
+    opacity: 0.9; /* adjust transparency as needed */
+    width: 1000px; /* set the exact width */
+    height: 800px; /* set the exact height */
+    animation: shake 3.5s ease-in-out infinite; /* apply the shake animation */
+}
+
+#sugar-honeycombs-full-container #gameover-overlay {
+    position: absolute;
+    z-index: 1;
+    display: flexs; /* Initially hidden, will be displayed with JavaScript */
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    top: 25vh; /* Center it vertically */
+    left: 35%; /* Center it horizontally */
+}
+
+
+
 #sugar-honeycombs-container {
     display: flex;
     flex-direction: column;
@@ -36,6 +68,8 @@
     border-radius: 1rem;
     background-color: #ffffe0;
 }
+
+
 
 #sugar-honeycombs-container #pregame {
     display: flex;
@@ -75,37 +109,65 @@
 }
 
 #sugar-honeycombs-container #win-text {
-    display: none;
     font-weight: bold;
     color: green;
 }
 
 #sugar-honeycombs-container #lose-text {
-    display: none;
     font-weight: bold;
     color: red;
 }
+
+#sugar-honeycombs-container #error {
+    flex-direction: column;
+    align-items: center;
+}
+
+
+#sugar-honeycombs-container #error-message {
+    font-weight: bold;
+    color: red;
+}
+
+
+
+#sugar-honeycombs-container #correct {
+    flex-direction: column;
+    align-items: center;
+}
+
+#sugar-honeycombs-container #correct-message {
+    font-weight: bold;
+    color: green;
+}
+
+
 
 #sugar-honeycombs-container #audio-btn {
     background-color: #d8b863;
 }
 
-.timer {
-    margin-top: 10px; 
+
+#sugar-honeycombs-container #tutorial {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem;
+    border-radius: 1rem;
 }
 
-.timer-box {
-    background-image: url('resources/btn_background.png');
-    background-size: cover;
-    background-repeat: no-repeat;
-    border-radius: 4px;
-    padding: 5px 15px;
-    color: white;
-    text-align: center;
-    width: 120px;
-    height: 40px;
-    margin-top: 10px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+#sugar-honeycombs-container .red {
+    fill: red;
+}
+
+#sugar-honeycombs-container #timeout-container {
+    width: 100%;
+    height: 30px;
+    background-color: #ddd; /* background of the container */
+}
+
+#sugar-honeycombs-container #timeout-bar { /* Important: #sugar-honeycombs-container is required if you put timeout-bar within the container */
+    width: 100%; /* initial full width */
+    height: 100%;
+    background-color: #4CAF50; /* color of the timeout bar */
 }

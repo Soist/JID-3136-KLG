@@ -3,72 +3,84 @@ const DummyProgress = {
         { //correct answers
             rlgl: 0,
             tug: 0,
-            sugar: 0
+            sugar: 0,
+            marble: 0,
         },
         { //total answers
             rlgl: 0,
             tug: 0,
-            sugar: 0
+            sugar: 0,
+            marble: 0,
         }
     ],
     2: [
         { //correct answers
             rlgl: 0,
             tug: 0,
-            sugar: 0
+            sugar: 0,
+            marble: 0,
         },
         { //total answers
             rlgl: 0,
             tug: 0,
-            sugar: 0
+            sugar: 0,
+            marble: 0,
         }
     ],
     3: [
         { //correct answers
             rlgl: 0,
             tug: 0,
-            sugar: 0
+            sugar: 0,
+            marble: 0,
         },
         { //total answers
             rlgl: 0,
             tug: 0,
-            sugar: 0
+            sugar: 0,
+            marble: 0,
         }
     ],
     4: [
         { //correct answers
             rlgl: 0,
             tug: 0,
-            sugar: 0
+            sugar: 0,
+            marble: 0,
         },
         { //total answers
             rlgl: 0,
             tug: 0,
-            sugar: 0
+            sugar: 0,
+            marble: 0,
         }
     ],
     5: [
         { //correct answers
             rlgl: 0,
             tug: 0,
-            sugar: 0
+            sugar: 0,
+            marble: 0,
         },
         { //total answers
             rlgl: 0,
             tug: 0,
-            sugar: 0
+            sugar: 0,
+            marble: 0,
         }
     ],
     6: [
         { //correct answers
             rlgl: 0,
             tug: 0,
-            sugar: 0
+            sugar: 0,
+            marble: 0,
         },
         { //total answers
             rlgl: 0,
             tug: 0,
-            sugar: 0
+            sugar: 0,
+            marble: 0,
         }
     ],
 };

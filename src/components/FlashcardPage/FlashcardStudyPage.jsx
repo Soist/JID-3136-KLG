@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import { getVocab } from '../../vocabData';
 import Flashcard from './Flashcard';
@@ -9,11 +9,23 @@ function FlashcardStudyPage() {
   const unit = location.state;
   const initialCards = getVocab(unit.number);
 
+  const [preExistingFlashcards, setPreExistingFlashcards] = useState(initialCards);
+  const [userAddedFlashcards, setUserAddedFlashcards] = useState(() => {
+    const localData = localStorage.getItem('userAddedFlashcards');
+    return localData ? JSON.parse(localData) : [];
+  });
+
   const [flashcards, setFlashcards] = useState(initialCards);
+  const [favoriteFlashcards, setFavoriteFlashcards] = useState([]);
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [koreanText, setKoreanText] = useState('');
   const [imageURL, setImageURL] = useState('');
   const [selectedFlashcardIndex, setSelectedFlashcardIndex] = useState(null);
+  const [showFavoritesOnly, setShowFavoritesOnly] = useState(false);
+  useEffect(() => {
+    localStorage.setItem('userAddedFlashcards', JSON.stringify(userAddedFlashcards));
+  }, [userAddedFlashcards]);
+
 
   const handleAddFlashcard = (index) => {
     setSelectedFlashcardIndex(index);
@@ -39,24 +51,59 @@ function FlashcardStudyPage() {
     }
   };
 
+  const handleDelete = (index) => {
+    if (index < preExistingFlashcards.length) {
+      return;
+    }
+  
+    const userAddedIndex = index - preExistingFlashcards.length;
+    const updatedUserAddedFlashcards = [...userAddedFlashcards];
+    updatedUserAddedFlashcards.splice(userAddedIndex, 1);
+    setUserAddedFlashcards(updatedUserAddedFlashcards);
+  };
+  
+  const handleToggleFavoritesFilter = () => {
+    setShowFavoritesOnly(!showFavoritesOnly);
+  };
+
+  const handleToggleFavorite = (index) => {
+    const updatedFlashcards = [...flashcards];
+    const toggledFlashcard = updatedFlashcards[index];
+
+    toggledFlashcard.isStarred = !toggledFlashcard.isStarred;
+
+    if (toggledFlashcard.isStarred) {
+      setFavoriteFlashcards([...favoriteFlashcards, toggledFlashcard]);
+    } else {
+      const updatedFavorites = favoriteFlashcards.filter((favFlashcard) => favFlashcard !== toggledFlashcard);
+      setFavoriteFlashcards(updatedFavorites);
+    }
+
+    setFlashcards(updatedFlashcards);
+  };
+
+  const filteredFlashcards = showFavoritesOnly
+    ? flashcards.filter((flashcard) => flashcard.isStarred)
+    : flashcards.filter((flashcard) => !showFavoritesOnly || flashcard.isStarred);
+
 
   const handleSaveFlashcard = () => {
     if (selectedFlashcardIndex !== null) {
-      const updatedFlashcards = [...flashcards];
-      updatedFlashcards[selectedFlashcardIndex] = {
-        ...updatedFlashcards[selectedFlashcardIndex],
+      const updatedUserAddedFlashcards = [...userAddedFlashcards];
+      updatedUserAddedFlashcards[selectedFlashcardIndex] = {
+        ...updatedUserAddedFlashcards[selectedFlashcardIndex],
         korean: koreanText,
         image: imageURL,
       };
-      setFlashcards(updatedFlashcards);
+      setUserAddedFlashcards(updatedUserAddedFlashcards);
     } else {
       const newFlashcard = {
         korean: koreanText,
         image: imageURL,
+        isUserAdded: true,
       };
-      setFlashcards([...flashcards, newFlashcard]);
+      setUserAddedFlashcards([...userAddedFlashcards, newFlashcard]);
     }
-
     setIsModalVisible(false);
     setKoreanText('');
     setImageURL('');
@@ -70,16 +117,35 @@ function FlashcardStudyPage() {
     setSelectedFlashcardIndex(null);
   };
 
-  return (
-    <div id='flashcard-container'>
-      {flashcards.map((flashcard, index) => (
-        <Flashcard
-          key={index}
-          flashcard={flashcard}
-          imageURL={flashcard.image}
-          onAddFlashcard={() => handleAddFlashcard(index)}
-        />
-      ))}
+  
+    return (
+      <div id='flashcard-container'>
+        <div className='filter-buttons'>
+          <button onClick={handleToggleFavoritesFilter}>
+            {showFavoritesOnly ? 'Show All' : 'Show Favorites Only'}
+          </button>
+        </div>
+        {showFavoritesOnly
+          ? [...favoriteFlashcards, ...userAddedFlashcards].map((flashcard, index) => (
+              <Flashcard
+                key={index}
+                flashcard={flashcard}
+                imageURL={flashcard.image}
+                onDeleteFlashcard={() => handleDelete(index)}
+                onToggleFavorite={() => handleToggleFavorite(index)}
+                isStarred={flashcard.isStarred}
+              />
+            ))
+          : [...preExistingFlashcards, ...userAddedFlashcards].map((flashcard, index) => (
+              <Flashcard
+                key={index}
+                flashcard={flashcard}
+                imageURL={flashcard.image}
+                onDeleteFlashcard={() => handleDelete(index)}
+                onToggleFavorite={() => handleToggleFavorite(index)}
+                isStarred={flashcard.isStarred}
+              />
+            ))}
       <div className='add-flashcard-button'>
         <button onClick={() => handleAddFlashcard(null)}>Add Flashcard</button>
       </div>
@@ -116,15 +182,6 @@ function FlashcardStudyPage() {
                   />
                 </label>
               </div>
-              <label>
-                Image URL:
-                <input
-                  type='text'
-                  value={imageURL}
-                  onChange={handleImageURLChange}
-                  required
-                />
-              </label>
               {imageURL && (
                 <div className='image-preview'>
                   <img src={imageURL} alt='Image Preview' />
@@ -140,6 +197,7 @@ function FlashcardStudyPage() {
       )}
     </div>
   );
+  
 }
 
 export default FlashcardStudyPage;

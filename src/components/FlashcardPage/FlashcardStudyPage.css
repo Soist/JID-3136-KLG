@@ -253,3 +253,70 @@
     scrollbar-color: auto auto;
   }
   
+  #flashcard-container .card .delete-icon {
+    position: absolute;
+    top: -5px;
+    left: 180px;
+    padding: 0.3rem;
+    cursor: pointer;
+    background-color: transparent;
+  }
+  
+  #flashcard-container .card .delete-icon:hover svg path {
+    fill: rgba(255, 0, 0, 1);
+  }
+  
+
+  .confirmation-modal {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 20px;
+    background: #fff;
+    border: 1px solid #000;
+    z-index: 999;
+  }
+  
+  .confirmation-modal button {
+    margin: 10px;
+  }
+  
+  #flashcard-container .card .star-icon {
+    position: absolute;
+    top: -1px;
+    left: 5px;
+    padding: 0.3rem;
+    cursor: pointer;
+    color: black; 
+}
+
+  #flashcard-container .card .star-icon:hover {
+    color: yellow;
+  }
+  .filter-buttons {
+    position: absolute;
+    top: -80px;
+    right: 160px;
+    z-index: 999;
+  }
+  
+  .filter-buttons button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+  }
+  
+  .filter-buttons button:hover {
+    background-color: #0056b3; 
+  }
+  

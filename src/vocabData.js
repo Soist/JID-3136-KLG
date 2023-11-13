@@ -3,10 +3,8 @@ const VOCAB = {
     1: [ 
     
     { 
-    
-    english: <img src="https://picocli.info/images/name.jpg" width="200" height="200"/>, 
-    
-    korean: '이름', 
+        english: <img src = "vocab_imgs/name.jpg" width = "180" height = "200"/>
+        ,korean: '이름', 
     
      
      
@@ -20,8 +18,8 @@ const VOCAB = {
     
     { 
     
-    english: <img src = "https://media.giphy.com/media/ZvJRQMmFBEjrYNvV0t/giphy.gif" width="200" height="200"/>, 
-    
+    english:  <img src = "vocab_imgs/참.jpg" width = "180" height = "200"/>
+    ,
     korean: '참', 
     
      
@@ -43,8 +41,7 @@ const VOCAB = {
     
     { 
     
-    english:<img src="https://clipartix.com/wp-content/uploads/2016/04/Science-teacher-clipart-free-clipart-images.gif" width="200" height="200"/>, 
-    
+    english:<img src = "vocab_imgs/science.png" width = "180" height = "180"/>,
     korean: '사이언스', 
     
     // Science 
@@ -53,8 +50,8 @@ const VOCAB = {
     
     { 
     
-    english: <img src = "https://media.giphy.com/media/VxyJbFdnS41m4vh48G/giphy.gif" width="200" height="200"/>, 
-    
+    english: <img src = "vocab_imgs/here.jpg" width = "180" height = "180"/>
+    ,
     korean: '여기', 
     
      
@@ -70,8 +67,8 @@ const VOCAB = {
     
     { 
     
-    english: <img src = "https://media.giphy.com/media/6WDJlQsFLpyVzqqr8o/giphy.gif" width="200" height="200"/>, 
-    
+    english:<img src = "vocab_imgs/building.bmp" width = "180" height = "200"/>
+    ,
     korean: '빌딩', 
     
      
@@ -86,7 +83,7 @@ const VOCAB = {
     
     { 
     
-    english: <img src = "https://media.giphy.com/media/wLbkx7FKyeNHFcf5oR/giphy.gif" width="200" height="200"/>, 
+    english:<img src = "vocab_imgs/yes.bmp" width = "180" height = "200"/>,
     
     korean: '네', 
     
@@ -102,7 +99,7 @@ const VOCAB = {
     
     { 
     
-    english: <img src = "https://media.giphy.com/media/K4c9kvKt0CFZ00HnC4/giphy.gif" width="200" height="200"/>, 
+    english:<img src = "vocab_imgs/what.jpg" width = "180" height = "200"/>,
     
     korean: '뭐', 
     
@@ -118,7 +115,7 @@ const VOCAB = {
     
     { 
     
-    english: <img src = "https://www.collegetransitions.com/wp-content/uploads/2019/07/shutterstock_421386589-1200x675.jpg" width="200" height="200"/>, 
+    english:<img src = "vocab_imgs/major.jpg" width = "180" height = "200"/>,
     
     korean: '전공', 
     
@@ -131,7 +128,7 @@ const VOCAB = {
     
     { 
     
-    english: <img src="https://www.freepnglogos.com/uploads/1-number-png/red-1-number-one-clipart-clipart-panda-clipart-images-2.png" width="200" height="200"/>, 
+    english:<img src = "vocab_imgs/1.bmp" width = "180" height = "200"/>,
     
     korean: '일', 
     
@@ -170,8 +167,7 @@ const VOCAB = {
     
     { 
     
-    english: <img src = "https://media.giphy.com/media/l3vR85PnGsBwu1PFK/giphy.gif" width="200" height="180"/>, 
-    
+    english:<img src = "vocab_imgs/computer.jpg" width = "180" height = "200"/>,
     korean: '컴퓨터', 
     
      
@@ -230,7 +226,7 @@ const VOCAB = {
     
     { 
     
-    english: 'man', 
+    english: <img src = "https://www.freeiconspng.com/thumbs/symbol-of-man-icon/man-symbol-sign-clip-art-at-clker-com-vector-clip-art-online--0.png" width="100" height="160"/>, 
     
     korean: '남자', 
     
@@ -238,7 +234,7 @@ const VOCAB = {
     
     { 
     
-    english: 'friend', 
+    english: <img src = "vocab_imgs/friend.jpg" width = "180" height = "200"/>,
     
     korean: '친구', 
     
@@ -246,39 +242,38 @@ const VOCAB = {
     
     { 
     
-    english: 'today', 
-    
+    english: <img src = "vocab_imgs/today.png" width = "180" height = "200"/>,
+    // today
     korean: '오늘', 
     
     }, 
     
     { 
     
-    english: 'evening; dinner', 
-    
+    english: <img src = "https://media.giphy.com/media/Nvpra20O4TnXi/giphy.gif" width="200" height="180"/>, 
     korean: '저녁', 
     
     }, 
     
     { 
     
-    english: 'time', 
+    english: <img src = "vocab_imgs/time.jpg" width = "180" height = "200"/>,
     
     korean: '시간', 
     
     }, 
     
     { 
-    
-    english: 'where', 
+    // where
+    english:<img src = "vocab_imgs/where.jpg" width = "180" height = "200"/>,
     
     korean: '어디', 
     
     }, 
     
     { 
-    
-    english: 'dormitory', 
+        
+    english:<img src = "vocab_imgs/dormitory(기숙사).bmp" width = "180" height = "200"/>,
     
     korean: '기숙사', 
     
@@ -286,7 +281,7 @@ const VOCAB = {
     
     { 
     
-    english: 'by the way', 
+    english: <img src = "https://media.giphy.com/media/3ohs85MCGQHPnWsgzC/giphy.gif" width="200" height="170"/>, 
     
     korean: '그런데', 
     
@@ -294,7 +289,7 @@ const VOCAB = {
     
     { 
     
-    english: 'another', 
+    english:  <img src = "https://media.giphy.com/media/ziLadIVnOGCKk/giphy.gif" width="200" height="170"/>, 
     
     korean: '다른', 
     
@@ -302,7 +297,7 @@ const VOCAB = {
     
     { 
     
-    english: 'appointment', 
+    english: <img src = "https://www.apptoto.com/wp-content/uploads/2017/06/calendar-appointment-confirmed.jpg" width="200" height="170"/>, 
     
     korean: '약속', 
     
@@ -310,7 +305,8 @@ const VOCAB = {
     
     { 
     
-    english: 'then', 
+    english: <img src = "https://previews.123rf.com/images/dirkercken/dirkercken1507/dirkercken150700078/42958026-now-or-then.jpg" width="200" height="170"/>, 
+    
     
     korean: '그럼', 
     
@@ -318,7 +314,7 @@ const VOCAB = {
     
     { 
     
-    english: 'tomorrow', 
+    english:  <img src = "https://as2.ftcdn.net/v2/jpg/02/25/17/97/1000_F_225179790_wcmHzhoUbNsVJhUWH898cnTtVUoFMbq9.jpg" width="200" height="170"/>, 
     
     korean: '내일', 
     
@@ -326,7 +322,7 @@ const VOCAB = {
     
     { 
     
-    english: 'tennis', 
+    english:<img src = "vocab_imgs/tennis.jpg" width = "180" height = "200"/>,
     
     korean: '테니스', 
     
@@ -334,7 +330,8 @@ const VOCAB = {
     
     { 
     
-    english: 'well', 
+    english:  <img src = "https://media.giphy.com/media/gGwwL3rf3h5MN2IXGJ/giphy.gif" width="200" height="170"/>, 
+     
     
     korean: '잘', 
     
@@ -342,7 +339,7 @@ const VOCAB = {
     
     { 
     
-    english: 'to play (tennis, table tennis, golf)', 
+    english:<img src = "vocab_imgs/to play.bmp" width = "180" height = "200"/>,
     
     korean: '치다', 
     
@@ -350,7 +347,8 @@ const VOCAB = {
     
     { 
     
-    english: 'Oh', 
+    english: <img src = "https://media.giphy.com/media/MQ75OJS3LndTmDcJwc/giphy.gif" width="200" height="170"/>, 
+     
     
     korean: '어', 
     
@@ -358,7 +356,7 @@ const VOCAB = {
     
     { 
     
-    english: 'book', 
+    english: <img src = "vocab_imgs/book.jpg" width = "180" height = "200"/>,
     
     korean: '책', 
     
@@ -366,7 +364,7 @@ const VOCAB = {
     
     { 
     
-    english: 'to read', 
+    english: <img src = "vocab_imgs/read.jpg" width = "180" height = "200"/>,
     
     korean: '읽다', 
     
@@ -374,7 +372,7 @@ const VOCAB = {
     
     { 
     
-    english: 'a little', 
+    english:<img src = "vocab_imgs/a little.bmp" width = "180" height = "200"/>,
     
     korean: '조금', 
     
@@ -382,23 +380,23 @@ const VOCAB = {
     
     { 
     
-    english: 'together', 
-    
+    english:<img src = "vocab_imgs/together.bmp" width = "180" height = "200"/>,
+    // together
     korean: '같이', 
     
     }, 
     
     { 
     
-    english: 'to be good', 
+    english: <img src = "https://www.wikihow.com/images/thumb/c/c2/Be-a-Good-Person-Step-1-Version-3.jpg/v4-460px-Be-a-Good-Person-Step-1-Version-3.jpg.webp" width="200" height="170"/>, 
     
     korean: '좋다', 
     
     }, 
     
     { 
-    
-    english: 'often', 
+    // often
+    english:  <img src = "https://media.giphy.com/media/VbhWxamkcdumUBBnoF/giphy.gif" width="200" height="170"/>, 
     
     korean: '자주', 
     
@@ -410,7 +408,7 @@ const VOCAB = {
     
     { 
     
-    english: 'to eat', 
+    english:<img src = "vocab_imgs/to eat.jpg" width = "180" height = "200"/>,
     
     korean: '먹다', 
     
@@ -418,7 +416,7 @@ const VOCAB = {
     
     { 
     
-    english: 'school', 
+    english: <img src = "vocab_imgs/school.jpg" width = "180" height = "200"/>,
     
     korean: '학교', 
     
@@ -426,15 +424,15 @@ const VOCAB = {
     
     { 
     
-    english: 'restaurant', 
+    english: <img src = "vocab_imgs/restaurant.jpg" width = "180" height = "200"/>,
     
     korean: '식당', 
     
     }, 
     
     { 
-    
-    english: 'with somebody', 
+    // with somebody
+    english:  <img src = "https://t3.ftcdn.net/jpg/04/57/94/68/360_F_457946810_epGAzW9RQjZDuZGcmSt2L3gDQuI2twxZ.jpg" width="200" height="170"/>, 
     
     korean: '하고', 
     
@@ -442,23 +440,22 @@ const VOCAB = {
     
     { 
     
-    english: 'to go', 
+    english: <img src = "vocab_imgs/to go.jpg" width = "180" height = "200"/>,
     
     korean: '가다', 
     
     }, 
     
     { 
-    
-    english: 'um', 
-    
+    // um
+    english: <img src = "https://media.giphy.com/media/abOowlp6JBGCqMWqbZ/giphy.gif" width="200" height="170"/>, 
     korean: '음', 
     
     }, 
     
     { 
-    
-    english: 'how about ~?', 
+    // how about? ...
+    english:  <img src = "https://media.giphy.com/media/CldlBxUBsXQGY/giphy.gif" width="200" height="170"/>,  
     
     korean: '어때', 
     
@@ -466,7 +463,7 @@ const VOCAB = {
     
     { 
     
-    english: 'why?', 
+    english:<img src = "vocab_imgs/why.jpg" width = "180" height = "200"/>,
     
     korean: '왜', 
     
@@ -474,15 +471,16 @@ const VOCAB = {
     
     { 
     
-    english: 'to dislike', 
+    english: <img src = "vocab_imgs/to dislike - undesireable.bmp" width = "180" height = "200"/>,
     
     korean: '싫다', 
     
     }, 
     
     { 
+    // taste, flavor
+    english:  <img src = "https://media.giphy.com/media/xT1R9yFzscIXMWxpOE/giphy.gif" width="200" height="170"/>,  
     
-    english: 'taste, flavor', 
     
     korean: '맛', 
     
@@ -490,7 +488,7 @@ const VOCAB = {
     
     { 
     
-    english: 'kimchi', 
+    english: <img src = "vocab_imgs/kimchi.jpg" width = "180" height = "200"/>,
     
     korean: '김치', 
     
@@ -498,7 +496,7 @@ const VOCAB = {
     
     { 
     
-    english: 'Korea', 
+    english: <img src = "vocab_imgs/korea.jpg" width = "180" height = "200"/>,
     
     korean: '한국', 
     
@@ -506,23 +504,23 @@ const VOCAB = {
     
     { 
     
-    english: 'there', 
+    english: <img src = "vocab_imgs/there.jpg" width = "180" height = "200"/>,
     
     korean: '거기', 
     
     }, 
     
     { 
-    
-    english: 'here', 
+    // here
+    english: <img src = "vocab_imgs/here.jpg" width = "180" height = "200"/>,
     
     korean: '여기', 
     
     }, 
     
     { 
-    
-    english: 'over there', 
+    // over there
+    english: <img src = "https://media.giphy.com/media/emLs5klEWTKlSVeexj/giphy.gif" width="200" height="170"/>,  
     
     korean: '저기', 
     
@@ -530,15 +528,14 @@ const VOCAB = {
     
     { 
     
-    english: 'food', 
-    
+    english: <img src = "vocab_imgs/food.bmp" width = "180" height = "200"/>,
     korean: '음식', 
     
     }, 
     
     { 
     
-    english: 'date', 
+    english: <img src = "vocab_imgs/date.jpg" width = "180" height = "200"/>,
     
     korean: '데이트', 
     
@@ -546,7 +543,7 @@ const VOCAB = {
     
     { 
     
-    english: 'to be not, no', 
+    english: <img src = "vocab_imgs/no.bmp" width = "180" height = "200"/>,
     
     korean: '아니다', 
     
@@ -554,47 +551,47 @@ const VOCAB = {
     
     { 
     
-    english: 'greetings', 
+    english:<img src = "vocab_imgs/greeting.bmp" width = "180" height = "200"/>,
     
     korean: '인사', 
     
     }, 
     
     { 
-    
-    english: 'my (non-polite)', 
+    // my nonpolite 
+    english: <img src = "https://media.giphy.com/media/39hoXKE2isn6nrwKos/giphy.gif" width="200" height="170"/>,  
     
     korean: '내', 
     
     }, 
     
     { 
-    
-    english: 'humble expression for 내 (polite)', 
+    // my polite
+    english: <img src = "vocab_imgs/I.jpg" width = "180" height = "200"/>,
     
     korean: '제', 
     
     }, 
     
     { 
-    
-    english: 'just, merely, simply', 
+    // just
+    english: <img src = "https://media.giphy.com/media/U1DQ4REx2ZMI/giphy.gif" width="200" height="170"/>,  
     
     korean: '그냥', 
     
     }, 
     
     { 
-    
-    english: 'for the first time', 
+    // for the first time
+    english:<img src = "https://media.giphy.com/media/icUMDmw2q7p6NnFbKz/giphy.gif" width="200" height="170"/>,  
     
     korean: '첫', 
     
     }, 
     
     { 
-    
-    english: 'quickly, fast', 
+    // quickly, fast
+    english: <img src = "https://media.giphy.com/media/2dbnhlCH2JhwdI2gHp/giphy.gif" width="200" height="170"/>,  
     
     korean: '빨리', 
     
@@ -602,31 +599,30 @@ const VOCAB = {
     
     { 
     
-    english: 'mart, market', 
-    
+    english: <img src = "vocab_imgs/supermarket.jpg" width = "180" height = "200"/>,
     korean: '마트', 
     
     }, 
     
     { 
-    
-    english: 'not', 
+    // not
+    english: <img src = "https://media0.giphy.com/media/3og0IvGtnDyPHCRaYU/giphy.gif?cid=ecf05e47xapmuyetkjp1oujv2cgce41q3kv3ls2a22v72wwd&ep=v1_stickers_search&rid=giphy.gif&ct=s" width="200" height="170"/>,  
     
     korean: '안', 
     
     }, 
     
-    { 
+    { // spicy rice cake
     
-    english: 'spicy rice cake', 
+    english: <img src = "vocab_imgs/떡볶이.jpg" width = "180" height = "200"/>,
     
     korean: '떡볶이', 
     
     }, 
     
     { 
-    
-    english: 'all', 
+    // all(모두)
+    english: <img src = "vocab_imgs/all(모두).bmp" width = "180" height = "200"/>,
     
     korean: '다', 
     
@@ -634,15 +630,15 @@ const VOCAB = {
     
     { 
     
-    english: '(marker) only', 
+    english: <img src = "vocab_imgs/only....bmp" width = "180" height = "200"/>,
     
     korean: 'N만', 
     
     }, 
     
     { 
-    
-    english: 'later (during the day)', 
+    // later
+    english: <img src = "https://media.giphy.com/media/gDQpcvYlXkvxYEqLNC/giphy.gif" width="200" height="170"/>,  
     
     korean: '이따가', 
     
@@ -654,31 +650,9 @@ const VOCAB = {
     
     { 
     
-    english: 'mart, market', 
     
-    korean: '마트', 
     
-    }, 
-    
-    { 
-    
-    english: 'not', 
-    
-    korean: '안', 
-    
-    }, 
-    
-    { 
-    
-    english: 'later (during the day)', 
-    
-    korean: '이따가', 
-    
-    }, 
-    
-    { 
-    
-    english: 'coffee', 
+    english: <img src = "vocab_imgs/coffee.jpg" width = "180" height = "200"/>,
     
     korean: '커피', 
     
@@ -686,7 +660,7 @@ const VOCAB = {
     
     { 
     
-    english: 'to drink', 
+    english:  <img src = "vocab_imgs/to drink.jpg" width = "180" height = "200"/>,
     
     korean: '마시다', 
     
@@ -694,7 +668,7 @@ const VOCAB = {
     
     { 
     
-    english: 'girls band', 
+    english:  <img src = "vocab_imgs/girls band.jpg" width = "180" height = "200"/>,
     
     korean: '걸스밴드', 
     
@@ -702,15 +676,15 @@ const VOCAB = {
     
     { 
     
-    english: 'vocal', 
+    english: <img src = "vocab_imgs/vocal band.jpg" width = "180" height = "200"/>,
     
     korean: '보컬', 
     
     }, 
     
     { 
-    
-    english: 'to be correct, to be right', 
+    // to be correct/right 
+    english: <img src = "https://img.freepik.com/premium-vector/happy-cute-kid-girl-carry-correct-sign_97632-1278.jpg" width="200" height="170"/>,  
     
     korean: '맞다', 
     
@@ -718,31 +692,32 @@ const VOCAB = {
     
     { 
     
-    english: 'how?', 
+    english:  <img src = "vocab_imgs/how.bmp" width = "180" height = "200"/>,
     
     korean: '어떻게', 
     
     }, 
     
     { 
-    
-    english: 'to know', 
+    // to know
+    english:  <img src = "https://media.giphy.com/media/d3mlE7uhX8KFgEmY/giphy.gif" width="200" height="170"/>,  
     
     korean: '알다', 
     
     }, 
     
     { 
-    
-    english: 'fan', 
+    // fan
+    english: <img src = "https://molekule.com/cdn/shop/articles/Cute-Fan-small2_1600x.jpg?v=1682107536" width="200" height="170"/>,  
     
     korean: '팬', 
     
     }, 
     
     { 
+    // or something even
+    english: <img src = "https://static.vecteezy.com/system/resources/previews/000/378/606/non_2x/equal-to-vector-icon.jpg" width="200" height="170"/>,  
     
-    english: 'or something; even', 
     
     korean: 'N(이)라도', 
     
@@ -750,7 +725,7 @@ const VOCAB = {
     
     { 
     
-    english: 'to be all right, to be fine', 
+    english: <img src = "https://media.giphy.com/media/QMHoU66sBXqqLqYvGO/giphy.gif" width="200" height="170"/>,  
     
     korean: '괜찮다', 
     
@@ -758,7 +733,7 @@ const VOCAB = {
     
     { 
     
-    english: 'near', 
+    english: <img src = "vocab_imgs/near,nearby.jpg" width = "180" height = "200"/>,
     
     korean: '근처', 
     
@@ -766,7 +741,7 @@ const VOCAB = {
     
     { 
     
-    english: 'cafe', 
+    english:  <img src = "vocab_imgs/cafe.jpg" width = "180" height = "200"/>,
     
     korean: '카페', 
     
@@ -778,7 +753,7 @@ const VOCAB = {
     
     { 
     
-    english: 'to date, to go out with somebody; to make a friend', 
+    english:  <img src = "vocab_imgs/to make friends.bmp" width = "180" height = "200"/>,
     
     korean: '사귀다', 
     
@@ -786,7 +761,7 @@ const VOCAB = {
     
     { 
     
-    english: 'mango', 
+    english: <img src = "vocab_imgs/mango.jpg" width = "180" height = "200"/>,
     
     korean: '망고', 
     
@@ -794,23 +769,23 @@ const VOCAB = {
     
     { 
     
-    english: 'juice', 
+    english:  <img src = "vocab_imgs/주스.jpg" width = "180" height = "200"/>,
     
     korean: '주스', 
     
     }, 
     
     { 
-    
-    english: 'snow ice flakes', 
+    // snow ice flakes
+    english: <img src = "https://www.thoughtco.com/thmb/LzWn3ElUdRr_UOPE6fptpbf85yk=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/GettyImages-475158123-5669daa95f9b583dc31814db.jpg" width="200" height="170"/>,  
     
     korean: '눈꽃빙수', 
     
     }, 
     
     { 
-    
-    english: 'to be famous / well-known (for)', 
+    // to be famous
+    english:<img src = "https://media.giphy.com/media/i3MvZu1gfx5PCYAk3S/giphy-downsized-large.gif" width="200" height="170"/>,  
     
     korean: '유명하다', 
     
@@ -818,7 +793,7 @@ const VOCAB = {
     
     { 
     
-    english: 'shaved ice', 
+    english:  <img src = "vocab_imgs/shaved ice.jpg" width = "180" height = "200"/>,
     
     korean: '쉐이브 아이스', 
     
@@ -826,23 +801,23 @@ const VOCAB = {
     
     { 
     
-    english: 'to be similar', 
+    english:  <img src = "vocab_imgs/similar.jpg" width = "180" height = "200"/>,
     
     korean: '비슷하다', 
     
     }, 
     
     { 
-    
-    english: 'to try -ing', 
+    // to try
+    english: <img src = "https://us.123rf.com/450wm/creativepriyanka/creativepriyanka2108/creativepriyanka210802773/173440198-icon-for-effort-endeavor.jpg?ver=6" width="200" height="170"/>,  
     
     korean: '아/어 보다', 
     
     }, 
     
     { 
-    
-    english: 'you (plural)', 
+    // you (plural)
+    english: <img src = "https://globalsymbols.com/uploads/production/image/imagefile/17981/17_17982_698e1e0c-35e0-4e61-9c11-61bf608bd6e2.png" width="200" height="170"/>,  
     
     korean: '너희', 
     
@@ -850,15 +825,15 @@ const VOCAB = {
     
     { 
     
-    english: 'couple', 
+    english: <img src = "vocab_imgs/couple.jpg" width = "180" height = "200"/>,
     
     korean: '커플', 
     
     }, 
     
     { 
-    
-    english: 'ideal type; Mr./ Miss. Right', 
+    // mr/ miss right, ideal type
+    english: <img src = "https://flawlessworld.blog/wp-content/uploads/2021/01/7F07A6F8-BB94-4AF7-822B-485C38378E4C.jpeg" width="200" height="170"/>,  
     
     korean: '이상형', 
     
@@ -866,7 +841,7 @@ const VOCAB = {
     
     { 
     
-    english: 'two (native Korean number)', 
+    english:  <img src = "vocab_imgs/2.bmp" width = "180" height = "200"/>,
     
     korean: '두', 
     
@@ -874,7 +849,7 @@ const VOCAB = {
     
     { 
     
-    english: 'cup, glass, counter for cupful', 
+    english: <img src = "vocab_imgs/glass.bmp" width = "180" height = "200"/>,
     
     korean: '잔', 
     
@@ -882,7 +857,7 @@ const VOCAB = {
     
     { 
     
-    english: 'money', 
+    english: <img src = "vocab_imgs/money.bmp" width = "180" height = "200"/>,
     
     korean: '돈', 
     
@@ -890,15 +865,15 @@ const VOCAB = {
     
     { 
     
-    english: 'to buy', 
+    english:  <img src = "vocab_imgs/to buy.jpg" width = "180" height = "200"/>,
     
     korean: '사다', 
     
     }, 
     
     { 
-    
-    english: 'anything, nothing', 
+    //nothing
+    english: <img src = "https://media.giphy.com/media/d8lUKXD00IXSw/giphy.gif" width="200" height="170"/>,   
     
     korean: '아무것', 
     
@@ -906,7 +881,7 @@ const VOCAB = {
     
     { 
     
-    english: 'to order', 
+    english:  <img src = "vocab_imgs/to order food.bmp" width = "180" height = "200"/>,
     
     korean: '주문하다', 
     
@@ -914,7 +889,7 @@ const VOCAB = {
     
     { 
     
-    english: 'to be hungry', 
+    english:  <img src = "vocab_imgs/to become hungry.bmp" width = "180" height = "200"/>,
     
     korean: '배 고프다', 
     
@@ -926,15 +901,15 @@ const VOCAB = {
     
     { 
     
-    english: 'weekend', 
+    english:  <img src = "vocab_imgs/weekend.jpg" width = "180" height = "200"/>,
     
     korean: '주말', 
     
     }, 
     
     { 
-    
-    english: 'to have a good time', 
+    // to have a good time
+    english: <img src = "https://media.giphy.com/media/blSTtZehjAZ8I/giphy.gif" width="200" height="170"/>,  
     
     korean: '놀다', 
     
@@ -942,7 +917,7 @@ const VOCAB = {
     
     { 
     
-    english: 'Seoul Land (amusement park)', 
+    english:  <img src = "vocab_imgs/Seoul_land.jpg" width = "180" height = "200"/>,
     
     korean: '서울랜드', 
     
@@ -950,31 +925,32 @@ const VOCAB = {
     
     { 
     
-    english: 'of course, certainly, naturally', 
+    english: <img src = "https://media.giphy.com/media/6gM3GfIlMj8LmUBUE7/giphy.gif" width="200" height="170"/>,  
+    
     
     korean: '물론', 
     
     }, 
     
     { 
-    
-    english: 'single', 
-    
+    // single
+    english:  <img src = "https://ik.imagekit.io/shortpedia/Voices/wp-content/uploads/2021/03/Happy-single-1.jpg" width="200" height="170"/>
+    ,
     korean: '솔로', 
     
     }, 
     
     { 
-    
-    english: 'to take care of, to be in charge of', 
+    // to take care of, to be in charge of 
+    english:  <img src = "https://media.giphy.com/media/WPtzVOKMymmZrJv8fO/giphy.gif" width="200" height="170"/>,
     
     korean: '책임지다', 
     
     }, 
     
     { 
-    
-    english: 'to believe (in)', 
+    // to believe in
+    english:  <img src = "https://www.goalcast.com/wp-content/uploads/2016/08/shift-your-inner-state-believe-in-yourself.jpg" width="200" height="170"/>,
     
     korean: '믿다', 
     
@@ -982,23 +958,23 @@ const VOCAB = {
     
     { 
     
-    english: 'roller coaster', 
+    english: <img src = "vocab_imgs/롤러코스터.jpg" width = "180" height = "200"/>,
     
     korean: '롤러코스터', 
     
     }, 
     
     { 
-    
-    english: 'to ride, to get on', 
+    // to ride, to get on 
+    english: <img src = "https://media.giphy.com/media/3o6Zt9pe4yTFeYaul2/giphy.gif" width="200" height="170"/>,
     
     korean: '타다', 
     
     }, 
     
     { 
-    
-    english: 'Viking (ship ride)', 
+    // Viking (Ship ride)
+    english: <img src = "https://media.giphy.com/media/5xtDarxQJApeAH6iFAQ/giphy.gif" width="200" height="170"/>,
     
     korean: '바이킹', 
     
@@ -1006,15 +982,15 @@ const VOCAB = {
     
     { 
     
-    english: 'surely, undoubtedly, certainly', 
+    english:<img src = "https://media.giphy.com/media/Pm3xlpzvxotOTiqucW/giphy.gif" width="200" height="170"/>,
     
     korean: '꼭', 
     
     }, 
     
-    { 
+    { // beside
     
-    english: 'beside, by the side', 
+    english: <img src = "https://media.baamboozle.com/uploads/images/582750/1648631674_57747_url.jpeg" width="200" height="170"/>,
     
     korean: '옆', 
     
@@ -1022,15 +998,15 @@ const VOCAB = {
     
     { 
     
-    english: 'Saturday', 
+    english:  <img src = "vocab_imgs/saturday.jpg" width = "180" height = "200"/>,
     
     korean: '토요일', 
     
     }, 
     
     { 
-    
-    english: 'by the way', 
+    // by the way
+    english: <img src = "https://media.giphy.com/media/o067C8vG0PQBA3e1ms/giphy.gif" width="200" height="170"/>,
     
     korean: '근데', 
     
@@ -1038,15 +1014,15 @@ const VOCAB = {
     
     { 
     
-    english: 'partner', 
+    english: <img src = "vocab_imgs/partner.jpg" width = "180" height = "200"/>,
     
     korean: '파트너', 
     
     }, 
     
     { 
-    
-    english: 'to decide, to set, to choose', 
+    // to decide, to set, to choose
+    english: <img src = "https://media.giphy.com/media/5iWX6XFTndU0YP0Yut/giphy.gif" width="200" height="170"/>,
     
     korean: '정하다', 
     
@@ -1054,7 +1030,7 @@ const VOCAB = {
     
     { 
     
-    english: 'who?', 
+    english: <img src = "vocab_imgs/who.png" width = "180" height = "200"/>,
     
     korean: '누구', 
     
@@ -1062,7 +1038,7 @@ const VOCAB = {
     
     { 
     
-    english: 'love', 
+    english: <img src = "vocab_imgs/love.jpg" width = "180" height = "200"/>,
     
     korean: '사랑', 
     
@@ -1070,7 +1046,7 @@ const VOCAB = {
     
     { 
     
-    english: 'Ferris Wheel', 
+    english: <img src = "vocab_imgs/관람차.jpg" width = "180" height = "200"/>,
     
     korean: '관람차', 
     
@@ -1078,7 +1054,7 @@ const VOCAB = {
     
     { 
     
-    english: 'inside', 
+    english:<img src = "vocab_imgs/inside.jpg" width = "180" height = "200"/>,
     
     korean: '안', 
     
@@ -1086,7 +1062,7 @@ const VOCAB = {
     
     { 
     
-    english: 'cotton candy', 
+    english:<img src = "vocab_imgs/솜사탕.jpg" width = "180" height = "200"/>,
     
     korean: '솜사탕', 
     
@@ -1100,7 +1076,7 @@ const VOCAB = {
      
     
     export function getVocab(unitNumber) { 
-    
-    return VOCAB[unitNumber]; 
+        console.log("Returning vocab for unit:", unitNumber, VOCAB[unitNumber]);
+        return VOCAB[unitNumber]; 
     
     }; 

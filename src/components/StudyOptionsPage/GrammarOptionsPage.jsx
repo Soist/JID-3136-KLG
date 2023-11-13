@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { SUGAR_HONEYCOMBS, STUDY_OPTIONS_PATH } from '../../constants';
+import { MARBLES, STUDY_OPTIONS_PATH } from '../../constants';
 import './StudyOptionsPage.css';
 
 function GrammarOptionsPage() {
@@ -10,9 +10,9 @@ function GrammarOptionsPage() {
     return (
         <div id='study-options-page-container'>
             <h1>{unit.name} Grammar</h1>
-            <Link to={SUGAR_HONEYCOMBS} state={unit}>
+            <Link to={MARBLES} state={unit}>
                 <button className='btn btn-primary'>
-                    {'Sugar Honeycombs'}
+                    {'Marbles'}
                 </button>
             </Link>
             <Link to={STUDY_OPTIONS_PATH} state={unit}>
