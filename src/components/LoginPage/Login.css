@@ -1,15 +1,8 @@
 .about-container {
-    margin-top: 2rem;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    /* padding: 0rem 15rem 2rem 15rem; */
-    width: 800px;
-    padding: 2rem;
-    background-color: white;
-    margin: 0rem auto 2rem auto;
-    border: 2px solid black;
+    margin-top: 6%;
+    width: 20%;
     border-radius: 10px;
+    border-width: 0px;
 }
 
 .student-box-container {
@@ -19,9 +12,8 @@
 
 .student-box {
     display: flex;
-    flex-direction: column;
     align-items: center;
-    /* justify-content: center; */
+    justify-content: center;
     margin: 0rem 3rem 0rem 3rem;
     
 }
@@ -29,6 +21,16 @@
 .student {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    /* align-items: center; */
     /* margin: 0rem 3rem 2rem 3rem; */
+}
+
+.forgot-password-link{
+    color: black;
+    text-decoration: none;
+}
+
+.register-link{
+    color: #ff006f;
+    text-decoration: none;
 }

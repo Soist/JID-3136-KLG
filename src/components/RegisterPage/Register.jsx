@@ -27,45 +27,61 @@ function Register() {
         
     }
     return (
-        <div className='about-container' >
-            <h1
-            style={{paddingBottom:40}}
-            >Register</h1>
-            <div className="student-box-container">
-                <div className="student-box">
-                    <h3>Name</h3>
-                    <TextInput
-                    style = {{borderWidth:2}}
-                    placeholder='John Doe'
-                    />
-                    <h3>Email</h3>
-                    <TextInput
-                    style = {{borderWidth:2}}
-                    value = {theEmail}
-                    placeholder='Email'
-                    onChangeText={(text) => setTheEmail(text)}
-                    />
-                    <h3>Password</h3>
-                    <TextInput
-                    style = {{borderWidth:2}}
-                    value ={thePassword}
-                    placeholder='Password'
-                    onChangeText={(text)=>setThePassword(text)}
-                    secureTextEntry={true}
-                    />
+        <View
+        style={{backgroundColor:"white",width:"100%",height:"100%",alignItems:'center',justifyContent:'center'}}
+        >
+            <View
+            style={{backgroundColor:"white",width:"30%"}}
+            >
+                <h1
+                style={{paddingBottom:40}}>
+                    REGISTER
+                </h1>
+                <h5>NAME</h5>
+                <TextInput
+                style = {{borderWidth:1, width:"80%",height:40,color:'rgb(0,0,0,.15'}}
+                placeholder='  John Doe'
+                placeholderTextColor={'rgb(0,0,0,.15'}
+                />
+                <h5
+                style={{paddingBottom:0,paddingTop:10}}
+                >EMAIL</h5>
+                <TextInput
+                style = {{borderWidth:1, width:"80%",height:40,color:'rgb(0,0,0,.15'}}
+                value = {theEmail}
+                placeholder='  Email'
+                onChangeText={(text) => setTheEmail(text)}
+                placeholderTextColor={'rgb(0,0,0,.15'}
+                />
+                <h5
+                style={{paddingBottom:0,paddingTop:10}}
+                >PASSWORD</h5>
+                <TextInput
+                style = {{borderWidth:1, width:"80%",height:40,color:'rgb(0,0,0,.15'}}
+                value ={thePassword}
+                placeholder='  Password'
+                onChangeText={(text)=>setThePassword(text)}
+                secureTextEntry={true}
+                placeholderTextColor={'rgb(0,0,0,.15'}
+                />
+                <View
+                style={{backgroundColor:"white",width:"100%",height:"26%",justifyContent:"center",paddingTop:20,paddingBottom:20}}
+                >
                     <TouchableOpacity
                     onPress={signUp}
+                    style={{backgroundColor:"white",width:"20%",justifyContent:'center',alignItems:'center'}}
                     >
                         <View
-                        style={{borderWidth:2, marginTop:13,width:80, height:30, justifyContent:"center",alignItems:"center"}}
+                        style={{borderWidth:0, width:"100%", justifyContent:"center",alignItems:"center",backgroundColor:'rgb(227,9,103)'}}
                         >
-                            <h4>Finish</h4>
+                            <h5
+                            style={{color:"white",marginTop:"3%"}}
+                            >FINISH</h5>
                         </View>
                     </TouchableOpacity>
-                </div>
-                
-            </div>
-        </div>
+                </View>
+            </View>
+        </View>
     )
 }
 

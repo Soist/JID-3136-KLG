@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './Login.css';
-import {SafeAreaView, StyleSheet, TextInput, TouchableOpacity,View} from 'react-native';
+import {SafeAreaView, StyleSheet, TextInput, TouchableOpacity,View,Text} from 'react-native';
 import { Link } from 'react-router-dom';
 import { ABOUT_PATH, REGISTER_PATH } from '../../constants';
 import { FIREBASE_AUTH } from '../../FirebaseConfig';
@@ -31,52 +31,78 @@ const Login = () => {
     }
 
     return (
-        <div className='about-container' >
-            <h1
-            style={{paddingBottom:40}}
-            >Login</h1>
-            <div className="student-box-container">
-                <div className="student-box">
-                    <h3>Email</h3>
-                    <TextInput
-                    style = {{borderWidth:2}}
-                    value = {theEmail}
-                    placeholder='Email'
-                    onChangeText={(text) => setTheEmail(text)}
-                    />
-                    <h3>Password</h3>
-                    <TextInput
-                    style = {{borderWidth:2}}
-                    value ={thePassword}
-                    placeholder='Password'
-                    onChangeText={(text)=>setThePassword(text)}
-                    secureTextEntry={true}
-                    />
+       
+        <View
+        style={{backgroundColor:"white",width:"100%",height:"100%",alignItems:'center',justifyContent:'center'}}
+        >
+            <View
+            style={{backgroundColor:"white",width:"30%"}}
+            >
+                <h1
+                style={{paddingBottom:60}}
+                >LOGIN</h1>
+                <h5
+                style={{}}
+                >EMAIL</h5>
+                <TextInput
+                style = {{borderWidth:1, width:"80%",height:40,color:'rgb(0,0,0,.15'}}
+                value = {theEmail}
+                inputMode='email'
+                textAlign='center'
+                placeholder='  fakeEmail@gatech.edu'
+                placeholderTextColor={'rgb(0,0,0,.15'}
+                
+                onChangeText={(text) => setTheEmail(text)}
+                />
+                <h5
+                style={{}}
+                >PASSWORD</h5>
+                <TextInput
+                style = {{borderWidth:1, width:"80%",height:40,color:'rgb(0,0,0,.15'}}
+                textAlign='center'
+                value ={thePassword}
+                placeholder='  Password'
+                placeholderTextColor={'rgb(0,0,0,.15'}
+                onChangeText={(text)=>setThePassword(text)}
+                secureTextEntry={true}
+                />
+                <View
+                style={{backgroundColor:"white",width:"100%",height:"30%",flexDirection:'row',alignItems:"center",paddingTop:20}}
+                >
                     <TouchableOpacity
                     onPress={signIn}
+                    style={{backgroundColor:"white",width:"20%",justifyContent:'center',alignItems:'center'}}
                     >
                         <View
-                        style={{borderWidth:2, marginTop:13,width:80, height:30, justifyContent:"center",alignItems:"center"}}
+                        style={{borderWidth:0, width:"100%", justifyContent:"center",alignItems:"center",backgroundColor:'rgb(227,9,103)'}}
                         >
-                            <h4>Login</h4>
+                            <h5
+                            style={{color:"white",marginTop:"3%"}}
+                            >LOGIN</h5>
                         </View>
                     </TouchableOpacity>
-                </div>
-                <div className="student-box">
-                    <Link to={REGISTER_PATH} className="nav-links">
-                        or Register
+                    <View 
+                    style={{backgroundColor:"white", width:"30%",height:"10%",marginLeft:"20%"}}
+                    >
+                        <Link to={REGISTER_PATH} className="forgot-password-link">
+                            Forgot Password?
+                        </Link>
+                    </View>
+                </View>
+                <View
+                style={{backgroundColor:"white",width:"100%",height:50,flexDirection:'row',alignItems:"center"}}
+                >
+                    <Text
+                    style={{paddingRight:20}}
+                    >
+                        Don't have an account?
+                    </Text>
+                    <Link to={REGISTER_PATH} className="register-link">
+                        Register
                     </Link>
-                    {/* <TouchableOpacity>
-                        <View
-                        style={{borderWidth:2, marginTop:13,width:"auto", height:30, justifyContent:"center",alignItems:"center"}}
-                        >
-                            <h4
-                            >or Go to Register</h4>
-                        </View>
-                    </TouchableOpacity> */}
-                </div>
-            </div>
-        </div>
+                </View>
+            </View>
+        </View>
     )
 }
 
