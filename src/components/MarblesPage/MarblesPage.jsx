@@ -266,8 +266,8 @@ function MarblesPage() {
                         </div>
                     </div>
                     <div id='postgame'>
-                        <h2 id='win-text'>You win!</h2>
-                        <h2 id='lose-text'>You lose!</h2>
+                        <h2 id='win-text'>Congratulations, you win!</h2>
+                        <h2 id='lose-text'>Sorry, you lose. Better luck next time!</h2>
                         <button className='btn btn-primary' onClick={playAgain}>Play Again</button>
                     </div>
                 </div>
