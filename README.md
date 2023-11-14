@@ -3,10 +3,16 @@ A react app created to gamify the learning of KOR 1001 at Georgia Tech. The app 
 
 # Release Notes
 
-## Version 1.2.0
+
+## Version 0.4.0
 
 ### New Features
-* Basic Layout and design of Chatbox has been coded. ChatGPT api to bring functionality will be implemented in later sprints
+Our goal for the fourth sprint was to have a playable and nearly finalized version of the minigames. Both games have updated art, animations, game modes, and UI, and all new updates to the games are successfully working.
+* Answer Language settings added to both the Red Light Green Light and the Tug of War minigames. The answer language corresponds to which language the user wants to answer the question in.
+* Working animations for both minigames.
+* Play again option added for both minigames. The play again option allows the user to reset the game settings, which are the difficulty level and answer language settings, and then replay the game.
+* Login/Register/ForgotPassword page UI's have been reworked
+* * Basic Layout and design of Chatbox has been coded. ChatGPT api to bring functionality will be implemented in later sprints
 * Access path to all mini games has been employed
 * Uploading images to flashcards functionality has been developed. This includes gifs and allows users to use both a url and their own camera roll to choose a photo/gif. Additionally, users' can preview what the flashcard will look like with the chosen image before saving and adding back to the flaschard stack.
 * Option to choose difficulty has been added. This allots a timer that with increasing difficult, reduces the amount of time given to correctly answer the question.
@@ -17,35 +23,15 @@ A react app created to gamify the learning of KOR 1001 at Georgia Tech. The app 
 * Some mini games had no buttons assiociated with them to allow users to navigate to them on the application and play them.
 * Some of the games had no "quit" or "exit" button to allow users to safely quit the game and get back the unit page or home page.
 
-## Version 1.0.0
-
-### New Features
-* Added simplistic honey comb game that allows for practice with vocabulary.
-* Added rudimentary flashcards to all units that consist of new vocabulary for users to practice
-* Added template for what is soon to be an in-class trivia style game similar to Kahoot where by in which the entire class is engaged through their mobile devices and can answer questions under time limit. They earn points for accuracy and speed in answering.
-### Bug Fixes
-* Buttons now all are routed to the appropriate unit and games.
-
-### Known Issues
-* Users requested a way to submit complaints/bugs/typos they had with the website. There were numerous since the site is currently in the beta testing phase. Thus, this was a big issue that needed to be resolved and would help improve further development.
-* Unit 1 button led to Unit 2. Additionally some of the buttons to choose a game led to the incorrect game (e.g. flashcards led to honeycomb game) or to an "unknown page."
-
-
-## Version 0.4.0
-
-### New Features
-Our goal for the fourth sprint was to have a playable and nearly finalized version of the minigames. Both games have updated art, animations, game modes, and UI, and all new updates to the games are successfully working.
-* Answer Language settings added to both the Red Light Green Light and the Tug of War minigames. The answer language corresponds to which language the user wants to answer the question in.
-* Working animations for both minigames.
-* Play again option added for both minigames. The play again option allows the user to reset the game settings, which are the difficulty level and answer language settings, and then replay the game. 
-
 ### Bug Fixes
 * Fixed issue with Red Light Green Light UI where the question div would move depending on the length of the question.
 * Fixed issue with light changing to red when a user incorrectly answers a question in the Red Light Green Light minigame.
 
 ### Known Issues
 * The turning animation for the Red Light Green Light doll is not in the correct position for all screen resolutions.
-
+* Users requested a way to submit complaints/bugs/typos they had with the website. There were numerous since the site is currently in the beta testing phase. Thus, this was a big issue that needed to be resolved and would help improve further development.
+* Unit 1 button led to Unit 2. Additionally some of the buttons to choose a game led to the incorrect game (e.g. flashcards led to honeycomb game) or to an "unknown page."
+* 
 ## Version 0.3.0
 
 ### New Features
@@ -53,6 +39,11 @@ Our goal for the third sprint was to incorporate grammar questions into our lear
 * Easy, Medium, and Hard difficulty level settings added to Red Light Green Light minigame. The difficulty choice corresponds to how long the user has to answer a question before the light turns red.
 * Option to play the Red Light Green Light minigame in grammar question mode.
 * Option to play the Tug of War minigame in grammar mode.
+* Added simplistic honey comb game that allows for practice with vocabulary.
+* Added rudimentary flashcards to all units that consist of new vocabulary for users to practice
+* Added template for what is soon to be an in-class trivia style game similar to Kahoot where by in which the entire class is engaged through their mobile devices and can answer questions under time limit. They earn points for accuracy and speed in answering.
+### Bug Fixes
+* Buttons now all are routed to the appropriate unit and games.
 
 ### Bug Fixes
 * Fixed issue with Red Light Green Light minigame where a user not answering a question resulted in the loss of multiple lives.
