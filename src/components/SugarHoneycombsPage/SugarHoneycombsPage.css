@@ -32,12 +32,12 @@
 }
 #sugar-honeycombs-full-container #overlay-image {
     position: absolute;
-    bottom: 0; /* place it at the bottom of the container */
-    left: 300; /* place it at the left of the container */
+    bottom: 100px; /* place it at the bottom of the container */
+    left: 200px; /* place it at the left of the container */
     z-index: 1; /* ensure it's above the background image */
     opacity: 0.9; /* adjust transparency as needed */
-    width: 1000px; /* set the exact width */
-    height: 800px; /* set the exact height */
+    width: 450px; /* set the exact width */
+    height: 500px; /* set the exact height */
     animation: shake 3.5s ease-in-out infinite; /* apply the shake animation */
 }
 
@@ -87,14 +87,32 @@
     align-items: center;
 }
 
+#sugar-honeycombs-container #game input[type='radio'] {
+    height: 25px;
+    width: 25px;
+    vertical-align: middle;
+}
+
 #sugar-honeycombs-container #game #answer {
     display: flex;
 }
+
+
 
 #sugar-honeycombs-container #game #answer input {
     margin-right: 1rem;
     width: 16rem;
     margin-bottom: 10px;
+}
+
+#sugar-honeycombs-container #game #choices div {
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+}
+
+#sugar-honeycombs-container #game #choices input[type="radio"] {
+    margin-right: 10px;
 }
 
 #sugar-honeycombs-container #postgame {
@@ -109,11 +127,13 @@
 }
 
 #sugar-honeycombs-container #win-text {
+    display: none;
     font-weight: bold;
     color: green;
 }
 
 #sugar-honeycombs-container #lose-text {
+    display: none;
     font-weight: bold;
     color: red;
 }
@@ -171,3 +191,4 @@
     height: 100%;
     background-color: #4CAF50; /* color of the timeout bar */
 }
+
