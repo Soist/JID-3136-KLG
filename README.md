@@ -3,8 +3,25 @@ A react app created to gamify the learning of KOR 1001 at Georgia Tech. The app 
 
 # Release Notes
 
-<<<<<<< HEAD
-## Version 1.2.0
+## Version 0.4.0
+
+### New Features
+* Login/Register/ForgotPassword page UI have been updated to match theme of website.
+* Flashcard input from user can now be saved in browser to allow users to return to them later.
+* Users now given the option to "favorite" cards that they wish to return to specifically.
+* Filter functionality has been added so that users can seperate cards they wish to see from those they don't.
+* Marble game has been equipped with a time remaining progress bar.
+* A cloud service has been added to the backend to allow universal access for the user.
+
+### Bug Fixes
+* Scaling of UI has been corrected so that components don't go off the screen or fit awkwardly on the page.
+* Refreshing the page no longer removes flashcards from memory.
+  
+### Known Issues
+* Forgot Password link was not linked correctly to Forgot Password page.
+* GitHub commits and branches were not up to date
+
+## Version 0.3.0
 
 ### New Features
 * Basic Layout and design of Chatbox has been coded. ChatGPT api to bring functionality will be implemented in later sprints
@@ -19,9 +36,7 @@ A react app created to gamify the learning of KOR 1001 at Georgia Tech. The app 
 * Some of the games had no "quit" or "exit" button to allow users to safely quit the game and get back the unit page or home page.
 
 
-=======
->>>>>>> 6ec9ec583a21dc4df277f6ae1795eae136d50a3a
-## Version 1.0.0
+## Version 0.2.0
 
 ### New Features
 * Added simplistic honey comb game that allows for practice with vocabulary.
