@@ -21,35 +21,47 @@ const ForgotPassword = () => {
     }
 
     return (
-        <div className='about-container' >
-            <h1
-            style={{paddingBottom:40}}
-            >Forgot Password</h1>
-            <div className="student-box-container">
+        <View
+        style={{backgroundColor:"white",width:"100%",height:"100%",alignItems:'center',justifyContent:'center'}}
+        >
+            <View
+            style={{backgroundColor:"white",width:"30%"}}
+            >
+                <h1
+                style={{paddingBottom:40,paddingTop:10}}
+                >FORGOT PASSWORD</h1>
                 {!sent? <div className="student-box">
-                    <p>If you do not have an account, <a href={REGISTER_PATH}>click here</a> to set up a new account. Type the email address associated with your account in the field below to recieve a validation code by email.</p>
-                    <h3>Email Address</h3>
-                    <TextInput
-                    style = {{borderWidth:2}}
-                    value = {theEmail}
-                    placeholder='Email'
-                    onChangeText={(text) => setTheEmail(text)}
-                    />
-                    <TouchableOpacity
-                    onPress={sendEmail}
+                    <p>If you do not have an account, <a style={{textDecoration:'none', color:"rgb(227,9,103)"}}href={REGISTER_PATH}>click here</a> to set up a new account. Type the email address associated with your account in the field below to recieve a validation code by email.</p>
+                    <View
+                    style={{width:"133%", backgroundColor:"white"}}
                     >
-                        <View
-                        style={{borderWidth:2, marginTop:13,width:150, height:30, justifyContent:"center",alignItems:"center"}}
+                        <h5>EMAIL ADDRESS</h5>
+                        <TextInput
+                        style = {{borderWidth:1, height:40,width:"70%"}}
+                        value = {theEmail}
+                        placeholder='  fakeEmail@gatech.edu'
+                        placeholderTextColor={'rgb(0,0,0,.15'}
+                        onChangeText={(text) => setTheEmail(text)}
+                        />
+                        <TouchableOpacity
+                        onPress={sendEmail}
+                        style={{backgroundColor:"white",width:"35%",height:"3%",justifyContent:'center',alignItems:'center'}}
                         >
-                            <h4>Send Email</h4>
-                        </View>
-                    </TouchableOpacity>
+                            <View
+                            style={{borderWidth:0, width:"100%",height:31,justifyContent:"center",alignItems:"center",backgroundColor:'rgb(227,9,103)',marginTop:10}}
+                            >
+                                <h5
+                                style={{color:"white",marginTop:"3%"}}
+                                >SEND EMAIL</h5>
+                            </View>
+                        </TouchableOpacity>
+                    </View>
                 </div> :
                 <div className="student-box">
                     <p>Please check your {theEmail} inbox for a link to reset your password.</p>
                 </div>}
-            </div>
-        </div>
+            </View>
+        </View>
     )
 }
 
