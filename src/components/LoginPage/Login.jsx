@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import './Login.css';
 import {SafeAreaView, StyleSheet, TextInput, TouchableOpacity,View,Text} from 'react-native';
 import { Link } from 'react-router-dom';
-import { ABOUT_PATH, REGISTER_PATH } from '../../constants';
+import { ABOUT_PATH, FORGOT_PASSWORD_PATH, REGISTER_PATH } from '../../constants';
 import { FIREBASE_AUTH } from '../../FirebaseConfig';
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import { HOME_PATH } from '../../constants';
@@ -84,7 +84,7 @@ const Login = () => {
                     <View 
                     style={{backgroundColor:"white", width:"30%",height:"10%",marginLeft:"20%"}}
                     >
-                        <Link to={REGISTER_PATH} className="forgot-password-link">
+                        <Link to={FORGOT_PASSWORD_PATH} className="forgot-password-link">
                             Forgot Password?
                         </Link>
                     </View>
