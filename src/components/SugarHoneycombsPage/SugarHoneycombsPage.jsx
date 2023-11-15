@@ -192,6 +192,9 @@ function SugarHoneycombsPage() {
         if (currIncorrectScore >= 3) {
             lose()
         }
+        if (currIncorrectScore >= 3 && currentQuestionId >= 4) {
+            lose()
+        }
         if (currentQuestionId >= 4) {
             win()
         }
@@ -419,7 +422,6 @@ function SugarHoneycombsPage() {
                             }
                         </div>
 
-
                         <div id='answer'>
                             {/* Conditional Rendering within JSX: display error message if showErrorMessage is true */}
                             {showErrorMessage && 
@@ -459,7 +461,7 @@ function SugarHoneycombsPage() {
                     <p> <b>How to win:</b> listen carefully to the pronunciation of each Korean phrase <br></br>
                     and select the word or phrase that aligns most closely with its context. <br></br>
                     You have three lives, each incorrect answer costs one life. To win, <br></br> 
-                    make it to the end of all the questions without using up all your lives. <b>Good Luck!</b> </p>
+                    make it to the end of all the questions before using up all your lives. <b>Good Luck!</b> </p>
                 </div>
                 <Link to={LISTEN_OPTIONS_PATH} state={unit} >
                     <button className='btn btn-back'>
