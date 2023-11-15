@@ -191,10 +191,10 @@ function SugarHoneycombsPage() {
         if (currIncorrectScore >= 2) {
             lose()
         }
-        if (currIncorrectScore >= 2 && currentQuestionId >= 4) {
+        if (currIncorrectScore > 1 && currentQuestionId >= 4) {
             lose()
         }
-        if (currentQuestionId >= 4) {
+        if (currentQuestionId >= 4 && currIncorrectScore < 1) {
             win()
         }
     }, [currIncorrectScore, currentQuestionId]);
@@ -417,7 +417,7 @@ function SugarHoneycombsPage() {
                                         </div>
                                     );
                                 })
-                                : win()
+                                : (currIncorrectScore < 2 && win())
                             }
                         </div>
 
