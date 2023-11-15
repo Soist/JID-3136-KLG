@@ -191,10 +191,10 @@ function SugarHoneycombsPage() {
         if (currIncorrectScore >= 2) {
             lose()
         }
-        if (currIncorrectScore > 1 && currentQuestionId >= 4) {
+        if (currIncorrectScore >= 2 && currentQuestionId >= 4) {
             lose()
         }
-        if (currentQuestionId >= 4 && currIncorrectScore < 1) {
+        if (currentQuestionId >= 4 && currIncorrectScore < 2) {
             win()
         }
     }, [currIncorrectScore, currentQuestionId]);
