@@ -49,7 +49,7 @@
     align-items: center;
     flex-direction: column;
     top: 25vh; /* Center it vertically */
-    left: 35%; /* Center it horizontally */
+    left: 20%; /* Center it horizontally */
 }
 
 
@@ -107,9 +107,10 @@
 
 #sugar-honeycombs-container #game #choices div {
     margin-bottom: 20px;
-    display: flex;
+    display: block;
     align-items: center;
 }
+
 
 #sugar-honeycombs-container #game #choices input[type="radio"] {
     margin-right: 10px;
@@ -149,6 +150,11 @@
     color: red;
 }
 
+#sugar-honeycombs-container #initialization_msg {
+    font-weight: bold;
+    font-size: 40px;
+    color: red;
+}
 
 
 #sugar-honeycombs-container #correct {
