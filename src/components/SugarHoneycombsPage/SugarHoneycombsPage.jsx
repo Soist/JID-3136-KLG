@@ -28,7 +28,6 @@ function ScoreView() {
     return (
         <>
             <CircleSvg />
-            <CircleSvg />
             <SkullSvg />
         </>
     );
@@ -189,10 +188,10 @@ function SugarHoneycombsPage() {
     
 
     useEffect(() => {
-        if (currIncorrectScore >= 3) {
+        if (currIncorrectScore >= 2) {
             lose()
         }
-        if (currIncorrectScore >= 3 && currentQuestionId >= 4) {
+        if (currIncorrectScore >= 2 && currentQuestionId >= 4) {
             lose()
         }
         if (currentQuestionId >= 4) {
@@ -460,7 +459,7 @@ function SugarHoneycombsPage() {
                 <div id="tutorial">
                     <p> <b>How to win:</b> listen carefully to the pronunciation of each Korean phrase <br></br>
                     and select the word or phrase that aligns most closely with its context. <br></br>
-                    You have three lives, each incorrect answer costs one life. To win, <br></br> 
+                    You have two lives, each incorrect answer costs one life. To win, <br></br> 
                     make it to the end of all the questions before using up all your lives. <b>Good Luck!</b> </p>
                 </div>
                 <Link to={LISTEN_OPTIONS_PATH} state={unit} >
