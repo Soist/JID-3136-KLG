@@ -33,7 +33,7 @@ const Flashcard = ({ flashcard, imageURL, onDeleteFlashcard, isStarred, onToggle
     event.stopPropagation();
     onToggleFavorite(); 
   };
-
+  
   const handleDelete = () => {
     if (flashcard.isUserAdded && window.confirm("Are you sure you want to delete this flashcard?")) {
       onDeleteFlashcard();
