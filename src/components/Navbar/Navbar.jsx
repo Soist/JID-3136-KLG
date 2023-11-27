@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { CHATBOX_PATH, HOME_PATH, UNITS_LIST_PATH, ABOUT_PATH, PROGRESS_PATH, LOGIN_PATH, LOGOUT_PATH } from '../../constants';
+import { CHATBOX_PATH, HOME_PATH, UNITS_LIST_PATH, ABOUT_PATH, PROGRESS_PATH, LOGIN_PATH, LOGOUT_PATH, FEEDBACK_PATH } from '../../constants';
 import KLGLogo from './klglogo.png'
 import './Navbar.css';
 import { useEffect, useState } from 'react';
@@ -54,8 +54,14 @@ function Navbar() {
                             Progress
                         </Link>
                     </li>
+                    <li className='nav-item'>
+                        <Link to={FEEDBACK_PATH} className='nav-links'>
+                            Feedback
+                        </Link>
+                    </li>
                 </ul>
             </div>
+            
             <div>
                 <ul>
                     <li className='nav-item'>

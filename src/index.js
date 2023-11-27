@@ -20,6 +20,8 @@ import LoginPage from "./components/LoginPage/Login";
 import RegisterPage from "./components/RegisterPage/Register";
 import LogoutPage from "./components/LogoutPage/Logout";
 import ForgotPasswordPage from "./components/ForgotPasswordPage/ForgotPassword";
+import FeedbackPage from "./components/FeedbackPage/Feedback";
+
 import {
   NavigationContainer,
   createNavigationContainerRef,
@@ -45,6 +47,7 @@ import {
   REGISTER_PATH,
   FORGOT_PASSWORD_PATH,
   MARBLES,
+  FEEDBACK_PATH,
 } from "./constants";
 import "./index.css";
 
@@ -75,6 +78,7 @@ root.render(
       <Route path={LOGOUT_PATH} element={<LogoutPage />} />
       <Route path={REGISTER_PATH} element={<RegisterPage />} />
       <Route path={FORGOT_PASSWORD_PATH} element={<ForgotPasswordPage />} />
+      <Route path={FEEDBACK_PATH} element={<FeedbackPage/>} />
     </Routes>
   </Router>
 );
