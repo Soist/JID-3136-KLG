@@ -8,11 +8,15 @@ import gameoverWinOverlay from './resources/win.png'
 import gameoverLoseOverlay from './resources/lose.png'
 import backgroundImg from './resources/test8.png';
 import gameoverImg from './resources/win_background.png'
+import sound from './resources/sound.png'
+import mute from './resources/mute.png'
+import back from './resources/back.png'
 import {getProgress} from "../../ProgressDummyData";
 import { getQuestionAnswer } from '../../listeningData';
 import {LISTEN_OPTIONS_PATH} from '../../constants';
 import { ReactComponent as CircleSvg } from '../../SharedImages/Circle.svg'
 import { ReactComponent as SkullSvg } from '../../SharedImages/Skull.svg'
+
 
 // SugarHoneycombsPage function is a React component.
 // JSX Rendering & Event handling: returned JSX defines the structure and appearance of the UI and event handlers such as 
@@ -42,7 +46,6 @@ function SugarHoneycombsPage() {
 
     const location = useLocation();
     const unit = location.state; //this unit is not a int causing problems when indexing
-
     // useState() hook from React used to initialize the component's state object, 
     // here useState is called with an object{} having currentOverlay propery initailized with startOverlay, and etc.
     const [state, setState] = useState({
@@ -135,6 +138,44 @@ function SugarHoneycombsPage() {
         audios[number]?.play();
     };
 
+
+    const toggleBGM = (event) => {
+        const audio = document.getElementById('bgm');
+        const clickedIconId = event.target.id; // Get the ID of the clicked icon
+        const clickedIcon = event.target;
+
+        if (clickedIconId === 'sound') {
+            audio.play();
+        } else if (clickedIconId === 'mute') {
+            audio.pause();
+            audio.currentTime = 0; // Reset audio to start
+        }
+    
+        // Add 'clicked' class to indicate it's been clicked and then remove it
+        clickedIcon.classList.add('clicked');
+        setTimeout(() => {
+            event.target.classList.remove('clicked');
+        }, 200); // Adjust the timeout as needed
+    };
+    useEffect(() => {
+        // Attach the event listener
+        const soundIcon = document.getElementById('sound');
+        soundIcon.addEventListener('click', toggleBGM);
+
+        const muteIcon = document.getElementById('mute');
+        muteIcon.addEventListener('click', toggleBGM);
+
+        // Cleanup function
+        return () => {
+            soundIcon.removeEventListener('click', toggleBGM);
+            muteIcon.removeEventListener('click', toggleBGM);
+        };
+    }, []); // Empty dependency array to ensure this runs once on mount ~ rendering
+
+
+
+
+
     
     function playAgain() {
         setState({...state, radioButton: ''});
@@ -146,15 +187,9 @@ function SugarHoneycombsPage() {
         document.getElementById('win-text').style.display = 'none';
         document.getElementById('lose-text').style.display = 'none';
     }
-    // function pre_start_Game() { // delay rendering when unit is changed so no overflow 
-    //     setTimeout(() => {
-    //         startGame()
-    //     }, 1500)
-    // }
-    function startGame() {
-        if (isInitializing) {
-            return;
-        }
+
+
+    function updateResponseTime() {
         const difficulty = document.querySelector('input[name="difficulty"]:checked').value;
         let initialQuestionResponseTime;
         if (difficulty === "easy") {
@@ -165,7 +200,13 @@ function SugarHoneycombsPage() {
             initialQuestionResponseTime = HARD_QUESTION_RESPONSE_TIME;
         }
         setQuestionResponseTime(initialQuestionResponseTime);
-        setRemainingTime(questionResponseTime);
+        setRemainingTime(initialQuestionResponseTime); //if setRemainingTime(questionResponseTime) -> setRemainingTime(initialQuestionResponseTime), remaining time won't get updated since setQuestionResponseTime(initialQuestionResponseTime) doesn't effect immediately
+    }
+    function startGame() {
+        if (isInitializing) {
+            return;
+        }
+        updateResponseTime();
         setCurrentQuestionId(0);
         setCurrIncorrectScore(0);
         setGameIsEnded(false);
@@ -177,7 +218,9 @@ function SugarHoneycombsPage() {
         document.getElementById('pregame').style.display = 'none';
         document.getElementById('postgame').style.display = 'none';
         document.getElementById('tutorial').style.display = 'none';
-        
+        document.getElementById('overlay-image').classList.add('shakeAnimation');
+        document.getElementById('overlay-image').classList.remove('bounceAnimation');
+
         for (let i = 0; i < 3; i++) {
             document.getElementById("score-view").childNodes[i].classList.remove("red");
         }
@@ -317,6 +360,8 @@ function SugarHoneycombsPage() {
             document.getElementById('choices').style.visibility = 'visible';
             setCorrectMessage(false)
             setState({ ...state, currentOverlay: startOverlay, radioButton: ''});
+            document.getElementById('overlay-image').classList.add('shakeAnimation');
+            document.getElementById('overlay-image').classList.remove('bounceAnimation');
             next_question();
         }, 1000);
     }
@@ -338,6 +383,8 @@ function SugarHoneycombsPage() {
             // and spread them into the new state object. it keeps the existing state unchanged
             setState({ ...state, currentOverlay: startOverlay, radioButton: ''});
             setCurrIncorrectScore(currIncorrectScore + 1);
+            document.getElementById('overlay-image').classList.add('bounceAnimation');
+            document.getElementById('overlay-image').classList.remove('shakeAnimation');
             next_question();
         }, 2500);
     }
@@ -371,6 +418,10 @@ function SugarHoneycombsPage() {
         <div id='sugar-honeycombs-full-container'>
             <img id='background' src={currentBackground} alt='SugarHoneycombs' />
             <img id='overlay-image' src={state.currentOverlay} alt='Overlay' />
+            <img id="sound" src={sound} alt="Sound Icon" />
+            <img id="mute" src={mute} alt="Mute Icon" />
+            {/* <img id="back" src={back} alt="Back Icon" /> */}
+            <audio id="bgm" src="/audios/BGM_Yummy_Flavor_모두의 브금.mp3" preload="auto" hidden></audio>
             <div id="empty-div"></div>
             <div id='sugar-honeycombs-container'>
                 <div id='header'>

@@ -1,4 +1,5 @@
 #sugar-honeycombs-full-container {
+    /* position: relative; */
     display: flex;
     flex-direction: row;
 }
@@ -22,6 +23,43 @@
 }
 
 
+#sugar-honeycombs-full-container #sound {
+    cursor: pointer;
+    position: absolute;
+    top: 100px; /* Adjust as needed */
+    right: 10px; /* Adjust as needed */
+    z-index: 10; /* Ensure this is higher than other elements */
+    width: 50px; /* Adjust size as needed */
+    height: 50px; /* Adjust size as needed */
+}
+#sugar-honeycombs-full-container #mute {
+    cursor: pointer;
+    position: absolute;
+    top: 150px; /* Adjust as needed */
+    right: 10px; /* Adjust as needed */
+    z-index: 10; /* Ensure this is higher than other elements */
+    width: 50px; /* Adjust size as needed */
+    height: 50px; /* Adjust size as needed */
+}
+
+
+/* define a CSS class that represents the clicked state of the sound/mute icon */
+.clicked {
+    transform: scale(0.9); /* Slightly smaller */
+    opacity: 0.7; /* Slightly transparent */
+    /* Other styles for clicked state */
+}
+
+
+#sugar-honeycombs-full-container #back {
+    cursor: pointer;
+    position: absolute;
+    top: 200px; /* Adjust as needed */
+    right: 10px; /* Adjust as needed */
+    z-index: 10; /* Ensure this is higher than other elements */
+    width: 50px; /* Adjust size as needed */
+    height: 50px; /* Adjust size as needed */
+}
 
 @keyframes shake {
     0% { transform: translateX(0); }
@@ -30,6 +68,27 @@
     75% { transform: translateX(-50px); }
     100% { transform: translateX(50px); }
 }
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0);
+    }
+    40% {
+        transform: translateY(-30px);
+    }
+    60% {
+        transform: translateY(-15px);
+    }
+}
+/* Create CSS Classes for Each Animation: */
+.shakeAnimation {
+    animation: shake 3.5s ease-in-out infinite;
+}
+
+.bounceAnimation {
+    animation: bounce 2s ease-in-out infinite;
+}
+
 #sugar-honeycombs-full-container #overlay-image {
     position: absolute;
     bottom: 100px; /* place it at the bottom of the container */
@@ -38,8 +97,9 @@
     opacity: 0.9; /* adjust transparency as needed */
     width: 450px; /* set the exact width */
     height: 500px; /* set the exact height */
-    animation: shake 3.5s ease-in-out infinite; /* apply the shake animation */
+    
 }
+
 
 #sugar-honeycombs-full-container #gameover-overlay {
     position: absolute;

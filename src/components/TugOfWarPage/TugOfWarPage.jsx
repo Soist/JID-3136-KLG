@@ -46,6 +46,12 @@ function TugOfWarPage() {
         score: 3,
         answerLanguage: 'korean',
     });
+    const questions = state.questions;
+    const currQuestionIndex = state.currQuestionIndex;
+    const answerLanguage = state.answerLanguage;
+    const currScore = state.score;
+    const [showErrorMessage, setShowErrorMessage] = useState(false);
+    const [showCorrectMessage, setCorrectMessage] = useState(false);
 
     function startGame() {
         const languageRadioButton = document.querySelector('input[name="answer-language"]:checked');
@@ -81,10 +87,7 @@ function TugOfWarPage() {
     }
 
     function submitAnswer() {
-        const questions = state.questions;
-        const currQuestionIndex = state.currQuestionIndex;
-        const currScore = state.score;
-        const answerLanguage = state.answerLanguage;
+        
         const submission = document.getElementById('answer-input').value;
 
         getProgress(unit.number)[1].tug++
@@ -92,6 +95,7 @@ function TugOfWarPage() {
         if (submission === questions[currQuestionIndex][answerLanguage]) {
             document.getElementById('answer-input').value = '';
             getProgress(unit.number)[0].tug++
+            setCorrectMessage(true);
 
             const newScore = currScore + 1;
             if (newScore === 8) {
@@ -104,24 +108,30 @@ function TugOfWarPage() {
             } else if (newScore > 3) {
                 document.getElementById('score').childNodes[newScore].classList.add('green');
             }
-
-            setState({ ...state, currQuestionIndex: (state.currQuestionIndex + 1) % state.questions.length, score: newScore });
+            setTimeout(() => {
+                setCorrectMessage(false);
+                setState({ ...state, currQuestionIndex: (state.currQuestionIndex + 1) % state.questions.length, score: newScore });
+            }, 1000);
+            
         } else {
+            setShowErrorMessage(true);
             document.getElementById('answer-input').value = '';
-
             const newScore = currScore - 1;
-            if (newScore === 0) {
-                document.getElementById('score').childNodes[newScore].classList.add('red');
-                document.getElementById('game').style.display = 'none';
-                document.getElementById('postgame').style.display = 'flex';
-                document.getElementById('lose-text').style.display = 'flex';
-            } else if (newScore < 3) {
-                document.getElementById('score').childNodes[newScore].classList.add('red');
-            } else if (newScore >= 3) {
-                document.getElementById('score').childNodes[newScore + 1].classList.remove('green');
-            }
-
-            setState({ ...state, currQuestionIndex: (state.currQuestionIndex + 1) % state.questions.length, score: newScore });
+            setTimeout(() => {
+                setShowErrorMessage(false);
+                if (newScore === 0) {
+                    document.getElementById('score').childNodes[newScore].classList.add('red');
+                    document.getElementById('game').style.display = 'none';
+                    document.getElementById('postgame').style.display = 'flex';
+                    document.getElementById('lose-text').style.display = 'flex';
+                } else if (newScore < 3) {
+                    document.getElementById('score').childNodes[newScore].classList.add('red');
+                } else if (newScore >= 3) {
+                    document.getElementById('score').childNodes[newScore + 1].classList.remove('green');
+                }
+                setState({ ...state, currQuestionIndex: (state.currQuestionIndex + 1) % state.questions.length, score: newScore });
+            }, 2500);
+            
         }
     }
 
@@ -146,12 +156,28 @@ function TugOfWarPage() {
                     <button className='btn btn-primary' onClick={startGame}>Start Game</button>
                 </div>
                 <div id='game'>
+                    {showErrorMessage && 
+                        <div id='error'>
+                            <h2 id='error-message'>Incorrect answer!</h2>
+                            <h3 id='error-message'>
+                                The right answer is : {questions[currQuestionIndex][answerLanguage]}
+                            </h3>
+                        </div>
+                    }
+                    {showCorrectMessage && 
+                        <div id='correct'>
+                            <h2 id='correct-message'>Correct answer! Good job!</h2>
+                        </div>
+                    }
                     <div id='question'>
                         <h2>What is <span id="question-text">{state.answerLanguage === 'korean' ? state.questions[state.currQuestionIndex].english : state.questions[state.currQuestionIndex].korean}</span> in {state.answerLanguage.charAt(0).toUpperCase() + state.answerLanguage.slice(1)}?</h2>
                     </div>
                     <div id='answer'>
                         <input id='answer-input' type='text' autoComplete='off' onKeyDown={(event) => { if (event.key === 'Enter') submitAnswer(); }} />
                         <button className='btn btn-primary' onClick={submitAnswer}>Submit</button>
+                    </div>
+                    <div>
+                        Answer for Demo: {questions[currQuestionIndex][answerLanguage]}
                     </div>
                 </div>
                 <div id='postgame'>
