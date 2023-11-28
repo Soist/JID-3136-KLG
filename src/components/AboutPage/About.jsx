@@ -30,7 +30,7 @@ function About() {
                 <div className="student-box">
                     <div className="student">
                         <h3>Manqi Li</h3>
-                        <p>Developer</p>
+                        <p> <a href="https://www.linkedin.com/in/manqi-li/">Developer</a> </p>
                     </div>
 
                     <div className="student">
@@ -39,7 +39,7 @@ function About() {
                     </div>
                     <div className="student">
                         <h3>Qingyang "Leo" Yue </h3>
-                        <p>Developer</p>
+                        <p> <a href="mailto:qyue30@gatech.edu">Developer</a> </p>
                     </div>
                 </div>
             </div>
