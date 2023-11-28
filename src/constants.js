@@ -18,3 +18,4 @@ export const LOGIN_PATH = "/login-page";
 export const REGISTER_PATH = "/register-page";
 export const LOGOUT_PATH = "/logout-page";
 export const FORGOT_PASSWORD_PATH = "/forgot-password-page";
+export const FEEDBACK_PATH = "/feedback-page";
