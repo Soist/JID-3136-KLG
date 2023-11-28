@@ -48,6 +48,8 @@ function MarblesPage() {
         currQuestionIndex: 0,
         score: 3,
         radioButton: null,
+        showErrorMessage: false,
+        showCorrectMessage: false,
     });
 
     const [remainingTime, setRemainingTime] = useState(state.questionResponseTime);
@@ -151,6 +153,7 @@ function MarblesPage() {
         if (submission === questions[currQuestionIndex].answer) {
             getProgress(unit.number)[0].marble++
             const newScore = currScore + 1;
+            setState({...state, showCorrectMessage: true,});
             if (newScore === 8) {
                 document.getElementById('score').childNodes[newScore].classList.add('green');
                 document.getElementById('game').style.display = 'none';
@@ -164,24 +167,33 @@ function MarblesPage() {
                 }
 
             }
-            setState({ ...state, radioButton: '', score: newScore,
-            currQuestionIndex: (state.currQuestionIndex + 1) % state.questions.length});
+            setTimeout(() => {
+                setState({ ...state, radioButton: '', score: newScore,
+                    currQuestionIndex: (state.currQuestionIndex + 1) % state.questions.length,
+                    showCorrectMessage: false});
+            }, 2000);
+            
+            
         } else {
             const newScore = currScore - 1;
-            if (newScore === 0) {
-                document.getElementById('score').childNodes[newScore].classList.add('red');
-                document.getElementById('game').style.display = 'none';
-                document.getElementById('postgame').style.display = 'flex';
-                document.getElementById('lose-text').style.display = 'flex';
-            } else {
-                if (newScore < 3) {
+            setState({...state, showErrorMessage: true,});
+            setTimeout(() => {
+                if (newScore === 0) {
                     document.getElementById('score').childNodes[newScore].classList.add('red');
-                } else if (newScore >= 3) {
-                    document.getElementById('score').childNodes[newScore + 1].classList.remove('green');
+                    document.getElementById('game').style.display = 'none';
+                    document.getElementById('postgame').style.display = 'flex';
+                    document.getElementById('lose-text').style.display = 'flex';
+                } else {
+                    if (newScore < 3) {
+                        document.getElementById('score').childNodes[newScore].classList.add('red');
+                    } else if (newScore >= 3) {
+                        document.getElementById('score').childNodes[newScore + 1].classList.remove('green');
+                    }
                 }
-            }
-            setState({ ...state, radioButton: '', score: newScore,
-            currQuestionIndex: (state.currQuestionIndex + 1) % state.questions.length});
+                setState({ ...state, radioButton: '', score: newScore,
+                    currQuestionIndex: (state.currQuestionIndex + 1) % state.questions.length,
+                    showErrorMessage: false});
+            }, 3500);
         }
         setRemainingTime(state.questionResponseTime);
     }
@@ -264,6 +276,20 @@ function MarblesPage() {
                         <div id='timer-bar'>
                             <progress value={state.questionResponseTime - remainingTime} max={state.questionResponseTime}></progress>
                         </div>
+                        {/* Conditional Rendering within JSX: display error message if showErrorMessage is true */}
+                        {state.showErrorMessage && 
+                            <div id='error'>
+                                <h2 id='error-message'>Incorrect answer!</h2>
+                                <h3 id='error-message'>
+                                    The right answer is : {state.questions[state.currQuestionIndex].answer}
+                                </h3>
+                            </div>
+                        }
+                        {state.showCorrectMessage && 
+                            <div id='correct'>
+                                <h2 id='correct-message'>Correct answer! Good job!</h2>
+                            </div>
+                        }
                     </div>
                     <div id='postgame'>
                         <h2 id='win-text'>Congratulations, you win!</h2>
