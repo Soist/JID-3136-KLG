@@ -86,28 +86,32 @@ const handleToggleFavoritesFilter = () => {
   setCurrentPage('favorites');
 };
 
+const handleToggleFavorite = (index) => {
+  const updatedFlashcards = [...flashcards];
+  const toggledFlashcard = { ...updatedFlashcards[index] };
 
-  const handleToggleFavorite = (index) => {
-    const updatedFlashcards = [...flashcards];
-    const toggledFlashcard = updatedFlashcards[index];
+  toggledFlashcard.isStarred = !toggledFlashcard.isStarred;
 
-    toggledFlashcard.isStarred = !toggledFlashcard.isStarred;
+  updatedFlashcards[index] = toggledFlashcard;
+  setFlashcards(updatedFlashcards);
 
-    if (toggledFlashcard.isStarred) {
-      setFavoriteFlashcards([...favoriteFlashcards, toggledFlashcard]);
-    } else {
-      const updatedFavorites = favoriteFlashcards.filter((favFlashcard) => favFlashcard !== toggledFlashcard);
-      setFavoriteFlashcards(updatedFavorites);
-    }
-
-    setFlashcards(updatedFlashcards);
-  };
-
-  const filteredFlashcards = showFavoritesOnly
-  ? [...favoriteFlashcards, ...userAddedFlashcards.filter((flashcard) => flashcard.isStarred)]
-  : [...preExistingFlashcards, ...userAddedFlashcards].filter(
-      (flashcard) => !showFavoritesOnly || flashcard.isStarred
+  if (toggledFlashcard.isStarred) {
+    setFavoriteFlashcards((prevFavorites) => [...prevFavorites, toggledFlashcard]);
+  } else {
+    setFavoriteFlashcards((prevFavorites) =>
+      prevFavorites.filter((favFlashcard) => favFlashcard !== toggledFlashcard)
     );
+  }
+};
+
+
+
+const filteredFlashcards = showFavoritesOnly
+  ? [...favoriteFlashcards, ...userAddedFlashcards.filter((flashcard) => flashcard.isStarred)]
+  : showFavoritesOnly
+  ? [...preExistingFlashcards, ...userAddedFlashcards].filter((flashcard) => flashcard.isStarred)
+  : [...preExistingFlashcards, ...userAddedFlashcards];
+
     const handleSaveFlashcard = () => {
       if (selectedFlashcardIndex !== null) {
         const updatedUserAddedFlashcards = currentPage === 'main'
