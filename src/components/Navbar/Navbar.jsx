@@ -59,15 +59,10 @@ function Navbar() {
                             Feedback
                         </Link>
                     </li>
-                </ul>
-            </div>
-            
-            <div>
-                <ul>
                     <li className='nav-item'>
                         {user ? (
                         <Link to={LOGOUT_PATH} className='nav-links'>
-                            Log out
+                            Logout of <span style={{color:"pink" }}>{user.email}</span>
                         </Link>) 
                         : 
                         (
@@ -75,20 +70,9 @@ function Navbar() {
                             Login
                         </Link>
                         )}
-                        
-                    </li>
-                    <li>
-                        {user ? (
-                            <h4
-                            style={{color:"pink" }}
-                            >{user.email}</h4>
-                        ) : (
-                            <h2></h2>
-                        )}
                     </li>
                 </ul>
             </div>
-            
         </nav>
     )
 }
