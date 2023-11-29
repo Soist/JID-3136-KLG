@@ -103,7 +103,8 @@ const handleToggleFavorite = (index) => {
 
 
 
-const filteredFlashcards = [...preExistingFlashcards, ...userAddedFlashcards];
+const filteredFlashcards = [...preExistingFlashcards, ...userAddedFlashcards]
+  .filter(flashcard => flashcard.unit === `unit${unit.number}` || !flashcard.unit);
 
     const handleSaveFlashcard = () => {
       if (selectedFlashcardIndex !== null) {
@@ -127,6 +128,7 @@ const filteredFlashcards = [...preExistingFlashcards, ...userAddedFlashcards];
           image: imageURL,
           isUserAdded: true,
           isStarred: false,
+          unit: `unit${unit.number}`,
         };
     
         if (currentPage === 'main') {
