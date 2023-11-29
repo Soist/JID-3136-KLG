@@ -116,3 +116,24 @@ input[type="radio"] {
 .red-light-green-light-container .green {
     fill: green;
 }
+
+.red-light-green-light-container #error {
+    flex-direction: column;
+    align-items: center;
+}
+
+
+.red-light-green-light-container #error-message {
+    font-weight: bold;
+    color: red;
+}
+
+.red-light-green-light-container #correct {
+    flex-direction: column;
+    align-items: center;
+}
+
+.red-light-green-light-container #correct-message {
+    font-weight: bold;
+    color: green;
+}

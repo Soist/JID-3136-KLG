@@ -97,3 +97,23 @@
     font-weight: bold;
     color: red;
 }
+
+#tug-of-war-container #error {
+    flex-direction: column;
+    align-items: center;
+}
+
+#tug-of-war-container #error-message {
+    font-weight: bold;
+    color: red;
+}
+
+#tug-of-war-container #correct {
+    flex-direction: column;
+    align-items: center;
+}
+
+#tug-of-war-container #correct-message {
+    font-weight: bold;
+    color: green;
+}

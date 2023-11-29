@@ -45,6 +45,8 @@ function RedLightGreenLightPage() {
     const [questionLanguage, setQuestionLanguage] = useState("");
     const [answerLanguage, setAnswerLanguage] = useState("");
     const questions = getVocab(unit.number);
+    const [showErrorMessage, setShowErrorMessage] = useState(false);
+    const [showCorrectMessage, setCorrectMessage] = useState(false);
 
     function startGame() {
         const difficulty = document.querySelector('input[name="difficulty"]:checked').value;
@@ -87,6 +89,7 @@ function RedLightGreenLightPage() {
         const interval = setInterval(() => {
             if (document.getElementById("game-div").style.display === "flex") { // only execute when game is active
                 if (prevScoreTotal === currCorrectScore + currIncorrectScore) {
+                    setShowErrorMessage(true);
                     handlePlay();
                     document.getElementById("light").style.backgroundColor = RED;
                     document.getElementById('score-view').childNodes[currIncorrectScore].classList.add('red');
@@ -99,6 +102,7 @@ function RedLightGreenLightPage() {
                     }
                     // No answer but game not over; pause on red light before next question
                     setTimeout(() => {
+                        setShowErrorMessage(false);
                         handlePause();
                         document.getElementById("light").style.backgroundColor = GREEN;
                         setCurrQuestionIndex((currQuestionIndex + 1) % questions.length);
@@ -118,27 +122,31 @@ function RedLightGreenLightPage() {
         if (submission === questions[currQuestionIndex][answerLanguage]) {
             setCurrCorrectScore(currCorrectScore + 1);
             getProgress(unit.number)[0].rlgl++
+            setCorrectMessage(true);
             if (currCorrectScore === 5) {
                 document.getElementById("game-div").style.display = "none";
                 document.getElementById("postgame-div").style.display = "flex";
                 document.getElementById("win-text").style.display = "flex";
             }
-            setCurrQuestionIndex((currQuestionIndex + 1) % questions.length);
-
+            setTimeout(() => {
+                setCorrectMessage(false);
+                setCurrQuestionIndex((currQuestionIndex + 1) % questions.length);
+            }, 1000);
         } else {
-
+            setShowErrorMessage(true);
             handlePlay();
             document.getElementById('score-view').childNodes[currIncorrectScore].classList.add('red');
             document.getElementById("light").style.backgroundColor = RED;
             document.getElementById("question-div").style.display = "none";
             setCurrIncorrectScore(currIncorrectScore + 1);
-            if (currIncorrectScore === 2) {
-                document.getElementById("game-div").style.display = "none";
-                document.getElementById("postgame-div").style.display = "flex";
-                document.getElementById("lose-text").style.display = "flex";
-            }
             // Incorrect answer but game not over; pause on red light before next question
             setTimeout(() => {
+                setShowErrorMessage(false);
+                if (currIncorrectScore === 2) {
+                    document.getElementById("game-div").style.display = "none";
+                    document.getElementById("postgame-div").style.display = "flex";
+                    document.getElementById("lose-text").style.display = "flex";
+                }
                 handlePause();
                 document.getElementById("light").style.backgroundColor = GREEN;
                 setCurrQuestionIndex((currQuestionIndex + 1) % questions.length);
@@ -195,12 +203,28 @@ function RedLightGreenLightPage() {
                         <div id="score-view">
                             <ScoreView />
                         </div>
+                        {showErrorMessage && 
+                            <div id='error'>
+                                <h2 id='error-message'>Incorrect answer!</h2>
+                                <h3 id='error-message'>
+                                    The right answer is : {questions[currQuestionIndex][answerLanguage]}
+                                </h3>
+                            </div>
+                        }
+                        {showCorrectMessage && 
+                            <div id='correct'>
+                                <h2 id='correct-message'>Correct answer! Good job!</h2>
+                            </div>
+                        }
                         <div id="question-div">
                             <h4>Question:</h4>
                             <h2>What is <span id="question-text">{questions[currQuestionIndex][questionLanguage]}</span> in {answerLanguage.charAt(0).toUpperCase() + answerLanguage.slice(1)}?</h2>
                             <div id='answer'>
                                 <input id='answer-input' type='text' autoComplete='off' onKeyDown={(event) => { if (event.key === 'Enter') submitAnswer(); }} />
                                 <button className='btn btn-primary' onClick={() => { submitAnswer(); }}>Submit</button>
+                            </div>
+                            <div>
+                                Answer for Demo: {questions[currQuestionIndex][answerLanguage]}
                             </div>
                         </div>
                     </div>

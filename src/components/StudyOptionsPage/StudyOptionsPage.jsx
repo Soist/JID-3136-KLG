@@ -19,17 +19,17 @@ function StudyOptionsPage() {
             </Link>
             <Link to={VOCAB_OPTIONS_PATH} state={unit}>
                 <button className='btn btn-primary'>
-                    {'Vocabulary Game'}
+                    {'Vocabulary Games'}
                 </button>
             </Link>
             <Link to={GRAMMAR_OPTIONS_PATH} state={unit}>
                 <button className='btn btn-primary'>
-                    {'Grammar Game'}
+                    {'Grammar Games'}
                 </button>
             </Link>
             <Link to={LISTEN_OPTIONS_PATH} state={unit}>
                 <button className='btn btn-primary'>
-                    {'Listening Game'}
+                    {'Listening Games'}
                 </button>
             </Link>
             <Link to={UNITS_LIST_PATH}>

@@ -48,6 +48,8 @@ function MarblesPage() {
         currQuestionIndex: 0,
         score: 3,
         radioButton: null,
+        showErrorMessage: false,
+        showCorrectMessage: false,
     });
 
     const [remainingTime, setRemainingTime] = useState(state.questionResponseTime);
@@ -55,6 +57,43 @@ function MarblesPage() {
     const handleOptionChange = (event) => {
         setState({ ...state, radioButton: event.target.value});
     };
+
+    useEffect(() => {
+        // Set initial state with questions
+        setState({
+            ...state,
+            questions: getGrammar(unit.number),
+            currQuestionIndex: 0,
+            score: 3,
+            radioButton: null,
+            showErrorMessage: false,
+            showCorrectMessage: false,
+        });
+    }, [unit.number]); // Include unit.number as a dependency to re-run when the unit changes
+
+    useEffect(() => {
+        // Initialize question response time based on difficulty when the game starts
+        const difficulty = document.querySelector('input[name="difficulty"]:checked');
+        if (difficulty) {
+            let initialQuestionResponseTime;
+            if (difficulty.value === "easy") {
+                initialQuestionResponseTime = EASY_QUESTION_RESPONSE_TIME;
+            } else if (difficulty.value === "medium") {
+                initialQuestionResponseTime = MEDIUM_QUESTION_RESPONSE_TIME;
+            } else {
+                initialQuestionResponseTime = HARD_QUESTION_RESPONSE_TIME;
+            }
+
+            setState((prevState) => ({
+                ...prevState,
+                questionResponseTime: initialQuestionResponseTime,
+            }));
+
+            // Set remaining time to initial question response time
+            setRemainingTime(initialQuestionResponseTime);
+        }
+    }, [state.questions]); // Include state.questions as a dependency to re-run when the questions change
+
 
     function startGame() {
         const difficulty = document.querySelector('input[name="difficulty"]:checked').value;
@@ -109,27 +148,26 @@ function MarblesPage() {
 
             if (document.getElementById("game").style.display === "flex") {
                 const newScore = currScore - 1;
-                if (newScore === 0) {
-                document.getElementById('score').childNodes[newScore].classList.add('red');
-                document.getElementById('game').style.display = 'none';
-                document.getElementById('postgame').style.display = 'flex';
-                document.getElementById('lose-text').style.display = 'flex';
-                } else {
-                if (newScore < 3) {
-                    document.getElementById('score').childNodes[newScore].classList.add('red');
-                } else if (newScore >= 3) {
-                    document.getElementById('score').childNodes[newScore + 1].classList.remove('green');
-                }
-                }
+                setState({...state, showErrorMessage: true,});
 
-                setState({
-                    ...state,
-                    radioButton: '',
-                    score: newScore,
-                    currQuestionIndex: (state.currQuestionIndex + 1) % state.questions.length,
-                });
-            
-                setRemainingTime(state.questionResponseTime);
+                setTimeout(() => {
+                    if (newScore === 0) {
+                        document.getElementById('score').childNodes[newScore].classList.add('red');
+                        document.getElementById('game').style.display = 'none';
+                        document.getElementById('postgame').style.display = 'flex';
+                        document.getElementById('lose-text').style.display = 'flex';
+                    } else {
+                        if (newScore < 3) {
+                            document.getElementById('score').childNodes[newScore].classList.add('red');
+                        } else if (newScore >= 3) {
+                            document.getElementById('score').childNodes[newScore + 1].classList.remove('green');
+                        }
+                    }
+                    setState({ ...state, radioButton: '', score: newScore,
+                        currQuestionIndex: (state.currQuestionIndex + 1) % state.questions.length,
+                        showErrorMessage: false});
+                    setRemainingTime(state.questionResponseTime);
+                }, 6000);
             }
         }, state.questionResponseTime);
 
@@ -151,6 +189,7 @@ function MarblesPage() {
         if (submission === questions[currQuestionIndex].answer) {
             getProgress(unit.number)[0].marble++
             const newScore = currScore + 1;
+            setState({...state, showCorrectMessage: true,});
             if (newScore === 8) {
                 document.getElementById('score').childNodes[newScore].classList.add('green');
                 document.getElementById('game').style.display = 'none';
@@ -164,26 +203,37 @@ function MarblesPage() {
                 }
 
             }
-            setState({ ...state, radioButton: '', score: newScore,
-            currQuestionIndex: (state.currQuestionIndex + 1) % state.questions.length});
+            setTimeout(() => {
+                setState({ ...state, radioButton: '', score: newScore,
+                    currQuestionIndex: (state.currQuestionIndex + 1) % state.questions.length,
+                    showCorrectMessage: false});
+                setRemainingTime(state.questionResponseTime);
+            }, 2500);
+            
+            
         } else {
             const newScore = currScore - 1;
-            if (newScore === 0) {
-                document.getElementById('score').childNodes[newScore].classList.add('red');
-                document.getElementById('game').style.display = 'none';
-                document.getElementById('postgame').style.display = 'flex';
-                document.getElementById('lose-text').style.display = 'flex';
-            } else {
-                if (newScore < 3) {
+            setState({...state, showErrorMessage: true,});
+            setTimeout(() => {
+                if (newScore === 0) {
                     document.getElementById('score').childNodes[newScore].classList.add('red');
-                } else if (newScore >= 3) {
-                    document.getElementById('score').childNodes[newScore + 1].classList.remove('green');
+                    document.getElementById('game').style.display = 'none';
+                    document.getElementById('postgame').style.display = 'flex';
+                    document.getElementById('lose-text').style.display = 'flex';
+                } else {
+                    if (newScore < 3) {
+                        document.getElementById('score').childNodes[newScore].classList.add('red');
+                    } else if (newScore >= 3) {
+                        document.getElementById('score').childNodes[newScore + 1].classList.remove('green');
+                    }
                 }
-            }
-            setState({ ...state, radioButton: '', score: newScore,
-            currQuestionIndex: (state.currQuestionIndex + 1) % state.questions.length});
+                setState({ ...state, radioButton: '', score: newScore,
+                    currQuestionIndex: (state.currQuestionIndex + 1) % state.questions.length,
+                    showErrorMessage: false});
+                setRemainingTime(state.questionResponseTime);
+            }, 6000);
         }
-        setRemainingTime(state.questionResponseTime);
+        
     }
 
     function playAgain() {
@@ -234,7 +284,6 @@ function MarblesPage() {
                                 : <h2>Choose an option to make it grammatically true</h2>
                             }
                             <h2><span id="question-text">{state.questions[state.currQuestionIndex].question}</span></h2>
-                            <p style={{ color: 'gray' }}>answer for demo purpose: {state.questions[state.currQuestionIndex].answer}</p>
                         </div>
                         <div>
                         {
@@ -264,6 +313,20 @@ function MarblesPage() {
                         <div id='timer-bar'>
                             <progress value={state.questionResponseTime - remainingTime} max={state.questionResponseTime}></progress>
                         </div>
+                        {/* Conditional Rendering within JSX: display error message if showErrorMessage is true */}
+                        {state.showErrorMessage && 
+                            <div id='error'>
+                                <h2 id='error-message'>Incorrect answer!</h2>
+                                <h3 id='error-message'>
+                                    The right answer is : {state.questions[state.currQuestionIndex].answer}
+                                </h3>
+                            </div>
+                        }
+                        {state.showCorrectMessage && 
+                            <div id='correct'>
+                                <h2 id='correct-message'>Correct answer! Good job!</h2>
+                            </div>
+                        }
                     </div>
                     <div id='postgame'>
                         <h2 id='win-text'>Congratulations, you win!</h2>

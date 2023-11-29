@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { getAudio } from '../../audioData';
 import { ReactComponent as SoundSvg } from './sound.svg';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -7,6 +7,10 @@ import { faTrashAlt } from '@fortawesome/free-solid-svg-icons';
 const Flashcard = ({ flashcard, imageURL, onDeleteFlashcard, isStarred, onToggleFavorite }) => {
   const [flip, setFlip] = useState(false);
   const [isFavorited, setIsFavorited] = useState(false);
+
+  useEffect(() => {
+    setIsFavorited(isStarred);
+  }, [isStarred]);
 
   const sound =
     getAudio(flashcard.korean) === null
@@ -21,14 +25,15 @@ const Flashcard = ({ flashcard, imageURL, onDeleteFlashcard, isStarred, onToggle
   const toggleFavorite = (event) => {
     event.stopPropagation();
     setIsFavorited(!isFavorited);
-    
+    onToggleFavorite();
   };
+
 
   const toggleStar = (event) => {
     event.stopPropagation();
     onToggleFavorite(); 
   };
-
+  
   const handleDelete = () => {
     if (flashcard.isUserAdded && window.confirm("Are you sure you want to delete this flashcard?")) {
       onDeleteFlashcard();

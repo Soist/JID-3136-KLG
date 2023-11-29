@@ -10,8 +10,12 @@ function FlashcardStudyPage() {
   const initialCards = getVocab(unit.number);
 
   const [preExistingFlashcards, setPreExistingFlashcards] = useState(initialCards);
-  const [userAddedFlashcards, setUserAddedFlashcards] = useState(() => {
-    const localData = localStorage.getItem('userAddedFlashcards');
+  const [mainPageUserAddedFlashcards, setMainPageUserAddedFlashcards] = useState(() => {
+    const localData = localStorage.getItem('mainPageUserAddedFlashcards');
+    return localData ? JSON.parse(localData) : [];
+  });
+  const [favoritesPageUserAddedFlashcards, setFavoritesPageUserAddedFlashcards] = useState(() => {
+    const localData = localStorage.getItem('favoritesPageUserAddedFlashcards');
     return localData ? JSON.parse(localData) : [];
   });
 
@@ -21,11 +25,16 @@ function FlashcardStudyPage() {
   const [koreanText, setKoreanText] = useState('');
   const [imageURL, setImageURL] = useState('');
   const [selectedFlashcardIndex, setSelectedFlashcardIndex] = useState(null);
-  const [showFavoritesOnly, setShowFavoritesOnly] = useState(false);
-  useEffect(() => {
-    localStorage.setItem('userAddedFlashcards', JSON.stringify(userAddedFlashcards));
-  }, [userAddedFlashcards]);
 
+  const [currentPage, setCurrentPage] = useState('main');
+ 
+    
+  useEffect(() => {
+    localStorage.setItem('mainPageUserAddedFlashcards', JSON.stringify(mainPageUserAddedFlashcards));
+    localStorage.setItem('favoritesPageUserAddedFlashcards', JSON.stringify(favoritesPageUserAddedFlashcards));
+  }, [mainPageUserAddedFlashcards, favoritesPageUserAddedFlashcards]);
+
+  const userAddedFlashcards = currentPage === 'main' ? mainPageUserAddedFlashcards : favoritesPageUserAddedFlashcards;
 
   const handleAddFlashcard = (index) => {
     setSelectedFlashcardIndex(index);
@@ -57,59 +66,83 @@ function FlashcardStudyPage() {
     }
   
     const userAddedIndex = index - preExistingFlashcards.length;
-    const updatedUserAddedFlashcards = [...userAddedFlashcards];
-    updatedUserAddedFlashcards.splice(userAddedIndex, 1);
-    setUserAddedFlashcards(updatedUserAddedFlashcards);
-  };
+    const updatedUserAddedFlashcards = currentPage === 'main'
+    ? [...mainPageUserAddedFlashcards]
+    : [...favoritesPageUserAddedFlashcards];
+  updatedUserAddedFlashcards.splice(userAddedIndex, 1);
   
-  const handleToggleFavoritesFilter = () => {
-    setShowFavoritesOnly(!showFavoritesOnly);
-  };
+  if (currentPage === 'main') {
+    setMainPageUserAddedFlashcards(updatedUserAddedFlashcards);
+  } else {
+    setFavoritesPageUserAddedFlashcards(updatedUserAddedFlashcards);
+  }
+};
 
-  const handleToggleFavorite = (index) => {
-    const updatedFlashcards = [...flashcards];
-    const toggledFlashcard = updatedFlashcards[index];
+const handleToggleFavoritesFilter = () => {
 
-    toggledFlashcard.isStarred = !toggledFlashcard.isStarred;
+  setCurrentPage('favorites');
+};
 
-    if (toggledFlashcard.isStarred) {
-      setFavoriteFlashcards([...favoriteFlashcards, toggledFlashcard]);
-    } else {
-      const updatedFavorites = favoriteFlashcards.filter((favFlashcard) => favFlashcard !== toggledFlashcard);
-      setFavoriteFlashcards(updatedFavorites);
-    }
+const handleToggleFavorite = (index) => {
+  const updatedFlashcards = [...flashcards];
+  const toggledFlashcard = { ...updatedFlashcards[index] };
 
-    setFlashcards(updatedFlashcards);
-  };
+  toggledFlashcard.isStarred = !toggledFlashcard.isStarred;
 
-  const filteredFlashcards = showFavoritesOnly
-    ? flashcards.filter((flashcard) => flashcard.isStarred)
-    : flashcards.filter((flashcard) => !showFavoritesOnly || flashcard.isStarred);
+  updatedFlashcards[index] = toggledFlashcard;
+  setFlashcards(updatedFlashcards);
+
+  if (toggledFlashcard.isStarred) {
+    setFavoriteFlashcards((prevFavorites) => [...prevFavorites, toggledFlashcard]);
+  } else {
+    setFavoriteFlashcards((prevFavorites) =>
+      prevFavorites.filter((favFlashcard) => favFlashcard !== toggledFlashcard)
+    );
+  }
+};
 
 
-  const handleSaveFlashcard = () => {
-    if (selectedFlashcardIndex !== null) {
-      const updatedUserAddedFlashcards = [...userAddedFlashcards];
-      updatedUserAddedFlashcards[selectedFlashcardIndex] = {
-        ...updatedUserAddedFlashcards[selectedFlashcardIndex],
-        korean: koreanText,
-        image: imageURL,
-      };
-      setUserAddedFlashcards(updatedUserAddedFlashcards);
-    } else {
-      const newFlashcard = {
-        korean: koreanText,
-        image: imageURL,
-        isUserAdded: true,
-      };
-      setUserAddedFlashcards([...userAddedFlashcards, newFlashcard]);
-    }
-    setIsModalVisible(false);
-    setKoreanText('');
-    setImageURL('');
-    setSelectedFlashcardIndex(null);
-  };
 
+const filteredFlashcards = [...preExistingFlashcards, ...userAddedFlashcards]
+  .filter(flashcard => flashcard.unit === `unit${unit.number}` || !flashcard.unit);
+
+    const handleSaveFlashcard = () => {
+      if (selectedFlashcardIndex !== null) {
+        const updatedUserAddedFlashcards = currentPage === 'main'
+          ? [...mainPageUserAddedFlashcards]
+          : [...favoritesPageUserAddedFlashcards];
+        updatedUserAddedFlashcards[selectedFlashcardIndex] = {
+          ...updatedUserAddedFlashcards[selectedFlashcardIndex],
+          korean: koreanText,
+          image: imageURL,
+        };
+   
+        if (currentPage === 'main') {
+          setMainPageUserAddedFlashcards(updatedUserAddedFlashcards);
+        } else {
+          setFavoritesPageUserAddedFlashcards(updatedUserAddedFlashcards);
+        }
+      } else {
+        const newFlashcard = {
+          korean: koreanText,
+          image: imageURL,
+          isUserAdded: true,
+          isStarred: false,
+          unit: `unit${unit.number}`,
+        };
+    
+        if (currentPage === 'main') {
+          setMainPageUserAddedFlashcards([...mainPageUserAddedFlashcards, newFlashcard]);
+        } else {
+          setFavoritesPageUserAddedFlashcards([...favoritesPageUserAddedFlashcards, newFlashcard]);
+        }
+      }
+      setIsModalVisible(false);
+      setKoreanText('');
+      setImageURL('');
+      setSelectedFlashcardIndex(null);
+    };
+    
   const handleCloseModal = () => {
     setIsModalVisible(false);
     setKoreanText('');
@@ -120,32 +153,16 @@ function FlashcardStudyPage() {
   
     return (
       <div id='flashcard-container'>
-        <div className='filter-buttons'>
-          <button onClick={handleToggleFavoritesFilter}>
-            {showFavoritesOnly ? 'Show All' : 'Show Favorites Only'}
-          </button>
-        </div>
-        {showFavoritesOnly
-          ? [...favoriteFlashcards, ...userAddedFlashcards].map((flashcard, index) => (
-              <Flashcard
-                key={index}
-                flashcard={flashcard}
-                imageURL={flashcard.image}
-                onDeleteFlashcard={() => handleDelete(index)}
-                onToggleFavorite={() => handleToggleFavorite(index)}
-                isStarred={flashcard.isStarred}
-              />
-            ))
-          : [...preExistingFlashcards, ...userAddedFlashcards].map((flashcard, index) => (
-              <Flashcard
-                key={index}
-                flashcard={flashcard}
-                imageURL={flashcard.image}
-                onDeleteFlashcard={() => handleDelete(index)}
-                onToggleFavorite={() => handleToggleFavorite(index)}
-                isStarred={flashcard.isStarred}
-              />
-            ))}
+      {filteredFlashcards.map((flashcard, index) => (
+        <Flashcard
+          key={index}
+          flashcard={flashcard}
+          imageURL={flashcard.image}
+          onDeleteFlashcard={() => handleDelete(index)}
+          onToggleFavorite={() => handleToggleFavorite(index)}
+          isStarred={flashcard.isStarred}
+        />
+      ))}
       <div className='add-flashcard-button'>
         <button onClick={() => handleAddFlashcard(null)}>Add Flashcard</button>
       </div>
