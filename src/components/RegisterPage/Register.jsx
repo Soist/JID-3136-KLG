@@ -11,21 +11,27 @@ import { BrowserRouter as Router, Route, Routes, useNavigate } from "react-route
 function Register() {
     const [theEmail, setTheEmail]= useState('');
     const [thePassword, setThePassword] = useState('');
+    const [theConfPassword, setTheConfPassword] = useState('');
     const [loading, setLoading] = useState(false);
     const auth = FIREBASE_AUTH
     const nav = useNavigate()
     const signUp = async () => {
         setLoading(true)
-        try {
-            const response = await createUserWithEmailAndPassword(auth,theEmail,thePassword)
-            nav('/')
-        } catch (error){
-            alert("Registration failed " + error.message)
-        }finally{
+        if (thePassword.localeCompare(theConfPassword) === 0) {
+            try {
+                const response = await createUserWithEmailAndPassword(auth,theEmail,thePassword)
+                nav('/')
+            } catch (error){
+                alert("Registration failed " + error.message)
+            }finally{
+                setLoading(false)
+            }
+        } else {
+            alert("Your passwords do not match")
             setLoading(false)
         }
-        
     }
+
     return (
         <View
         style={{backgroundColor:"white",width:"100%",height:"100%",alignItems:'center',justifyContent:'center'}}
@@ -61,6 +67,17 @@ function Register() {
                 value ={thePassword}
                 placeholder='  Password'
                 onChangeText={(text)=>setThePassword(text)}
+                secureTextEntry={true}
+                placeholderTextColor={'rgb(0,0,0,.15'}
+                />
+                <h5
+                style={{paddingBottom:0,paddingTop:10}}
+                >CONFIRM PASSWORD</h5>
+                <TextInput
+                style = {{borderWidth:1, width:"80%",height:40,color:'rgb(0,0,0,.15'}}
+                value ={theConfPassword}
+                placeholder='  Re-type Password'
+                onChangeText={(text)=>setTheConfPassword(text)}
                 secureTextEntry={true}
                 placeholderTextColor={'rgb(0,0,0,.15'}
                 />
