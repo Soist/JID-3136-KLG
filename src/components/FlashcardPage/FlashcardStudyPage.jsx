@@ -25,7 +25,7 @@ function FlashcardStudyPage() {
   const [koreanText, setKoreanText] = useState('');
   const [imageURL, setImageURL] = useState('');
   const [selectedFlashcardIndex, setSelectedFlashcardIndex] = useState(null);
-  const [showFavoritesOnly, setShowFavoritesOnly] = useState(false);
+
   const [currentPage, setCurrentPage] = useState('main');
  
     
@@ -34,10 +34,7 @@ function FlashcardStudyPage() {
     localStorage.setItem('favoritesPageUserAddedFlashcards', JSON.stringify(favoritesPageUserAddedFlashcards));
   }, [mainPageUserAddedFlashcards, favoritesPageUserAddedFlashcards]);
 
-  const userAddedFlashcards = currentPage === 'main'
-  ? mainPageUserAddedFlashcards
-  : favoritesPageUserAddedFlashcards;
-
+  const userAddedFlashcards = currentPage === 'main' ? mainPageUserAddedFlashcards : favoritesPageUserAddedFlashcards;
 
   const handleAddFlashcard = (index) => {
     setSelectedFlashcardIndex(index);
@@ -82,7 +79,7 @@ function FlashcardStudyPage() {
 };
 
 const handleToggleFavoritesFilter = () => {
-  setShowFavoritesOnly(!showFavoritesOnly);
+
   setCurrentPage('favorites');
 };
 
@@ -106,11 +103,7 @@ const handleToggleFavorite = (index) => {
 
 
 
-const filteredFlashcards = showFavoritesOnly
-  ? [...favoriteFlashcards, ...userAddedFlashcards.filter((flashcard) => flashcard.isStarred)]
-  : showFavoritesOnly
-  ? [...preExistingFlashcards, ...userAddedFlashcards].filter((flashcard) => flashcard.isStarred)
-  : [...preExistingFlashcards, ...userAddedFlashcards];
+const filteredFlashcards = [...preExistingFlashcards, ...userAddedFlashcards];
 
     const handleSaveFlashcard = () => {
       if (selectedFlashcardIndex !== null) {
@@ -158,32 +151,16 @@ const filteredFlashcards = showFavoritesOnly
   
     return (
       <div id='flashcard-container'>
-        <div className='filter-buttons'>
-          <button onClick={handleToggleFavoritesFilter}>
-            {showFavoritesOnly ? 'Show All' : 'Show Favorites Only'}
-          </button>
-        </div>
-        {showFavoritesOnly
-        ? [...favoriteFlashcards, ...userAddedFlashcards.filter((flashcard) => flashcard.isStarred)].map((flashcard, index) => (
-            <Flashcard
-              key={index}
-              flashcard={flashcard}
-              imageURL={flashcard.image}
-              onDeleteFlashcard={() => handleDelete(index)}
-              onToggleFavorite={() => handleToggleFavorite(index)}
-              isStarred={flashcard.isStarred}
-            />
-          ))
-        : [...preExistingFlashcards, ...userAddedFlashcards].map((flashcard, index) => (
-            <Flashcard
-              key={index}
-              flashcard={flashcard}
-              imageURL={flashcard.image}
-              onDeleteFlashcard={() => handleDelete(index)}
-              onToggleFavorite={() => handleToggleFavorite(index)}
-              isStarred={flashcard.isStarred}
-            />
-          ))}
+      {filteredFlashcards.map((flashcard, index) => (
+        <Flashcard
+          key={index}
+          flashcard={flashcard}
+          imageURL={flashcard.image}
+          onDeleteFlashcard={() => handleDelete(index)}
+          onToggleFavorite={() => handleToggleFavorite(index)}
+          isStarred={flashcard.isStarred}
+        />
+      ))}
       <div className='add-flashcard-button'>
         <button onClick={() => handleAddFlashcard(null)}>Add Flashcard</button>
       </div>
