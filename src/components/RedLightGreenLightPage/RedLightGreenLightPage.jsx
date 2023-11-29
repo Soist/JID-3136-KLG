@@ -89,6 +89,7 @@ function RedLightGreenLightPage() {
         const interval = setInterval(() => {
             if (document.getElementById("game-div").style.display === "flex") { // only execute when game is active
                 if (prevScoreTotal === currCorrectScore + currIncorrectScore) {
+                    setShowErrorMessage(true);
                     handlePlay();
                     document.getElementById("light").style.backgroundColor = RED;
                     document.getElementById('score-view').childNodes[currIncorrectScore].classList.add('red');
@@ -101,6 +102,7 @@ function RedLightGreenLightPage() {
                     }
                     // No answer but game not over; pause on red light before next question
                     setTimeout(() => {
+                        setShowErrorMessage(false);
                         handlePause();
                         document.getElementById("light").style.backgroundColor = GREEN;
                         setCurrQuestionIndex((currQuestionIndex + 1) % questions.length);
