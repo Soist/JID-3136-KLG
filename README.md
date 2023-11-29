@@ -3,7 +3,7 @@ A react app created to gamify the learning of KOR 1001 at Georgia Tech. The app 
 
 # Release Notes
 
-## Version 0.4.0
+## Version 1.4.0
 
 ### New Features
 * Login/Register/ForgotPassword page UI have been updated to match theme of website.
@@ -21,7 +21,7 @@ A react app created to gamify the learning of KOR 1001 at Georgia Tech. The app 
 * Forgot Password link was not linked correctly to Forgot Password page.
 * GitHub commits and branches were not up to date
 
-## Version 0.3.0
+## Version 1.3.0
 
 ### New Features
 * Basic Layout and design of Chatbox has been coded. ChatGPT api to bring functionality will be implemented in later sprints
@@ -36,7 +36,7 @@ A react app created to gamify the learning of KOR 1001 at Georgia Tech. The app 
 * Some of the games had no "quit" or "exit" button to allow users to safely quit the game and get back the unit page or home page.
 
 
-## Version 0.2.0
+## Version 1.2.0
 
 ### New Features
 * Added simplistic honey comb game that allows for practice with vocabulary.
