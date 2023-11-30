@@ -1,67 +1,141 @@
 //Chatbox.jsx
 import React, { useState } from 'react';
+//import reactLogo from './assets/react.svg'
+//import viteLogo from '/vite.svg'
 import './Chatbox.css';
-import KoreanKeyboard from './KoreanKeyboard'; 
+
+import '@chatscope/chat-ui-kit-styles/dist/default/styles.min.css';
+import { MainContainer, ChatContainer, MessageList, Message, MessageInput, TypingIndicator } from '@chatscope/chat-ui-kit-react'
+const OPENAI_API_KEY = "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";   
+
 
 function Chatbox() {
-  const [messages, setMessages] = useState([]);
-  const [inputMessage, setInputMessage] = useState('');
-  const [showKoreanKeyboard, setShowKoreanKeyboard] = useState(false);
+  const [isChatbotTyping, setIsChatbotTyping] = useState(false);
 
-  const handleSendMessage = () => {
-    if (inputMessage.trim() !== '') {
-      setMessages([
-        ...messages,
-        { user: true, text: inputMessage },
-      ]);
-      setInputMessage('');
 
-      setTimeout(() => {
-        setMessages([
-          ...messages,
-          { user: false, text: 'Bot: This is a simulated bot response.' },
-        ]);
-      }, 1000);
-    }
-  };
+  const [chatMessages, setChatMessages] = useState([
+    {
+      message: "Hello, Welcome to Korean Practice Chatbot",
+      sender: "ChatGPT",
+    },
+  ]);
+ 
 
-  const handleCharacterClick = (char) => {
-    setInputMessage(inputMessage + char);
-  };
-
-  return (
-    <div className="chatbox-container">
-      <div className="chatbox-header">
-        <h2>Welcome to Korean Practice Chat</h2>
-      </div>
-      <div className="chatbox-messages">
-        {messages.map((message, index) => (
-          <div
-            key={index}
-            className={`chatbox-message ${message.user ? 'user' : 'bot'}`}
-          >
-            <p>{message.text}</p>
-          </div>
-        ))}
-      </div>
-      <div className="chatbox-input-container">
-        <input
-          type="text"
-          placeholder="Type your message..."
-          className="chatbox-input"
-          value={inputMessage}
-          onChange={(e) => setInputMessage(e.target.value)}
-        />
-        <button className="send-button" onClick={handleSendMessage}>
-          Send
-        </button>
-        
-      </div>
+  const handleUserMessage = async (userMessage) => {
+  
+    const newUserMessage = {
+      message: userMessage,
+      sender: "user",
+      direction: "outgoing",
+    };
+ 
+    const updatedChatMessages = [...chatMessages, newUserMessage];
+    setChatMessages(updatedChatMessages);
+ 
       
-    </div>
-  );
-}
+    setIsChatbotTyping(true);
+ 
+   
+    await processUserMessageToChatGPT(updatedChatMessages);
+  };
+ 
+  
+  async function processUserMessageToChatGPT(messages) {
 
-export default Chatbox;
+    let apiMessages = messages.map((messageObject) => {
+      let role = "";
+      if (messageObject.sender === "ChatGPT") {
+        role = "assistant";
+      } else {
+        role = "user";
+      }
+      return { role: role, content: messageObject.message };
+    });
+ 
+  
+    const systemMessage = {
+      role: "system",
+      content: "Practice Basic Conversational Skills in Korean ",
+    };
+ 
+    
+    const apiRequestBody = {
+      model: "gpt-3.5-turbo",
+      messages: [
+        systemMessage, 
+        ...apiMessages,
+      ],
+    };
+ 
+    
+    await fetch("https://api.openai.com/v1/chat/completions", {
+      method: "POST",
+      headers: {
+        Authorization: "Bearer " + OPENAI_API_KEY,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(apiRequestBody),
+    })
+      .then((data) => {
+        return data.json();
+      })
+      .then((data) => {
+        
+        setChatMessages([
+          ...messages,
+          {
+            message: data.choices[0].message.content,
+            sender: "ChatGPT",
+          },
+        ]);
+   
+        setIsChatbotTyping(false);
+      });
+
+      console.log("API Request Body:", apiRequestBody);
+  }
+ 
+  return (
+    <>
+      {}
+      <div style={{ height: "85vh", display: "flex", flexDirection: "column", alignItems: "center" }}>
+      <MainContainer style={{ width: "100%", maxWidth: "900px", flexGrow: 1 }}>
+          <ChatContainer>
+            {}
+            <MessageList
+              typingIndicator={
+                isChatbotTyping ? (
+                  <TypingIndicator content="ChatGPT is thinking" />
+                ) : null
+              }
+              
+            >
+              {}
+              {chatMessages.map((message, i) => {
+                return (
+                  <Message
+                    key={i}
+                    model={message}
+                    style={
+                      message.sender === "ChatGPT" ? { textAlign: "left" } : {}
+                    }
+                  />
+                );
+              })}
+            </MessageList>
+            {}
+            <MessageInput
+              placeholder="Type Message here"
+              onSend={handleUserMessage}
+              attachButton={false}
+            />
+          </ChatContainer>
+        </MainContainer>
+      </div>
+    </>
+  );
+ }
+ 
+ export default Chatbox;
 
 
