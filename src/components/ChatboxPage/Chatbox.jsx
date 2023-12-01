@@ -1,5 +1,6 @@
 //Chatbox.jsx
 import React, { useState } from 'react';
+
 import '@chatscope/chat-ui-kit-styles/dist/default/styles.min.css';
 import { MainContainer, ChatContainer, MessageList, Message, MessageInput, TypingIndicator,MessageTimestamp } from '@chatscope/chat-ui-kit-react'
 const OPENAI_API_KEY = "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";
@@ -14,6 +15,7 @@ function Chatbox() {
       message: "Hello, Welcome to Korean Practice Chatbot",
       sender: "ChatGPT",
       timestamp: Date.now(),
+      sentTime: "just now",
     },
   ]);
 
@@ -26,6 +28,7 @@ function Chatbox() {
       sender: "user",
       direction: "outgoing",
       timestamp: Date.now(),
+      sentTime: "just now",
     };
  
     const updatedChatMessages = [...chatMessages, newUserMessage];
@@ -79,12 +82,15 @@ function Chatbox() {
         return data.json();
       })
       .then((data) => {
+        const timestamp = new Date().toLocaleString();
         
         setChatMessages([
           ...messages,
           {
             message: data.choices[0].message.content,
             sender: "ChatGPT",
+            sentTime: timestamp,
+
           },
         ]);
    
@@ -116,9 +122,11 @@ function Chatbox() {
                   model={message}
                   style={message.sender === "ChatGPT" ? { textAlign: "left" } : {}}
                 >
+                  <Message.Footer sender={message.sender} sentTime={message.sentTime} />
                   <div className="message-timestamp">
                     {new Date(message.timestamp).toLocaleTimeString()}
                   </div>
+                  
                 </Message>
               ))}
             </MessageList>
@@ -135,6 +143,5 @@ function Chatbox() {
 }
 
 export default Chatbox;
-
 
 
