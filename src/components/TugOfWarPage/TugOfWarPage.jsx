@@ -58,7 +58,7 @@ function TugOfWarPage() {
         if (languageRadioButton === null) {
             return;
         }
-        const answerLanguage = languageRadioButton.value;
+        const answerLanguage = languageRadioButton.value === "korean" ? "korean": "english_literal";
 
         document.getElementById('pregame').style.display = 'none';
         document.getElementById('postgame').style.display = 'none';
@@ -92,7 +92,12 @@ function TugOfWarPage() {
 
         getProgress(unit.number)[1].tug++
 
-        if (submission === questions[currQuestionIndex][answerLanguage]) {
+        let correctAnswers = questions[currQuestionIndex][answerLanguage]
+        if (!Array.isArray(correctAnswers)){
+            correctAnswers = [correctAnswers]
+        }
+
+        if (correctAnswers.includes(submission)) {
             document.getElementById('answer-input').value = '';
             getProgress(unit.number)[0].tug++
             setCorrectMessage(true);
@@ -111,7 +116,7 @@ function TugOfWarPage() {
             setTimeout(() => {
                 setCorrectMessage(false);
                 setState({ ...state, currQuestionIndex: (state.currQuestionIndex + 1) % state.questions.length, score: newScore });
-            }, 1000);
+            }, 2500);
             
         } else {
             setShowErrorMessage(true);
@@ -130,7 +135,7 @@ function TugOfWarPage() {
                     document.getElementById('score').childNodes[newScore + 1].classList.remove('green');
                 }
                 setState({ ...state, currQuestionIndex: (state.currQuestionIndex + 1) % state.questions.length, score: newScore });
-            }, 2500);
+            }, 6000);
             
         }
     }
@@ -160,7 +165,11 @@ function TugOfWarPage() {
                         <div id='error'>
                             <h2 id='error-message'>Incorrect answer!</h2>
                             <h3 id='error-message'>
-                                The right answer is : {questions[currQuestionIndex][answerLanguage]}
+                                The right answer is : {
+                                        Array.isArray(questions[currQuestionIndex][answerLanguage]) ?
+                                        questions[currQuestionIndex][answerLanguage].map((item, idx) => (<li key={idx}>{item}</li>)) :
+                                        questions[currQuestionIndex][answerLanguage]
+                                    }
                             </h3>
                         </div>
                     }
@@ -170,14 +179,18 @@ function TugOfWarPage() {
                         </div>
                     }
                     <div id='question'>
-                        <h2>What is <span id="question-text">{state.answerLanguage === 'korean' ? state.questions[state.currQuestionIndex].english : state.questions[state.currQuestionIndex].korean}</span> in {state.answerLanguage.charAt(0).toUpperCase() + state.answerLanguage.slice(1)}?</h2>
+                        <h2>What is <span id="question-text">{state.answerLanguage === 'korean' ? state.questions[state.currQuestionIndex].english : state.questions[state.currQuestionIndex].korean}</span> in {state.answerLanguage === 'korean' ? 'Korean':'English'}?</h2>
                     </div>
                     <div id='answer'>
                         <input id='answer-input' type='text' autoComplete='off' onKeyDown={(event) => { if (event.key === 'Enter') submitAnswer(); }} />
                         <button className='btn btn-primary' onClick={submitAnswer}>Submit</button>
                     </div>
                     <div>
-                        Answer for Demo: {questions[currQuestionIndex][answerLanguage]}
+                        Answer for Demo: {
+                                        Array.isArray(questions[currQuestionIndex][answerLanguage]) ?
+                                        questions[currQuestionIndex][answerLanguage].map((item, idx) => (<li key={idx}>{item}</li>)) :
+                                        questions[currQuestionIndex][answerLanguage]
+                                    }
                     </div>
                 </div>
                 <div id='postgame'>

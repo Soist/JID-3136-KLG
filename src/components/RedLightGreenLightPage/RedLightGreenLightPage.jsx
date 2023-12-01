@@ -50,7 +50,7 @@ function RedLightGreenLightPage() {
 
     function startGame() {
         const difficulty = document.querySelector('input[name="difficulty"]:checked').value;
-        setAnswerLanguage(document.querySelector('input[name="answer-language"]:checked').value);
+        setAnswerLanguage(document.querySelector('input[name="answer-language"]:checked').value === "korean" ? "korean": "english_literal");
         setQuestionLanguage(document.querySelector('input[name="answer-language"]:checked').value === "korean" ? "english" : "korean");
         // const answerType = document.querySelector('input[name="answer-type"]:checked').value;
 
@@ -95,11 +95,7 @@ function RedLightGreenLightPage() {
                     document.getElementById('score-view').childNodes[currIncorrectScore].classList.add('red');
                     document.getElementById("question-div").style.display = "none";
                     setCurrIncorrectScore(currIncorrectScore + 1);
-                    if (currIncorrectScore === 2) {
-                        document.getElementById("game-div").style.display = "none";
-                        document.getElementById("postgame-div").style.display = "flex";
-                        document.getElementById("lose-text").style.display = "flex";
-                    }
+                    
                     // No answer but game not over; pause on red light before next question
                     setTimeout(() => {
                         setShowErrorMessage(false);
@@ -107,6 +103,12 @@ function RedLightGreenLightPage() {
                         document.getElementById("light").style.backgroundColor = GREEN;
                         setCurrQuestionIndex((currQuestionIndex + 1) % questions.length);
                         document.getElementById("question-div").style.display = "flex";
+
+                        if (currIncorrectScore === 2) {
+                            document.getElementById("game-div").style.display = "none";
+                            document.getElementById("postgame-div").style.display = "flex";
+                            document.getElementById("lose-text").style.display = "flex";
+                        }
                     }, RED_LIGHT_PAUSE_TIME);
                 }
             }
@@ -118,8 +120,12 @@ function RedLightGreenLightPage() {
         getProgress(unit.number)[1].rlgl++
         const submission = document.getElementById('answer-input').value;
         document.getElementById('answer-input').value = '';
+        let correctAnswers = questions[currQuestionIndex][answerLanguage]
+        if (!Array.isArray(correctAnswers)){
+            correctAnswers = [correctAnswers]
+        }
 
-        if (submission === questions[currQuestionIndex][answerLanguage]) {
+        if (correctAnswers.includes(submission)) {
             setCurrCorrectScore(currCorrectScore + 1);
             getProgress(unit.number)[0].rlgl++
             setCorrectMessage(true);
@@ -207,7 +213,11 @@ function RedLightGreenLightPage() {
                             <div id='error'>
                                 <h2 id='error-message'>Incorrect answer!</h2>
                                 <h3 id='error-message'>
-                                    The right answer is : {questions[currQuestionIndex][answerLanguage]}
+                                    The right answer is : {
+                                        Array.isArray(questions[currQuestionIndex][answerLanguage]) ?
+                                        questions[currQuestionIndex][answerLanguage].map((item, idx) => (<li key={idx}>{item}</li>)) :
+                                        questions[currQuestionIndex][answerLanguage]
+                                    }
                                 </h3>
                             </div>
                         }
@@ -218,13 +228,17 @@ function RedLightGreenLightPage() {
                         }
                         <div id="question-div">
                             <h4>Question:</h4>
-                            <h2>What is <span id="question-text">{questions[currQuestionIndex][questionLanguage]}</span> in {answerLanguage.charAt(0).toUpperCase() + answerLanguage.slice(1)}?</h2>
+                            <h2>What is <span id="question-text">{questions[currQuestionIndex][questionLanguage]}</span> in {answerLanguage === 'korean' ? 'Korean':'English'}?</h2>
                             <div id='answer'>
                                 <input id='answer-input' type='text' autoComplete='off' onKeyDown={(event) => { if (event.key === 'Enter') submitAnswer(); }} />
                                 <button className='btn btn-primary' onClick={() => { submitAnswer(); }}>Submit</button>
                             </div>
                             <div>
-                                Answer for Demo: {questions[currQuestionIndex][answerLanguage]}
+                                Answer for Demo: {
+                                    Array.isArray(questions[currQuestionIndex][answerLanguage]) ?
+                                    questions[currQuestionIndex][answerLanguage].map((item, idx) => (<li key={idx}>{item}</li>)) :
+                                    questions[currQuestionIndex][answerLanguage]
+                                }
                             </div>
                         </div>
                     </div>
