@@ -52,13 +52,8 @@ const Flashcard = ({ flashcard, imageURL, onDeleteFlashcard, isStarred, onToggle
           )}
           <div className='content-wrapper'>
             <div className='content'>{flashcard.english}</div>
-            {sound !== null && (
-              <div className='sound' onClick={playSound}>
-                <SoundSvg />
-              </div>
-            )}
-            <div className='star-icon' onClick={toggleFavorite}>
-              {isFavorited ? '⭐️' : '☆'}
+            <div className='star-icon' onClick={toggleStar}>
+              {isStarred ? '⭐️' : '☆'}
             </div>
             {flashcard.isUserAdded && (
               <div className='delete-icon' onClick={handleDelete}>
@@ -79,6 +74,9 @@ const Flashcard = ({ flashcard, imageURL, onDeleteFlashcard, isStarred, onToggle
               <SoundSvg />
             </div>
           )}
+          <div className='star-icon' onClick={toggleStar}>
+              {isStarred ? '⭐️' : '☆'}
+            </div>
             {flashcard.isUserAdded && (
               <div className='delete-icon' onClick={handleDelete}>
                 <FontAwesomeIcon
