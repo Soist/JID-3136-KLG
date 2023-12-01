@@ -1,12 +1,8 @@
 //Chatbox.jsx
 import React, { useState } from 'react';
-//import reactLogo from './assets/react.svg'
-//import viteLogo from '/vite.svg'
-import './Chatbox.css';
-
 import '@chatscope/chat-ui-kit-styles/dist/default/styles.min.css';
-import { MainContainer, ChatContainer, MessageList, Message, MessageInput, TypingIndicator } from '@chatscope/chat-ui-kit-react'
-const OPENAI_API_KEY = "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";   
+import { MainContainer, ChatContainer, MessageList, Message, MessageInput, TypingIndicator,MessageTimestamp } from '@chatscope/chat-ui-kit-react'
+const OPENAI_API_KEY = "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";
 
 
 function Chatbox() {
@@ -17,16 +13,19 @@ function Chatbox() {
     {
       message: "Hello, Welcome to Korean Practice Chatbot",
       sender: "ChatGPT",
+      timestamp: Date.now(),
     },
   ]);
- 
 
+  
+  
   const handleUserMessage = async (userMessage) => {
   
     const newUserMessage = {
       message: userMessage,
       sender: "user",
       direction: "outgoing",
+      timestamp: Date.now(),
     };
  
     const updatedChatMessages = [...chatMessages, newUserMessage];
@@ -93,39 +92,38 @@ function Chatbox() {
       });
 
       console.log("API Request Body:", apiRequestBody);
+      
   }
+
+  
  
   return (
     <>
-      {}
       <div style={{ height: "85vh", display: "flex", flexDirection: "column", alignItems: "center" }}>
-      <MainContainer style={{ width: "100%", maxWidth: "900px", flexGrow: 1 }}>
+        <h4 className="chatbox-title">Korean Practice Chatbot</h4>
+        <MainContainer style={{ width: "100%", maxWidth: "900px", flexGrow: 1 }}>
           <ChatContainer>
-            {}
             <MessageList
               typingIndicator={
                 isChatbotTyping ? (
                   <TypingIndicator content="ChatGPT is thinking" />
                 ) : null
               }
-              
             >
-              {}
-              {chatMessages.map((message, i) => {
-                return (
-                  <Message
-                    key={i}
-                    model={message}
-                    style={
-                      message.sender === "ChatGPT" ? { textAlign: "left" } : {}
-                    }
-                  />
-                );
-              })}
+              {chatMessages.map((message, i) => (
+                <Message
+                  key={i}
+                  model={message}
+                  style={message.sender === "ChatGPT" ? { textAlign: "left" } : {}}
+                >
+                  <div className="message-timestamp">
+                    {new Date(message.timestamp).toLocaleTimeString()}
+                  </div>
+                </Message>
+              ))}
             </MessageList>
-            {}
             <MessageInput
-              placeholder="Type Message here"
+              placeholder="Type your Message here"
               onSend={handleUserMessage}
               attachButton={false}
             />
@@ -134,8 +132,9 @@ function Chatbox() {
       </div>
     </>
   );
- }
- 
- export default Chatbox;
+}
+
+export default Chatbox;
+
 
 
