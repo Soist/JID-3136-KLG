@@ -123,7 +123,7 @@ Not applicable, as this was our first sprint.
   * Git or GitHub Desktop are only required to clone the repository
 
 ## Dependent Libraries
-* This project does not (currently) depend on any third-party libraries.
+* This project does depend on OpenAi's api to power the chatbot. Currently the project is loaded with intial funding. The OpenAI account and gmail linked to the account's credentials have been emailed to the client. 
 
 ## Download Instructions
 
@@ -144,10 +144,13 @@ Not applicable, as this was our first sprint.
 3. Open a terminal or command prompt window and navigate to the downloaded folder.
   * This is typically done using the `cd` command. For more info, see https://en.wikipedia.org/wiki/Cd_(command).
 4. Run the command `npm install`.
-5. Your environment should now be ready for local development. To launch the development server, run the command `npm start`.
+5. Run the command `pip install openai`
+6. Run the command `npm install @chatscope/chat-ui-kit-react`
+7. Run the command `npm install npm install openai@^4.0.0`
+8. Your environment should now be ready for local development. To launch the development server, run the command `npm start`.
 
 ## Build Instructions
-1. Make sure steps 1-4 from the **Download Instructions** section are completed.
+1. Make sure steps 1-7 from the **Download Instructions** section are completed.
 2. Run the command `npm run build` in the root folder of the project.
   * This will generate a `build` folder in the same directory as the project.
 
