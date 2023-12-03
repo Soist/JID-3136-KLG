@@ -9,33 +9,30 @@ import { BrowserRouter as Router, Route, Routes, useNavigate } from "react-route
 
 const Feedback = () => {
     return (
-        <View style={{backgroundColor:"green",alignItems:"center", flexDirection:'column'}}>
+        <View style={{backgroundColor:"white",alignItems:"center", flexDirection:'column'}}>
             <View 
-            style={{backgroundColor:"orange",width:500,height:250, flexDirection:"column",alignItems:'center'}}
+            style={{backgroundColor:"white",width:500,height:250, flexDirection:"column",alignItems:'center', justifyContent:'center'}}
             >
-                <Text>SUBMIT FEEDBACK</Text>
+                <Text style={{fontSize:40}}>SUBMIT FEEDBACK</Text>
                 <TextInput
-                style={{backgroundColor:"blue", height:40,width:"55%"}}
+                placeholder='Type feedback to be addressed ...'
+                placeholderTextColor={'rgb(0,0,0,.15'}
+                style={{backgroundColor:"white", height:60,width:"55%",borderWidth:2,borderRadius:10}}
                 ></TextInput>
             </View>
             <View
-            style={{backgroundColor:"red",width:700, height: 400, flexDirection:"column",alignItems:"center"}}
+            style={{backgroundColor:"white",width:700, height: 400, flexDirection:"column",alignItems:"center"}}
             >
-                <Text>CURRENT FEEDBACKS</Text>
+                <Text style={{fontSize:40}}>CURRENT FEEDBACKS</Text>
                 <FlatList
+                style={{paddingTop:20}}
                 data={[
-                {key: 'Devin'},
-                {key: 'Dan'},
-                {key: 'Dominic'},
-                {key: 'Jackson'},
-                {key: 'James'},
-                {key: 'Joel'},
-                {key: 'John'},
-                {key: 'Jillian'},
-                {key: 'Jimmy'},
-                {key: 'Julie'},
+                {key: "- Please increase the color contrast on the game because it's difficult to see "},
+                {key: '- The chat bot is a little repetitive.'},
+                {key: '- The cookie game is fun'},
+                
                 ]}
-                renderItem={({item}) => <Text>{item.key}</Text>}
+                renderItem={({item}) => <Text style={{fontSize:20}}>{item.key}</Text>}
                 />
             </View>
             
