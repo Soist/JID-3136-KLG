@@ -233,13 +233,6 @@ function RedLightGreenLightPage() {
                                 <input id='answer-input' type='text' autoComplete='off' onKeyDown={(event) => { if (event.key === 'Enter') submitAnswer(); }} />
                                 <button className='btn btn-primary' onClick={() => { submitAnswer(); }}>Submit</button>
                             </div>
-                            <div>
-                                Answer for Demo: {
-                                    Array.isArray(questions[currQuestionIndex][answerLanguage]) ?
-                                    questions[currQuestionIndex][answerLanguage].map((item, idx) => (<li key={idx}>{item}</li>)) :
-                                    questions[currQuestionIndex][answerLanguage]
-                                }
-                            </div>
                         </div>
                     </div>
                     <div id='postgame-div'>
