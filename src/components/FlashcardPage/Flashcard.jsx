@@ -1,17 +1,13 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { getAudio } from '../../audioData';
 import { ReactComponent as SoundSvg } from './sound.svg';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrashAlt } from '@fortawesome/free-solid-svg-icons';
 
-const Flashcard = ({ flashcard, imageURL, onDeleteFlashcard, isStarred, onToggleFavorite }) => {
+const Flashcard = ({ flashcard, imageURL, onDeleteFlashcard}) => {
   const [flip, setFlip] = useState(false);
   const [isFavorited, setIsFavorited] = useState(false);
-
-  useEffect(() => {
-    setIsFavorited(isStarred);
-  }, [isStarred]);
-
+  const [isStarred, setIsStarred] = useState(false);
   const sound =
     getAudio(flashcard.korean) === null
       ? null
@@ -25,15 +21,13 @@ const Flashcard = ({ flashcard, imageURL, onDeleteFlashcard, isStarred, onToggle
   const toggleFavorite = (event) => {
     event.stopPropagation();
     setIsFavorited(!isFavorited);
-    onToggleFavorite();
   };
-
 
   const toggleStar = (event) => {
     event.stopPropagation();
-    onToggleFavorite(); 
+    setIsStarred(!isStarred);
   };
-  
+
   const handleDelete = () => {
     if (flashcard.isUserAdded && window.confirm("Are you sure you want to delete this flashcard?")) {
       onDeleteFlashcard();
@@ -75,8 +69,8 @@ const Flashcard = ({ flashcard, imageURL, onDeleteFlashcard, isStarred, onToggle
             </div>
           )}
           <div className='star-icon' onClick={toggleStar}>
-              {isStarred ? '⭐️' : '☆'}
-            </div>
+            {isStarred ? '⭐️' : '☆'}
+          </div>
             {flashcard.isUserAdded && (
               <div className='delete-icon' onClick={handleDelete}>
                 <FontAwesomeIcon
