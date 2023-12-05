@@ -106,7 +106,7 @@ function Chatbox() {
   return (
     <>
       <div style={{ height: "85vh", display: "flex", flexDirection: "column", alignItems: "center" }}>
-        <h4 className="chatbox-title">Korean Practice Chatbot</h4>
+        <h4 style={{className: "chatbox-title", backgroundColor: "pink", width: "35vh", textAlign: "center"}}>Korean Practice Chatbot</h4>
         <MainContainer style={{ width: "100%", maxWidth: "900px", flexGrow: 1 }}>
           <ChatContainer>
             <MessageList
@@ -137,6 +137,7 @@ function Chatbox() {
             />
           </ChatContainer>
         </MainContainer>
+        <div style={{ width: "100vh", backgroundColor: "pink", textAlign: "center", marginTop: "1vh"}}>This chatbot is powered by OpenAI's ChatGPT. Please never type personal or confidential information into this chatbot. Please refer to <a href="https://openai.com/policies/privacy-policy">OpenAI's privacy policy</a> to read more about how they process user data.</div>
       </div>
     </>
   );

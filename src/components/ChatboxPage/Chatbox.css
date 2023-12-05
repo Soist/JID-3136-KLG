@@ -36,7 +36,7 @@
 }
 
 .chatbox-message.user {
-  background-color: #0073e6;
+  background-color: "pink";
   color: #fff;
   align-self: flex-end;
 }
